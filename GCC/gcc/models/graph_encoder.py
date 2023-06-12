@@ -134,8 +134,8 @@ class GraphEncoder(nn.Module):
 
         Parameters
         ----------
-        g : DGLGraph
-            Input DGLGraph for molecule(s)
+        g : dgl.graph
+            Input dgl.graph for molecule(s)
         n_feat : tensor of dtype float32 and shape (B1, D1)
             Node features. B1 for number of nodes and D1 for
             the node feature size.
@@ -203,7 +203,7 @@ class GraphEncoder(nn.Module):
 if __name__ == "__main__":
     model = GraphEncoder(gnn_model="gin")
     print(model)
-    g = dgl.DGLGraph()
+    g = dgl.graph()
     g.add_nodes(3)
     g.add_edges([0, 0, 1, 2], [1, 2, 2, 1])
     g.ndata["pos_directed"] = torch.rand(3, 16)

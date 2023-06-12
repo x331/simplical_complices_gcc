@@ -70,7 +70,7 @@ class UnsupervisedGCN(nn.Module):
 if __name__ == "__main__":
     model = UnsupervisedGCN()
     print(model)
-    g = dgl.DGLGraph()
+    g = dgl.graph()
     g.add_nodes(3)
     g.add_edges([0, 0, 1], [1, 2, 2])
     feat = torch.rand(3, 64)
