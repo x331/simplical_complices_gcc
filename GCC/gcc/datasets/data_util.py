@@ -272,7 +272,8 @@ def _add_undirected_graph_positional_embedding(g, hidden_size, retry=10):
     # Recall that the eignvectors of normalized laplacian of a line graph are cos/sin functions.
     # See section 2.4 of http://www.cs.yale.edu/homes/spielman/561/2009/lect02-09.pdf
     n = g.number_of_nodes()
-    adj = g.adjacency_matrix_scipy(transpose=False, return_edge_ids=False).astype(float)
+    # adj = g.adjacency_matrix_scipy(transpose=False, return_edge_ids=False).astype(float)
+    adj = g.adj()
     norm = sparse.diags(
         dgl.backend.asnumpy(g.in_degrees()).clip(1) ** -0.5, dtype=float
     )
