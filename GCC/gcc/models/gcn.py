@@ -10,7 +10,8 @@ import dgl.function as fn
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from dgl.model_zoo.chem.gnn import GCNLayer
+# from dgl.model_zoo.chem.gnn import GCNLayer
+from dgl.nn import GraphConv as GCNLayer
 from dgl.nn.pytorch import AvgPooling, Set2Set
 
 

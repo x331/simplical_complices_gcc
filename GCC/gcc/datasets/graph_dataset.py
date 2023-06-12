@@ -15,7 +15,8 @@ import networkx as nx
 import numpy as np
 import torch
 from dgl.data import AmazonCoBuy, Coauthor
-from dgl.nodeflow import NodeFlow
+# from dgl.nodeflow import NodeFlow
+from dgl.sampling import sample_neighbors as NodeFlow
 
 from gcc.datasets import data_util
 
@@ -240,11 +241,23 @@ class GraphDataset(torch.utils.data.Dataset):
                 g=self.graphs[graph_idx], seeds=[node_idx], num_traces=1, num_hops=step
             )[0][0][-1].item()
 
+        # max_nodes_per_seed = max(
+        #     self.rw_hops,
+        #     int(
+        #         (
+        #             self.graphs[graph_idx].out_degree(node_idx)
+        #             * math.e
+        #             / (math.e - 1)
+        #             / self.restart_prob
+        #         )
+        #         + 0.5
+        #     ),
+        # )
         max_nodes_per_seed = max(
             self.rw_hops,
             int(
                 (
-                    self.graphs[graph_idx].out_degree(node_idx)
+                    self.graphs[graph_idx].out_degrees(node_idx)
                     * math.e
                     / (math.e - 1)
                     / self.restart_prob
@@ -305,7 +318,7 @@ class NodeClassificationDataset(GraphDataset):
         graph.add_nodes(num_nodes)
         graph.add_edges(src, dst)
         graph.add_edges(dst, src)
-        graph.readonly()
+        # graph.readonly()
         return graph
 
 

@@ -53,7 +53,8 @@ def create_graph_classification_dataset(dataset_name):
         "collab": "COLLAB",
     }[dataset_name]
     dataset = TUDataset(name)
-    dataset.num_labels = dataset.num_labels[0]
+    # dataset.num_labels = dataset.num_labels[0]
+    dataset.num_labels = dataset.num_labels
     dataset.graph_labels = dataset.graph_labels.squeeze()
     return dataset
 
