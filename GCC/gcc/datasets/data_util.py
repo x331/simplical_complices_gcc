@@ -219,7 +219,7 @@ def create_node_classification_dataset(dataset_name):
 def _rwr_trace_to_dgl_graph(
     g, seed, trace, positional_embedding_size, entire_graph=False
 ):
-    subv = torch.unique(torch.cat(trace)).tolist()
+    subv = torch.unique(torch.cat([trace[0],trace[1]])).tolist()
     try:
         subv.remove(seed)
     except ValueError:
