@@ -226,10 +226,11 @@ def _rwr_trace_to_dgl_graph(
         pass
     subv = [seed] + subv
     if entire_graph:
-        subg = g.subgraph(g.nodes())
+        subg = dgl.DGLGraph.subgraph(g,g.nodes())
     else:
-        subg = g.subgraph(subv)
-
+        subg = dgl.DGLGraph.subgraph(g,subv)
+    
+    
     subg = _add_undirected_graph_positional_embedding(subg, positional_embedding_size)
 
     subg.ndata["seed"] = torch.zeros(subg.number_of_nodes(), dtype=torch.long)
