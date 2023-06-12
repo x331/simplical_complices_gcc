@@ -11,7 +11,7 @@ import time
 
 import dgl
 import numpy as np
-import tensorboard_logger as tb_logger
+import ignite.contrib.handlers.tensorboard_logger as tb_logger
 import torch
 
 from gcc.contrastive.criterions import NCESoftmaxLoss, NCESoftmaxLossNS
