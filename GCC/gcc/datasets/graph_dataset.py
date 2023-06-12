@@ -107,7 +107,7 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
             other_node_idx = node_idx
         else:
             other_node_idx = dgl.sampling.random_walk(
-                g=self.graphs[graph_idx], seeds=[node_idx], num_traces=1, num_hops=step
+                g=self.graphs[graph_idx], nodes=[node_idx], num_traces=1, num_hops=step
             )[0][0][-1].item()
 
         if self.aug == "rwr":
@@ -123,11 +123,11 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
                     + 0.5
                 ),
             )
-            traces = dgl.sampling.random_walk_with_restart(
+            traces = dgl.sampling.random_walk(
                 self.graphs[graph_idx],
-                seeds=[node_idx, other_node_idx],
+                nodes=[node_idx, other_node_idx],
                 restart_prob=self.restart_prob,
-                max_nodes_per_seed=max_nodes_per_seed,
+                length=max_nodes_per_seed,
             )
         elif self.aug == "ns":
             prob = dgl.backend.tensor([], dgl.backend.float32)
@@ -238,7 +238,7 @@ class GraphDataset(torch.utils.data.Dataset):
             other_node_idx = node_idx
         else:
             other_node_idx = dgl.sampling.random_walk(
-                g=self.graphs[graph_idx], seeds=[node_idx], num_traces=1, num_hops=step
+                g=self.graphs[graph_idx], nodes=[node_idx], num_traces=1, num_hops=step
             )[0][0][-1].item()
 
         # max_nodes_per_seed = max(
@@ -265,11 +265,11 @@ class GraphDataset(torch.utils.data.Dataset):
                 + 0.5
             ),
         )
-        traces = dgl.sampling.random_walk_with_restart(
+        traces = dgl.sampling.random_walk(
             self.graphs[graph_idx],
-            seeds=[node_idx, other_node_idx],
+            nodes=[node_idx, other_node_idx],
             restart_prob=self.restart_prob,
-            max_nodes_per_seed=max_nodes_per_seed,
+            length=max_nodes_per_seed,
         )
 
         graph_q = data_util._rwr_trace_to_dgl_graph(
@@ -381,11 +381,11 @@ class GraphClassificationDatasetLabeled(GraphClassificationDataset):
         graph_idx = idx
         node_idx = self.graphs[idx].out_degrees().argmax().item()
 
-        traces = dgl.sampling.random_walk_with_restart(
+        traces = dgl.sampling.random_walk(
             self.graphs[graph_idx],
-            seeds=[node_idx],
+            nodes=[node_idx],
             restart_prob=self.restart_prob,
-            max_nodes_per_seed=self.rw_hops,
+            length=self.rw_hops,
         )
 
         graph_q = data_util._rwr_trace_to_dgl_graph(
@@ -430,11 +430,11 @@ class NodeClassificationDatasetLabeled(NodeClassificationDataset):
             else:
                 node_idx -= self.graphs[i].number_of_nodes()
 
-        traces = dgl.sampling.random_walk_with_restart(
+        traces = dgl.sampling.random_walk(
             self.graphs[graph_idx],
-            seeds=[node_idx],
+            nodes=[node_idx],
             restart_prob=self.restart_prob,
-            max_nodes_per_seed=self.rw_hops,
+            length=self.rw_hops,
         )
 
         graph_q = data_util._rwr_trace_to_dgl_graph(
