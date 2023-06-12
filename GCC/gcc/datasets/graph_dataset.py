@@ -106,7 +106,7 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
         if step == 0:
             other_node_idx = node_idx
         else:
-            other_node_idx = dgl.contrib.sampling.random_walk(
+            other_node_idx = dgl.sampling.random_walk(
                 g=self.graphs[graph_idx], seeds=[node_idx], num_traces=1, num_hops=step
             )[0][0][-1].item()
 
@@ -237,7 +237,7 @@ class GraphDataset(torch.utils.data.Dataset):
         if step == 0:
             other_node_idx = node_idx
         else:
-            other_node_idx = dgl.contrib.sampling.random_walk(
+            other_node_idx = dgl.sampling.random_walk(
                 g=self.graphs[graph_idx], seeds=[node_idx], num_traces=1, num_hops=step
             )[0][0][-1].item()
 
