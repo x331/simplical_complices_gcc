@@ -56,7 +56,7 @@ def yuxiao_kdd17_graph_to_dgl(file):
     #  sym_err = A - A.T
     #  sym_check_res = np.all(np.abs(sym_err.data) < 1e-10)  # tune this value
     #  assert sym_check_res, 'input matrix is not symmetric!!!'
-    g = dgl.graph()
+    g = dgl.graph(([], []))
     g.from_scipy_sparse_matrix(A)
     g.remove_nodes((g.in_degrees() == 0).nonzero().squeeze())
     g.readonly()

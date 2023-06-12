@@ -123,7 +123,7 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
                     + 0.5
                 ),
             )
-            traces = dgl.contrib.sampling.random_walk_with_restart(
+            traces = dgl.sampling.random_walk_with_restart(
                 self.graphs[graph_idx],
                 seeds=[node_idx, other_node_idx],
                 restart_prob=self.restart_prob,
@@ -132,7 +132,7 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
         elif self.aug == "ns":
             prob = dgl.backend.tensor([], dgl.backend.float32)
             prob = dgl.backend.zerocopy_to_dgl_ndarray(prob)
-            nf1 = dgl.contrib.sampling.sampler._CAPI_NeighborSampling(
+            nf1 = dgl.sampling.sampler._CAPI_NeighborSampling(
                 self.graphs[graph_idx]._graph,
                 dgl.utils.toindex([node_idx]).todgltensor(),
                 0,  # batch_start_id
@@ -146,7 +146,7 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
             )[0]
             nf1 = NodeFlow(self.graphs[graph_idx], nf1)
             trace1 = [nf1.layer_parent_nid(i) for i in range(nf1.num_layers)]
-            nf2 = dgl.contrib.sampling.sampler._CAPI_NeighborSampling(
+            nf2 = dgl.sampling.sampler._CAPI_NeighborSampling(
                 self.graphs[graph_idx]._graph,
                 dgl.utils.toindex([other_node_idx]).todgltensor(),
                 0,  # batch_start_id
@@ -265,7 +265,7 @@ class GraphDataset(torch.utils.data.Dataset):
                 + 0.5
             ),
         )
-        traces = dgl.contrib.sampling.random_walk_with_restart(
+        traces = dgl.sampling.random_walk_with_restart(
             self.graphs[graph_idx],
             seeds=[node_idx, other_node_idx],
             restart_prob=self.restart_prob,
@@ -312,7 +312,7 @@ class NodeClassificationDataset(GraphDataset):
         self.total = self.length
 
     def _create_dgl_graph(self, data):
-        graph = dgl.graph()
+        graph = dgl.graph(data)
         src, dst = data.edge_index.tolist()
         num_nodes = data.edge_index.max() + 1
         graph.add_nodes(num_nodes)
@@ -381,7 +381,7 @@ class GraphClassificationDatasetLabeled(GraphClassificationDataset):
         graph_idx = idx
         node_idx = self.graphs[idx].out_degrees().argmax().item()
 
-        traces = dgl.contrib.sampling.random_walk_with_restart(
+        traces = dgl.sampling.random_walk_with_restart(
             self.graphs[graph_idx],
             seeds=[node_idx],
             restart_prob=self.restart_prob,
@@ -430,7 +430,7 @@ class NodeClassificationDatasetLabeled(NodeClassificationDataset):
             else:
                 node_idx -= self.graphs[i].number_of_nodes()
 
-        traces = dgl.contrib.sampling.random_walk_with_restart(
+        traces = dgl.sampling.random_walk_with_restart(
             self.graphs[graph_idx],
             seeds=[node_idx],
             restart_prob=self.restart_prob,

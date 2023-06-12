@@ -203,7 +203,7 @@ class GraphEncoder(nn.Module):
 if __name__ == "__main__":
     model = GraphEncoder(gnn_model="gin")
     print(model)
-    g = dgl.graph()
+    g = dgl.graph(([], []))
     g.add_nodes(3)
     g.add_edges([0, 0, 1, 2], [1, 2, 2, 1])
     g.ndata["pos_directed"] = torch.rand(3, 16)
