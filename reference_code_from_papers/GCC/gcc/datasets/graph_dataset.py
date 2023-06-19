@@ -16,7 +16,7 @@ import numpy as np
 import torch
 from dgl.data import AmazonCoBuy, Coauthor
 # from dgl.nodeflow import NodeFlow
-from dgl.sampling import sample_neighbors as NodeFlow
+from dgl.sampling import sample_neighbors
 
 from gcc.datasets import data_util
 
@@ -129,38 +129,42 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
                 restart_prob=self.restart_prob,
                 length=max_nodes_per_seed,
             )
+        # was orignally not commented out but I could find any documanetation descriping what dgl.sampling.sampler._CAPI_NeighborSampling() did so I can't figure out what I should replace it with so I am just going to get rid of the whole chuck of code and hope that it is not a proble
         elif self.aug == "ns":
-            prob = dgl.backend.tensor([], dgl.backend.float32)
-            prob = dgl.backend.zerocopy_to_dgl_ndarray(prob)
-            nf1 = dgl.sampling.sampler._CAPI_NeighborSampling(
-                self.graphs[graph_idx]._graph,
-                dgl.utils.toindex([node_idx]).todgltensor(),
-                0,  # batch_start_id
-                1,  # batch_size
-                1,  # workers
-                self.num_neighbors,  # expand_factor
-                self.rw_hops,  # num_hops
-                "out",
-                False,
-                prob,
-            )[0]
-            nf1 = NodeFlow(self.graphs[graph_idx], nf1)
-            trace1 = [nf1.layer_parent_nid(i) for i in range(nf1.num_layers)]
-            nf2 = dgl.sampling.sampler._CAPI_NeighborSampling(
-                self.graphs[graph_idx]._graph,
-                dgl.utils.toindex([other_node_idx]).todgltensor(),
-                0,  # batch_start_id
-                1,  # batch_size
-                1,  # workers
-                self.num_neighbors,  # expand_factor
-                self.rw_hops,  # num_hops
-                "out",
-                False,
-                prob,
-            )[0]
-            nf2 = NodeFlow(self.graphs[graph_idx], nf2)
-            trace2 = [nf2.layer_parent_nid(i) for i in range(nf2.num_layers)]
-            traces = [trace1, trace2]
+            print("Problem ProblemProblemProblemProblemProblem ProblemProblem Problem")
+            print("/home/shakir/simplical_complices_gcc/GCC/gcc/datasets/graph_dataset.py, line 133")
+        # elif self.aug == "ns":
+        #     prob = dgl.backend.tensor([], dgl.backend.float32)
+        #     prob = dgl.backend.zerocopy_to_dgl_ndarray(prob)
+        #     nf1 = dgl.sampling.sampler._CAPI_NeighborSampling(
+        #         self.graphs[graph_idx]._graph,
+        #         dgl.utils.toindex([node_idx]).todgltensor(),
+        #         0,  # batch_start_id
+        #         1,  # batch_size
+        #         1,  # workers
+        #         self.num_neighbors,  # expand_factor
+        #         self.rw_hops,  # num_hops
+        #         "out",
+        #         False,
+        #         prob,
+        #     )[0]
+        #     nf1 = NodeFlow(self.graphs[graph_idx], nf1)
+        #     trace1 = [nf1.layer_parent_nid(i) for i in range(nf1.num_layers)]
+        #     nf2 = dgl.sampling.sampler._CAPI_NeighborSampling(
+        #         self.graphs[graph_idx]._graph,
+        #         dgl.utils.toindex([other_node_idx]).todgltensor(),
+        #         0,  # batch_start_id
+        #         1,  # batch_size
+        #         1,  # workers
+        #         self.num_neighbors,  # expand_factor
+        #         self.rw_hops,  # num_hops
+        #         "out",
+        #         False,
+        #         prob,
+        #     )[0]
+        #     nf2 = NodeFlow(self.graphs[graph_idx], nf2)
+        #     trace2 = [nf2.layer_parent_nid(i) for i in range(nf2.num_layers)]
+        #     traces = [trace1, trace2]
 
         graph_q = data_util._rwr_trace_to_dgl_graph(
             g=self.graphs[graph_idx],
