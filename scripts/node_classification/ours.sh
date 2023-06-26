@@ -5,5 +5,6 @@ ARGS=${@:3}
 
 for dataset in $ARGS
 do
-    python gcc/tasks/node_classification.py --dataset $dataset --hidden-size $hidden_size --model from_numpy --emb-path "$load_path/$dataset.npy"
+    # python gcc/tasks/node_classification.py --dataset $dataset --hidden-size $hidden_size --model from_numpy --emb-path "$load_path/$dataset.npy"
+    python node_classification.py --dataset $dataset --hidden-size $hidden_size --model from_numpy --emb-path "$load_path/$dataset.npy"
 done

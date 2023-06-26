@@ -5,5 +5,7 @@ ARGS=${@:3}
 
 for dataset in $ARGS
 do
-  python gcc/tasks/similarity_search.py --dataset $dataset --hidden-size $hidden_size --model $model
+  # python gcc/tasks/similarity_search.py --dataset $dataset --hidden-size $hidden_size --model $model
+  python similarity_search.py --dataset $dataset --hidden-size $hidden_size --model $model
+
 done
