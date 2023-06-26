@@ -1,6 +1,8 @@
 import numpy as np
 import torch
-
+            
+import subprocess as sp
+import os
 
 def warmup_linear(x, warmup=0.002):
     """ Specifies a triangular learning rate schedule where peak is reached at `warmup`*`t_total`-th (as provided to BertAdam) training step.
@@ -17,6 +19,12 @@ def adjust_learning_rate(epoch, opt, optimizer):
         new_lr = opt.learning_rate * (opt.lr_decay_rate ** steps)
         for param_group in optimizer.param_groups:
             param_group["lr"] = new_lr
+
+def get_gpu_memory():
+    command = "nvidia-smi --query-gpu=memory.free --format=csv"
+    memory_free_info = sp.check_output(command.split()).decode('ascii').split('\n')[:-1][1:]
+    memory_free_values = [int(x.split()[0]) for i, x in enumerate(memory_free_info)]
+    return memory_free_values
 
 
 class AverageMeter(object):

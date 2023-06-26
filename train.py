@@ -208,7 +208,7 @@ def train_finetune(
         data_time.update(time.time() - end)
         graph_q, y = batch
 
-        graph_q.to(torch.device(opt.gpu))
+        graph_q = graph_q.to(torch.device(opt.gpu))
         y = y.to(torch.device(opt.gpu))
 
         bsz = graph_q.batch_size
@@ -310,7 +310,7 @@ def test_finetune(epoch, valid_loader, model, output_layer, criterion, sw, opt):
     for idx, batch in enumerate(valid_loader):
         graph_q, y = batch
 
-        graph_q.to(torch.device(opt.gpu))
+        graph_q = graph_q.to(torch.device(opt.gpu))
         y = y.to(torch.device(opt.gpu))
 
         bsz = graph_q.batch_size
@@ -394,25 +394,34 @@ def train_moco(
     # print(f'i,j{i,j}')
     print(train_loader)
     
+    # graph_q, graph_k = next(iter(train_loader))
+    # print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
+    # print(f'gpu:{opt.gpu}')
+    # print(f'graph_q on device{graph_q.device}')
+    # print(torch.device('cuda',opt.gpu))
+    # graph_q = graph_q.to(torch.device('cuda',opt.gpu))
+    # print(f'graph_q on device{graph_q.device}')
+    # graph_k = graph_k.to(torch.device('cuda',opt.gpu))
+    
     for idx, batch in enumerate(train_loader):
     # for idx in range(len(train_loader)):
         # i, j = next(k)
 
-        print('moco5')
+        print('moco5', idx)
         data_time.update(time.time() - end)
         graph_q, graph_k = batch
         # graph_q, graph_k = i,k
 
 
-        print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
-        graph_q = dgl.to_homogeneous(graph_q)
-        print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
-        print(f'gpu:{opt.gpu}')
-        print(f'graph_q on device{graph_q.device}')
-        print(torch.device('cuda',opt.gpu))
-        # graph_q = graph_q.to(torch.device('cuda',opt.gpu))
-        print(f'graph_q on device{graph_q.device}')
-        # graph_k = graph_k.to(torch.device('cuda',opt.gpu))
+        # print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
+        # graph_q = dgl.to_homogeneous(graph_q)
+        # print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
+        # print(f'gpu:{opt.gpu}')
+        # print(f'graph_q on device{graph_q.device}')
+        # print(torch.device('cuda',opt.gpu))
+        graph_q = graph_q.to(torch.device('cuda',opt.gpu))
+        # print(f'graph_q on device{graph_q.device}')
+        graph_k = graph_k.to(torch.device('cuda',opt.gpu))
 
         bsz = graph_q.batch_size
 
@@ -589,6 +598,7 @@ def main(args):
         )
     else:
         if args.dataset in GRAPH_CLASSIFICATION_DSETS:
+            print('graph', args.exp, args.dataset)
             train_dataset = GraphClassificationDataset(
                 dataset=args.dataset,
                 rw_hops=args.rw_hops,
@@ -597,7 +607,7 @@ def main(args):
                 positional_embedding_size=args.positional_embedding_size,
             )
         else:
-            print(args.exp, args.dataset)
+            print('node', args.exp, args.dataset)
             train_dataset = NodeClassificationDataset(
                 dataset=args.dataset,
                 rw_hops=args.rw_hops,
@@ -652,6 +662,7 @@ def main(args):
         )
         for _ in range(2)
     ]
+    # print(f'model:{model}')
 
     # copy weights from `model' to `model_ema'
     if args.moco:
@@ -827,6 +838,13 @@ def main(args):
 
 
 if __name__ == "__main__":
+    
+    from gcc.datasets import data_util #why does this code block allow for generate.py to not have gpu cuda problems when moving graphs to gpu?
+    dataset = data_util.create_graph_classification_dataset('imdb-binary') 
+    graphs = dataset.graph_lists
+    print(graphs[0])
+    g4 = graphs[4].to('cuda:1')
+    print(g4.device)
 
     warnings.simplefilter("once", UserWarning)
     args = parse_option()

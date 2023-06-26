@@ -87,6 +87,7 @@ class LoadBalanceGraphDataset(torch.utils.data.IterableDataset):
 
     def __iter__(self):
         degrees = torch.cat([g.in_degrees().double() ** 0.75 for g in self.graphs])
+        # print(f'DEGREE{degrees}')
         prob = degrees / torch.sum(degrees)
         samples = np.random.choice(
             self.length, size=self.num_samples, replace=True, p=prob.numpy()
@@ -275,7 +276,7 @@ class GraphDataset(torch.utils.data.Dataset):
         self.step_dist = step_dist
         assert sum(step_dist) == 1.0
         assert positional_embedding_size > 1
-        #  graphs = []
+        graphs = []
         graphs, _ = dgl.data.utils.load_graphs(
             "data_bin/dgl/lscc_graphs.bin", [0, 1, 2]
         )
@@ -309,9 +310,11 @@ class GraphDataset(torch.utils.data.Dataset):
         return graph_idx, node_idx
 
     def __getitem__(self, idx):
+        # print('getting next item 1',idx)
         graph_idx, node_idx = self._convert_idx(idx)
 
         step = np.random.choice(len(self.step_dist), 1, p=self.step_dist)[0]
+        # print('getting next item 2')
         if step == 0:
             other_node_idx = node_idx
         else:
@@ -321,19 +324,28 @@ class GraphDataset(torch.utils.data.Dataset):
             other_node_idx = dgl.sampling.random_walk(
                 g=self.graphs[graph_idx], nodes=[node_idx],  length=step
             )[0][0][-1].item()
-
-        # max_nodes_per_seed = max(
-        #     self.rw_hops,
-        #     int(
-        #         (
-        #             self.graphs[graph_idx].out_degree(node_idx)
-        #             * math.e
-        #             / (math.e - 1)
-        #             / self.restart_prob
-        #         )
-        #         + 0.5
-        #     ),
-        # )
+            
+        # print('getting next item 3')
+        # print(node_idx)
+        # print(graph_idx)
+        # print(self.graphs[1])
+        # print(self.graphs[graph_idx])
+        # print(self.graphs[graph_idx].out_degrees())
+        # n1 = self.graphs[graph_idx].out_degrees()[node_idx]
+        # print('np')
+        # n2 = self.restart_prob
+        # print('getting next item 3.5')
+        
+        # print('origninal graph to gpu 1')
+        # graphs = data_util.create_graph_classification_dataset('imdb-binary').graph_lists
+        # print(graphs[0])
+        # g4 = graphs[0].to('cuda:1')
+        # print(g4.device)  
+        # print('original graph to gpu 2')     
+        # print(self.graphs[graph_idx])
+        # print(type(self.graphs[graph_idx]))
+        # h = self.graphs[graph_idx].to('cuda:1')
+        
         max_nodes_per_seed = max(
             self.rw_hops,
             int(
@@ -352,19 +364,21 @@ class GraphDataset(torch.utils.data.Dataset):
         #     restart_prob=self.restart_prob,
         #     length=max_nodes_per_seed,
         # )
+        # print('getting next item 4')
         trace1 = rwr.rwr_for_one_node(
             self.graphs[graph_idx],
             nodes=[node_idx],
             restart_prob=self.restart_prob,
             length=max_nodes_per_seed,
         )
+        # print('getting next item 5')
         trace2 = rwr.rwr_for_one_node(
             self.graphs[graph_idx],
             nodes=[other_node_idx],
             restart_prob=self.restart_prob,
             length=max_nodes_per_seed,
         )
-
+        # print('getting next item 6')
         graph_q = data_util._rwr_trace_to_dgl_graph(
             g=self.graphs[graph_idx],
             seed=node_idx,
@@ -372,6 +386,7 @@ class GraphDataset(torch.utils.data.Dataset):
             positional_embedding_size=self.positional_embedding_size,
             entire_graph=hasattr(self, "entire_graph") and self.entire_graph,
         )
+        # print('getting next item 7')
         graph_k = data_util._rwr_trace_to_dgl_graph(
             g=self.graphs[graph_idx],
             seed=other_node_idx,
@@ -379,6 +394,8 @@ class GraphDataset(torch.utils.data.Dataset):
             positional_embedding_size=self.positional_embedding_size,
             entire_graph=hasattr(self, "entire_graph") and self.entire_graph,
         )
+        # print('getting next item end')
+        # print(f'graph_q:{graph_q}, graph_k:{graph_k}')
         return graph_q, graph_k
 
 
@@ -401,6 +418,7 @@ class NodeClassificationDataset(GraphDataset):
 
         self.data = data_util.create_node_classification_dataset(dataset).data
         self.graphs = [self._create_dgl_graph(self.data)]
+        print(f'graphs:{self.graphs}')
         self.length = sum([g.number_of_nodes() for g in self.graphs])
         self.total = self.length
 
@@ -417,8 +435,6 @@ class NodeClassificationDataset(GraphDataset):
         print(f'graph.nodes(){graph.nodes()}')
         print(f'graph.ndata{graph.ndata}')
 
-
-        
         return graph
 
 
@@ -442,10 +458,22 @@ class GraphClassificationDataset(NodeClassificationDataset):
 
         self.dataset = data_util.create_graph_classification_dataset(dataset)
         self.graphs = self.dataset.graph_lists
-
+        
         self.length = len(self.graphs)
         self.total = self.length
-
+        
+        # print('GraphClassificationDataset init')
+        # dataset = data_util.create_graph_classification_dataset('imdb-binary')
+        # graphs = dataset.graph_lists
+        # print(graphs[0])
+        # g4 = graphs[0].to('cuda:1')
+        # print(g4.device)  
+        
+        # print(self.graphs[0])
+        # g4 = self.graphs[0].to('cuda:1')
+        # print(g4.device) 
+        
+          
     def _convert_idx(self, idx):
         graph_idx = idx
         node_idx = self.graphs[idx].out_degrees().argmax().item()

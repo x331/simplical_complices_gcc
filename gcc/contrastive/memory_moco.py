@@ -20,7 +20,7 @@ class MemoryMoCo(nn.Module):
         self.register_buffer("params", torch.tensor([-1]))
         stdv = 1.0 / math.sqrt(inputSize / 3)
         self.register_buffer(
-            "memory", torch.rand(self.queueSize, inputSize).mul_(2 * stdv).add_(-stdv)
+            "memory", torch.add(torch.mul(torch.rand(self.queueSize, inputSize),(2 * stdv)),(-stdv))
         )
         print("using queue shape: ({},{})".format(self.queueSize, inputSize))
 
@@ -29,7 +29,7 @@ class MemoryMoCo(nn.Module):
         batchSize = q.shape[0]
         k = k.detach()
 
-        Z = self.params[0].item()
+        Z = self.params[0].item() #need to check if this is just the first param outputsize
 
         # pos logit
         l_pos = torch.bmm(q.view(batchSize, 1, -1), k.view(batchSize, -1, 1))
@@ -61,5 +61,5 @@ class MemoryMoCo(nn.Module):
             out_ids = out_ids.long()
             self.memory.index_copy_(0, out_ids, k)
             self.index = (self.index + batchSize) % self.queueSize
-        print(f'memmocoout{out}')
+        # print(f'memmocoout{out}')
         return out

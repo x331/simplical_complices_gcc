@@ -2,7 +2,7 @@
 gpu=$1
 ARGS=${@:2}
 
-compute-sanitizer python train.py \
+python train.py \
   --exp Pretrain \
   --model-path saved \
   --tb-path tensorboard \

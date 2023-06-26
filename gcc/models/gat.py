@@ -26,9 +26,9 @@ class UnsupervisedGAT(nn.Module):
                     num_heads=num_heads,
                     feat_drop=0.0,
                     attn_drop=0.0,
-                    alpha=0.2,
+                    negative_slope=0.2,
                     residual=False,
-                    agg_mode="flatten",
+                    # agg_mode="flatten",
                     activation=F.leaky_relu if i + 1 < num_layers else None,
                 )
                 for i in range(num_layers)

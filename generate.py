@@ -11,7 +11,8 @@ import time
 
 import dgl
 import numpy as np
-import ignite.contrib.handlers.tensorboard_logger as tb_logger
+import psutil
+# import ignite.contrib.handlers.tensorboard_logger as tb_logger
 import torch
 
 from gcc.contrastive.criterions import NCESoftmaxLoss, NCESoftmaxLossNS
@@ -29,23 +30,69 @@ from gcc.datasets.data_util import batcher
 from gcc.models import GraphEncoder
 from gcc.utils.misc import AverageMeter, adjust_learning_rate, warmup_linear
 
+from gcc.utils.misc import get_gpu_memory
+
 
 def test_moco(train_loader, model, opt):
     """
     one epoch training for moco
     """
-
+    print('gm1')
     model.eval()
+    print('gm2')
+    
+    # dataset = data_util.create_graph_classification_dataset('imdb-binary')
+    # graphs = dataset.graph_lists
+    # print(graphs[0])
+    # g4 = graphs[0].to('cuda:1')
+    # print(g4.device)
+    
 
     emb_list = []
     for idx, batch in enumerate(train_loader):
+        print('enumerate loop')
+        
+        # dataset = data_util.create_graph_classification_dataset('imdb-binary')
+        # graphs = dataset.graph_lists
+        # print(graphs[0])
+        # g4 = graphs[4].to('cuda:1')
+        # print(g4.device)    
+        
+        # graphs = dataset.graph_lists
+        # print(graphs[0])
+        # g4 = graphs[4].to('cuda:1')
+        # print(g4.device)       
+         
         graph_q, graph_k = batch
         bsz = graph_q.batch_size
-        print(f'opt.device{opt.device}')
-        print(f'graph_q{graph_q}')
-        print(f'graph_q.device{graph_q.device}')
-        graph_q.to(opt.device)
-        graph_k.to(opt.device)
+        # print(f'opt.device:{opt.device}')
+        print(f'graph_q:{graph_q}')
+        # print(f'graph_q.device:{graph_q.device}')
+        print(f'gpu mem:{get_gpu_memory()}')
+        print(graph_q.ndata)
+        print(graph_q.ndata['_ID'].shape)
+        # graph_q = graph_q.to('cuda:1')
+        # # graph_k.to(opt.device)
+        # print(f'cuda:{str(opt.gpu)}')
+        # graph_k = graph_k.to(f'cuda:{str(opt.gpu)}')
+        # print(f'graph_q:{graph_q.device}')
+        # print(f'graph_k:{graph_k.device}')
+        
+        # graph_q.ndata['_ID'].to(opt.device)# why does this line make it so graph q and k can be send to gpu?
+        # graph_q.ndata['pos_undirected'].to(opt.device)
+        # graph_q.ndata['seed'].to(opt.device)
+        # graph_q.edata['_ID'].to(opt.device)
+        # graph_k.ndata['_ID'] = graph_k.ndata['_ID'].to(opt.device)# why does this line make it so graph q and k can be send to gpu?
+        # graph_k.ndata['pos_undirected'] = graph_k.ndata['pos_undirected'].to(opt.device)
+        # graph_k.ndata['seed'] = graph_k.ndata['seed'].to(opt.device)
+        # graph_k.edata['_ID'] = graph_k.edata['_ID'].to(opt.device)
+        # print(f'graph_q:{graph_q.device}')
+        # print(f'graph_k:{graph_k.device}')
+        print('confused')
+        graph_q = graph_q.to(opt.device)
+        graph_k = graph_k.to(opt.device)
+        print(f'graph_q:{graph_q.device}')
+        print(f'graph_k:{graph_k.device}')
 
         with torch.no_grad():
             feat_q = model(graph_q)
@@ -57,6 +104,13 @@ def test_moco(train_loader, model, opt):
 
 
 def main(args_test):
+    print('call to main')
+    # dataset = data_util.create_graph_classification_dataset('imdb-binary')
+    # graphs = dataset.graph_lists
+    # print(graphs[0])
+    # g4 = graphs[4].to('cuda:1')
+    # print(g4.device)
+    
     if os.path.isfile(args_test.load_path):
         print("=> loading checkpoint '{}'".format(args_test.load_path))
         checkpoint = torch.load(args_test.load_path, map_location="cpu")
@@ -76,6 +130,7 @@ def main(args_test):
     print('g1')
 
     if args_test.dataset in GRAPH_CLASSIFICATION_DSETS:
+        # print('graph classification')
         train_dataset = GraphClassificationDataset(
             dataset=args_test.dataset,
             rw_hops=args.rw_hops,
@@ -92,6 +147,7 @@ def main(args_test):
             positional_embedding_size=args.positional_embedding_size,
         )
     args.batch_size = len(train_dataset)
+    print(args.batch_size)
     train_loader = torch.utils.data.DataLoader(
         dataset=train_dataset,
         batch_size=args.batch_size,
@@ -124,17 +180,40 @@ def main(args_test):
 
     model = model.to(args.device)
     print('g4')
+    print(f'model cuda :{next(model.parameters()).is_cuda}')
     model.load_state_dict(checkpoint["model"])
-    print('g4')
+    print('g5')
     del checkpoint
     
     print('g6')
+    
+    # dataset = data_util.create_graph_classification_dataset('imdb-binary')
+    # graphs = dataset.graph_lists
+    # print(graphs[0])
+    # g4 = graphs[4].to(args.device)
+    # print(g4.device)
 
     emb = test_moco(train_loader, model, args)
+    print('g7')
+    print(os.path.join(args.model_folder, args_test.dataset), emb.numpy())
+    print(np.shape(emb.numpy()))
     np.save(os.path.join(args.model_folder, args_test.dataset), emb.numpy())
 
 
 if __name__ == "__main__":
+    print('begining of gnerate')
+    # from gcc.datasets import data_util #why does this code block allow for generate.py to not have gpu cuda problems when moving graphs to gpu?
+    # dataset = data_util.create_graph_classification_dataset('imdb-binary') 
+    # graphs = dataset.graph_lists
+    # print(graphs[0])
+    # g4 = graphs[4].to('cuda:1')
+    # print(g4.device)
+    src_ids = torch.tensor([2, 3, 4])
+    dst_ids = torch.tensor([1, 2, 3])
+    g5 = dgl.graph((src_ids, dst_ids))
+    g5 = g5.to('cuda:1')
+    print(g5.device)
+
     parser = argparse.ArgumentParser("argument for training")
     # fmt: off
     parser.add_argument("--load-path", type=str, help="path to load model")

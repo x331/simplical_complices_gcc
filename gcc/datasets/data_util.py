@@ -25,8 +25,10 @@ from scipy.sparse import linalg
 
 def batcher():
     def batcher_dev(batch):
+        # print(batch)
         graph_q, graph_k = zip(*batch)
         graph_q, graph_k = dgl.batch(graph_q), dgl.batch(graph_k)
+        print(f'graph_q{graph_q}, graph_k:{graph_k}')
         return graph_q, graph_k
 
     return batcher_dev
@@ -54,7 +56,7 @@ def create_graph_classification_dataset(dataset_name):
     }[dataset_name]
     dataset = TUDataset(name)
     # dataset.num_labels = dataset.num_labels[0]
-    dataset.num_labels = dataset.num_labels
+    # dataset.num_labels = dataset.num_classes
     dataset.graph_labels = dataset.graph_labels.squeeze()
     return dataset
 
@@ -68,7 +70,7 @@ class Edgelist(object):
         self.data = Data(x=None, edge_index=edge_index, y=y)
         self.transform = None
 
-    def get(self, idx):
+    def get(self, idx): #why is this taking an idx if it doesn't use it
         assert idx == 0
         return self.data
 
@@ -97,12 +99,12 @@ class Edgelist(object):
                     label2id[label] = len(label2id)
                 nodes.append(node2id[x])
                 if "hindex" in self.name:
-                    labels.append(label)
+                    labels.append(label) #why no relabeling on hindex datasets?
                 else:
                     labels.append(label2id[label])
             if "hindex" in self.name:
                 median = np.median(labels)
-                labels = [int(label > median) for label in labels]
+                labels = [int(label > median) for label in labels] #this is why not relabeling
         assert num_nodes == len(set(nodes))
         y = torch.zeros(num_nodes, len(label2id))
         y[nodes, labels] = 1
@@ -141,7 +143,7 @@ class SSSingleDataset(object):
 
         num_nodes = len(node2id)
 
-        return torch.LongTensor(edge_list).t()
+        return torch.LongTensor(edge_list).t() # why not returning a y and node2id like above class?
 
 class SSDataset(object):
     def __init__(self, root, name1, name2):
@@ -236,7 +238,9 @@ def _rwr_trace_to_dgl_graph(
     else:
         # print(subv)
         subg = dgl.DGLGraph.subgraph(g,subv)
-        # print(subg.nodes())
+        # print(subg.ndata)
+        # print(g.ndata)
+
     
     
     subg = _add_undirected_graph_positional_embedding(subg, positional_embedding_size)
@@ -285,17 +289,17 @@ def _add_undirected_graph_positional_embedding(g, hidden_size, retry=10):
     # print(f'dgladj{adj}')
     #greatly question if I did this right
     # data, row_ind, col_ind = adj.val, adj.row , adj.col
-    data, row_ind, col_ind = *adj.coo() , adj.col
+    indptr, indices, data  = adj.csr()
     # print(f'data:{data}, row_ind:{row_ind}, col_ind:{col_ind}')
     # print(data.size(),row_ind.size(),col_ind.size())
-    adj = sparse.coo_array((data, (row_ind, col_ind)), shape= adj.shape)
+    adj = sparse.csr_array((data, indices, indptr), shape= adj.shape)
     # norm = sparse.diags(
     #     dgl.backend.asnumpy(g.in_degrees()).clip(1) ** -0.5, dtype=float
     # )
     norm = sparse.diags(
         dgl.backend.asnumpy(g.in_degrees()).clip(1) ** -0.5, dtype=float
     )
-    laplacian = norm * adj * norm
+    laplacian = norm * adj * norm #these * may need to be to @ 
     # print(f'adj{adj}')
     # print(f'laplacian{laplacian}')
     k = min(n - 2, hidden_size)
