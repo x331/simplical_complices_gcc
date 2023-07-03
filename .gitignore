@@ -120,3 +120,6 @@ tensorboard/
 data_bin/
 .vscode/
 saved/
+
+#simplex_list saves
+*.pt
