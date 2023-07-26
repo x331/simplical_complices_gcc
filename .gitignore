@@ -116,10 +116,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-tensorboard/
-data_bin/
+# tensorboard/   #should probably have this folder ignored by git
+# data_bin/  #should probably have this folder ignored by git
 .vscode/
-saved/
+# saved/   #should probably have this folder ignored by git
 
 #simplex_list saves
 *.pt
