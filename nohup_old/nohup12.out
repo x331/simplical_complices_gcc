@@ -1,0 +1,95 @@
+Graph(num_nodes=20, num_edges=292,
+      ndata_schemes={'_ID': Scheme(shape=(), dtype=torch.int64)}
+      edata_schemes={'_ID': Scheme(shape=(), dtype=torch.int64)})
+cuda:1
+Namespace(print_freq=1, tb_freq=1, save_freq=1, batch_size=32, num_workers=12, num_copies=6, num_samples=2000, epochs=100, optimizer='adam', learning_rate=0.005, lr_decay_epochs=[120, 160, 200], lr_decay_rate=0.0, beta1=0.9, beta2=0.999, weight_decay=1e-05, momentum=0.9, clip_norm=1.0, resume='', aug='1st', exp='Pretrain', dataset='dgl', model='gin', num_layer=5, readout='avg', set2set_lstm_layer=3, set2set_iter=6, norm=True, nce_k=16384, nce_t=0.07, rw_hops=256, subgraph_size=128, restart_prob=0.8, hidden_size=64, positional_embedding_size=32, max_node_freq=16, max_edge_freq=16, max_degree=512, freq_embedding_size=16, degree_embedding_size=16, model_path='saved', tb_path='tensorboard', load_path=None, moco=True, finetune=False, alpha=0.999, gpu=3, seed=0, fold_idx=0, cv=False, cvrun=-1, positional_embedding_multi=3, model_name='Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_3_momentum_0.999', model_folder='saved/Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_3_momentum_0.999', tb_folder='tensorboard/Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_3_momentum_0.999')
+Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_3_momentum_0.999
+Use GPU: 3 for training
+setting random seeds
+before construct dataset 6.367301940917969
+load graph done
+before construct dataloader 6.367301940917969
+before training 6.367301940917969
+output 64
+output 64
+using queue shape: (16384,64)
+==> training...
+moco1
+moco2
+moco3
+moco4
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+Train: [0][1/750]	BT 438.295 (438.295)	DT 433.088 (433.088)	loss 5.432 (5.432)	gnorm 45.746 (45.746)	prob 5.871 (5.8709)	GS 31.078 (31.078)	mem 43.997
+Train: [0][2/750]	BT 324.812 (381.554)	DT 324.394 (378.741)	loss 12.014 (12.014)	gnorm 6720.048 (6720.048)	prob -0.736 (-0.7363)	GS 30.891 (30.891)	mem 59.117
+Train: [0][3/750]	BT 0.731 (254.613)	DT 0.034 (252.505)	loss 10.502 (10.502)	gnorm 6740595.000 (6740595.000)	prob 0.798 (0.7980)	GS 29.094 (29.094)	mem 59.733
+Train: [0][4/750]	BT 259.637 (255.869)	DT 259.191 (254.177)	loss 7.255 (7.255)	gnorm 238514800.000 (238514800.000)	prob 5.384 (5.3838)	GS 35.453 (35.453)	mem 68.053
+Train: [0][5/750]	BT 0.575 (204.810)	DT 0.054 (203.352)	loss 6.671 (6.671)	gnorm 198481072.000 (198481072.000)	prob 5.768 (5.7681)	GS 39.203 (39.203)	mem 67.641
+Train: [0][6/750]	BT 0.637 (170.781)	DT 0.010 (169.462)	loss 7.062 (7.062)	gnorm 148628784.000 (148628784.000)	prob 5.654 (5.6537)	GS 33.812 (33.812)	mem 67.965
+Train: [0][7/750]	BT 0.499 (146.455)	DT 0.029 (145.257)	loss 6.363 (6.363)	gnorm 152488976.000 (152488976.000)	prob 6.717 (6.7171)	GS 36.719 (36.719)	mem 68.351
+Train: [0][8/750]	BT 0.684 (128.234)	DT 0.030 (127.104)	loss 6.404 (6.404)	gnorm 112280968.000 (112280968.000)	prob 6.449 (6.4492)	GS 35.703 (35.703)	mem 69.057
+Train: [0][9/750]	BT 0.609 (114.053)	DT 0.046 (112.986)	loss 6.508 (6.508)	gnorm 101346336.000 (101346336.000)	prob 6.933 (6.9334)	GS 29.438 (29.438)	mem 68.663
+Train: [0][10/750]	BT 0.519 (102.700)	DT 0.009 (101.689)	loss 6.213 (6.213)	gnorm 101341200.000 (101341200.000)	prob 6.689 (6.6885)	GS 33.375 (33.375)	mem 69.426
+Train: [0][11/750]	BT 0.688 (93.426)	DT 0.029 (92.447)	loss 6.796 (6.796)	gnorm 93010736.000 (93010736.000)	prob 6.309 (6.3095)	GS 36.500 (36.500)	mem 67.498
+Train: [0][12/750]	BT 98.156 (93.820)	DT 97.897 (92.901)	loss 7.430 (7.430)	gnorm 86465576.000 (86465576.000)	prob 5.575 (5.5749)	GS 35.344 (35.344)	mem 59.716
+Train: [0][13/750]	BT 0.462 (86.639)	DT 0.018 (85.756)	loss 6.824 (6.824)	gnorm 83143552.000 (83143552.000)	prob 6.331 (6.3310)	GS 33.844 (33.844)	mem 60.020
+Train: [0][14/750]	BT 371.611 (106.994)	DT 371.326 (106.154)	loss 6.800 (6.800)	gnorm 73280840.000 (73280840.000)	prob 6.433 (6.4332)	GS 33.750 (33.750)	mem 50.002
+Train: [0][15/750]	BT 0.404 (99.888)	DT 0.029 (99.079)	loss 7.012 (7.012)	gnorm 76103264.000 (76103264.000)	prob 6.295 (6.2946)	GS 34.203 (34.203)	mem 50.090
+Train: [0][16/750]	BT 47.246 (96.598)	DT 47.102 (95.830)	loss 7.422 (7.422)	gnorm 72196760.000 (72196760.000)	prob 5.689 (5.6886)	GS 35.156 (35.156)	mem 51.376
+Train: [0][17/750]	BT 0.177 (90.926)	DT 0.018 (90.194)	loss 7.491 (7.491)	gnorm 71946352.000 (71946352.000)	prob 6.103 (6.1031)	GS 43.219 (43.219)	mem 50.192
+Train: [0][18/750]	BT 89.735 (90.860)	DT 89.603 (90.161)	loss 7.381 (7.381)	gnorm 66356476.000 (66356476.000)	prob 5.682 (5.6823)	GS 36.828 (36.828)	mem 53.628
+Train: [0][19/750]	BT 0.245 (86.091)	DT 0.014 (85.417)	loss 7.111 (7.111)	gnorm 55562472.000 (55562472.000)	prob 6.431 (6.4306)	GS 30.250 (30.250)	mem 53.591
+Train: [0][20/750]	BT 0.130 (81.793)	DT 0.008 (81.146)	loss 7.501 (7.501)	gnorm 61808692.000 (61808692.000)	prob 5.643 (5.6430)	GS 34.453 (34.453)	mem 53.610
+Train: [0][21/750]	BT 0.237 (77.909)	DT 0.002 (77.282)	loss 7.394 (7.394)	gnorm 61843164.000 (61843164.000)	prob 6.313 (6.3132)	GS 29.734 (29.734)	mem 53.540
+Train: [0][22/750]	BT 169.996 (82.095)	DT 169.741 (81.485)	loss 8.282 (8.282)	gnorm 57179220.000 (57179220.000)	prob 4.439 (4.4393)	GS 30.938 (30.938)	mem 48.793
+Train: [0][23/750]	BT 0.407 (78.543)	DT 0.031 (77.944)	loss 6.960 (6.960)	gnorm 48276128.000 (48276128.000)	prob 6.420 (6.4198)	GS 29.922 (29.922)	mem 48.585
+Train: [0][24/750]	BT 47.918 (77.267)	DT 47.618 (76.680)	loss 7.736 (7.736)	gnorm 49835020.000 (49835020.000)	prob 5.224 (5.2238)	GS 34.688 (34.688)	mem 54.869
+Train: [0][25/750]	BT 0.324 (74.190)	DT 0.032 (73.614)	loss 7.069 (7.069)	gnorm 39799200.000 (39799200.000)	prob 6.595 (6.5949)	GS 31.312 (31.312)	mem 54.892
+Traceback (most recent call last):
+  File "/home/shakir/simplical_complices_gcc/train.py", line 953, in <module>
+    main(args)
+  File "/home/shakir/simplical_complices_gcc/train.py", line 837, in main
+    loss = train_moco(
+  File "/home/shakir/simplical_complices_gcc/train.py", line 447, in train_moco
+    for idx, batch in enumerate(train_loader):
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1316, in _next_data
+    idx, data = self._get_data()
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1282, in _get_data
+    success, data = self._try_get_data()
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1120, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/usr/local/anaconda3/lib/python3.9/multiprocessing/queues.py", line 113, in get
+    if not self._poll(timeout):
+  File "/usr/local/anaconda3/lib/python3.9/multiprocessing/connection.py", line 262, in poll
+    return self._poll(timeout)
+  File "/usr/local/anaconda3/lib/python3.9/multiprocessing/connection.py", line 429, in _poll
+    r = wait([self], timeout)
+  File "/usr/local/anaconda3/lib/python3.9/multiprocessing/connection.py", line 936, in wait
+    ready = selector.select(timeout)
+  File "/usr/local/anaconda3/lib/python3.9/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

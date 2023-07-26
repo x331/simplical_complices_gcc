@@ -1,0 +1,2 @@
+FT_moco_False_collab_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_momentum_0.9990.782 0.742 0.816 0.786 0.79 0.79 0.792 0.756 0.8 0.818
+Mean = 0.7871999999999999; Std = 0.022417850030723274

@@ -8,6 +8,7 @@ import numpy as np
 from torch.nn import Softmax
 from torch_geometric.nn import GCNConv
 from .loaddatas import get_edges_split, compute_hodge_matrix
+import scipy.sparse as sp
 
 
 class BlockNet(torch.nn.Module):
@@ -144,8 +145,14 @@ def compute_bunch_matrices(B1, B2):
     D3 = np.identity(B2.shape[1]) / 3 # (|F| x |F|)
 
     # L matrices
+    # import time
+    # start_time = time.time()
     D1_pinv = pinv(D1)
+    # print('c1', time.time() - start_time)
+    # start_time = time.time()
     D2_2_inv = inv(D2_2)
+    # print('c2', time.time() - start_time)
+    # start_time = time.time()
 
     L0u = B1.T @ B1 #B1 @ D3_n @ B1.T @ inv(D2_1)
     L1u = D2_2 @ B1.T @ D1_pinv @ B1
@@ -153,6 +160,77 @@ def compute_bunch_matrices(B1, B2):
     L1f = L1u + L1d
 
     return L0u, L1f
+
+# def compute_bunch_matrices(B1, B2):
+#     """
+#     Computes normalized A0 and A1 matrices (up and down),
+#         and returns all matrices needed for Bunch model shift operators
+#     """
+#     # print(B1.shape, B2.shape)
+
+#     # D matrices
+#     import time
+#     start_time = time.time()
+#     D2_2 = compute_D2(B2)
+#     print('c1', time.time() - start_time)
+#     start_time = time.time()
+#     D2_1 = compute_D2(B1)
+#     print('c2', time.time() - start_time)
+    start_time = time.time()
+#     D3_n = np.identity(B1.shape[1]) # (|E| x |E|)
+#     print('c3', time.time() - start_time)
+#     start_time = time.time()
+#     D1 = compute_D1(B1, D2_2)
+#     print('c4', time.time() - start_time)
+#     start_time = time.time()
+#     D3 = np.identity(B2.shape[1]) / 3 # (|F| x |F|)
+#     print('c5', time.time() - start_time)
+#     start_time = time.time()
+
+#     # L matrices
+#     D1_pinv = pinv(D1)
+#     print('c55', time.time() - start_time)
+#     start_time = time.time()
+#     D2_2_inv = inv(D2_2)
+#     print('c555', time.time() - start_time) #can take alot of time
+#     start_time = time.time()
+
+#     L0u = np.abs(B1.T @ B1)
+#     print('c6', time.time() - start_time)
+#     start_time = time.time()
+#     np.fill_diagonal(L0u, 1)
+#     print('c7', time.time() - start_time)
+#     start_time = time.time()
+#     adj = sp.coo_matrix(L0u)
+#     print('c7', time.time() - start_time)
+#     start_time = time.time()
+#     rowsum = np.array(adj.sum(1))
+#     print('c9', time.time() - start_time)
+#     start_time = time.time()
+#     d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+#     print('c10', time.time() - start_time)
+#     start_time = time.time()
+#     d_inv_sqrt[np.isinf(d_inv_sqrt)] = 0.
+#     print('c11', time.time() - start_time)
+#     start_time = time.time()
+#     d_mat_inv_sqrt = sp.diags(d_inv_sqrt)
+#     print('c12', time.time() - start_time)
+#     start_time = time.time()
+#     L0 = (adj.dot(d_mat_inv_sqrt).transpose().dot(d_mat_inv_sqrt)).toarray()
+#     print('c13', time.time() - start_time)
+#     start_time = time.time()
+#     L1u = D2_2 @ B1.T @ D1_pinv @ B1
+#     print('c14', time.time() - start_time)
+#     start_time = time.time()
+#     L1d = B2 @ D3 @ B2.T @ D2_2_inv
+#     print('c15', time.time() - start_time) #takes substaintal time
+#     start_time = time.time()
+#     L1f = L1u + L1d
+#     print('c16', time.time() - start_time)
+#     start_time = time.time()
+
+#     return L0, L1f
+
 
 
 def call(data,name,num_features,num_classes):

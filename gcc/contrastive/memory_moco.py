@@ -8,7 +8,7 @@ class MemoryMoCo(nn.Module):
     """Fixed-size queue with momentum encoder"""
 
     def __init__(self, inputSize, outputSize, K, T=0.07, use_softmax=False):
-        print('memorymoco1')
+        # print('memorymoco1')
         super(MemoryMoCo, self).__init__()
         self.outputSize = outputSize
         self.inputSize = inputSize
@@ -19,13 +19,16 @@ class MemoryMoCo(nn.Module):
 
         self.register_buffer("params", torch.tensor([-1]))
         stdv = 1.0 / math.sqrt(inputSize / 3)
+        # self.register_buffer(
+        #     "memory", torch.add(torch.mul(torch.rand(self.queueSize, inputSize),(2 * stdv)),(-stdv))
+        # )
         self.register_buffer(
-            "memory", torch.add(torch.mul(torch.rand(self.queueSize, inputSize),(2 * stdv)),(-stdv))
+            "memory", torch.rand(self.queueSize, inputSize).mul_(2 * stdv).add_(-stdv)
         )
         print("using queue shape: ({},{})".format(self.queueSize, inputSize))
 
     def forward(self, q, k):
-        print('memorymocoforward')
+        # print('memorymocoforward')
         batchSize = q.shape[0]
         k = k.detach()
 

@@ -1,0 +1,228 @@
+nohup: ignoring input
+Graph(num_nodes=20, num_edges=292,
+      ndata_schemes={'_ID': Scheme(shape=(), dtype=torch.int64)}
+      edata_schemes={'_ID': Scheme(shape=(), dtype=torch.int64)})
+cuda:1
+Namespace(print_freq=5, tb_freq=1, save_freq=1, batch_size=32, num_workers=12, num_copies=6, num_samples=2000, epochs=100, optimizer='adam', learning_rate=0.005, lr_decay_epochs=[120, 160, 200], lr_decay_rate=0.0, beta1=0.9, beta2=0.999, weight_decay=1e-05, momentum=0.9, clip_norm=1.0, resume='', aug='1st', exp='Pretrain', dataset='dgl', model='gin', num_layer=5, readout='avg', set2set_lstm_layer=3, set2set_iter=6, norm=True, nce_k=16384, nce_t=0.07, rw_hops=256, subgraph_size=128, restart_prob=0.8, hidden_size=64, positional_embedding_size=32, max_node_freq=16, max_edge_freq=16, max_degree=512, freq_embedding_size=16, degree_embedding_size=16, model_path='saved', tb_path='tensorboard', load_path=None, moco=True, finetune=False, alpha=0.999, gpu=3, seed=0, fold_idx=0, cv=False, cvrun=-1, positional_embedding_multi=1, model_name='Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_1_momentum_0.999', model_folder='saved/Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_1_momentum_0.999', tb_folder='tensorboard/Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_1_momentum_0.999')
+Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_1_momentum_0.999
+Use GPU: 3 for training
+setting random seeds
+before construct dataset 27.17791748046875
+load graph done
+before construct dataloader 27.17791748046875
+before training 27.17791748046875
+output 64
+output 64
+using queue shape: (16384,64)
+==> training...
+moco1
+moco2
+moco3
+moco4
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+/home/shakir/.local/lib/python3.9/site-packages/dgl/data/graph_serialize.py:189: DGLWarning: You are loading a graph file saved by old version of dgl.              Please consider saving it again with the current format.
+  dgl_warning(
+Train: [0][1/750]	BT 23.695 (23.695)	DT 22.678 (22.678)	loss 6.270 (6.270)	gnorm 35.535 (35.535)	prob 5.020 (5.0200)	GS 29.641 (29.641)	mem 62.644
+Train: [0][5/750]	BT 0.094 (5.959)	DT 0.020 (5.696)	loss 7.285 (7.285)	gnorm 256732768.000 (256732768.000)	prob 5.190 (5.1903)	GS 33.719 (33.719)	mem 62.818
+Train: [0][10/750]	BT 0.040 (3.005)	DT 0.004 (2.850)	loss 6.757 (6.757)	gnorm 135353040.000 (135353040.000)	prob 5.804 (5.8035)	GS 33.906 (33.906)	mem 62.021
+Train: [0][15/750]	BT 0.066 (2.877)	DT 0.005 (2.752)	loss 7.216 (7.216)	gnorm 109081752.000 (109081752.000)	prob 5.399 (5.3990)	GS 31.203 (31.203)	mem 60.130
+Train: [0][20/750]	BT 0.060 (2.199)	DT 0.006 (2.089)	loss 7.888 (7.888)	gnorm 73091032.000 (73091032.000)	prob 5.079 (5.0790)	GS 30.344 (30.344)	mem 60.345
+Train: [0][25/750]	BT 15.256 (2.378)	DT 15.160 (2.279)	loss 7.835 (7.835)	gnorm 78293256.000 (78293256.000)	prob 5.598 (5.5984)	GS 49.141 (49.141)	mem 63.168
+Train: [0][30/750]	BT 2.563 (2.073)	DT 2.521 (1.983)	loss 7.888 (7.888)	gnorm 61942780.000 (61942780.000)	prob 5.177 (5.1768)	GS 37.188 (37.188)	mem 63.765
+Train: [0][35/750]	BT 0.060 (1.784)	DT 0.002 (1.701)	loss 7.975 (7.975)	gnorm 43151816.000 (43151816.000)	prob 5.288 (5.2878)	GS 27.969 (27.969)	mem 63.830
+Train: [0][40/750]	BT 1.638 (1.822)	DT 1.474 (1.740)	loss 8.295 (8.295)	gnorm 44516376.000 (44516376.000)	prob 4.756 (4.7563)	GS 33.047 (33.047)	mem 64.769
+Train: [0][45/750]	BT 0.050 (1.738)	DT 0.009 (1.657)	loss 8.082 (8.082)	gnorm 38115704.000 (38115704.000)	prob 5.590 (5.5903)	GS 32.859 (32.859)	mem 64.590
+Train: [0][50/750]	BT 1.699 (1.736)	DT 1.639 (1.657)	loss 8.255 (8.255)	gnorm 35451328.000 (35451328.000)	prob 4.757 (4.7566)	GS 35.891 (35.891)	mem 64.615
+Train: [0][55/750]	BT 0.060 (1.716)	DT 0.001 (1.638)	loss 8.343 (8.343)	gnorm 31192876.000 (31192876.000)	prob 4.944 (4.9436)	GS 27.297 (27.297)	mem 64.694
+Train: [0][60/750]	BT 0.042 (1.577)	DT 0.001 (1.502)	loss 8.130 (8.130)	gnorm 29394750.000 (29394750.000)	prob 5.188 (5.1881)	GS 30.203 (30.203)	mem 64.710
+Train: [0][65/750]	BT 0.071 (1.547)	DT 0.019 (1.473)	loss 8.384 (8.384)	gnorm 26478896.000 (26478896.000)	prob 4.962 (4.9615)	GS 30.203 (30.203)	mem 64.669
+Train: [0][70/750]	BT 0.107 (1.533)	DT 0.005 (1.460)	loss 9.005 (9.005)	gnorm 25170366.000 (25170366.000)	prob 4.194 (4.1941)	GS 34.344 (34.344)	mem 64.738
+Train: [0][75/750]	BT 0.072 (1.609)	DT 0.012 (1.537)	loss 9.044 (9.044)	gnorm 21830706.000 (21830706.000)	prob 4.066 (4.0662)	GS 32.859 (32.859)	mem 59.236
+Train: [0][80/750]	BT 0.044 (1.577)	DT 0.001 (1.507)	loss 8.765 (8.765)	gnorm 21985734.000 (21985734.000)	prob 4.250 (4.2503)	GS 32.812 (32.812)	mem 60.408
+Train: [0][85/750]	BT 3.723 (1.531)	DT 3.688 (1.462)	loss 9.153 (9.153)	gnorm 19264082.000 (19264082.000)	prob 4.600 (4.5996)	GS 32.547 (32.547)	mem 61.147
+Train: [0][90/750]	BT 8.711 (1.580)	DT 8.679 (1.512)	loss 9.166 (9.166)	gnorm 19985326.000 (19985326.000)	prob 3.998 (3.9978)	GS 33.922 (33.922)	mem 63.267
+Train: [0][95/750]	BT 0.092 (1.500)	DT 0.020 (1.433)	loss 8.969 (8.969)	gnorm 16585382.000 (16585382.000)	prob 4.630 (4.6305)	GS 31.734 (31.734)	mem 63.338
+Train: [0][100/750]	BT 0.074 (1.496)	DT 0.010 (1.429)	loss 9.001 (9.001)	gnorm 15709207.000 (15709207.000)	prob 4.467 (4.4669)	GS 29.578 (29.578)	mem 63.302
+Train: [0][105/750]	BT 0.075 (1.471)	DT 0.015 (1.405)	loss 9.070 (9.070)	gnorm 15459270.000 (15459270.000)	prob 4.735 (4.7350)	GS 32.422 (32.422)	mem 58.858
+Train: [0][110/750]	BT 11.450 (1.511)	DT 11.412 (1.445)	loss 8.864 (8.864)	gnorm 14168264.000 (14168264.000)	prob 4.596 (4.5957)	GS 35.703 (35.703)	mem 61.030
+Train: [0][115/750]	BT 0.029 (1.458)	DT 0.001 (1.392)	loss 9.590 (9.590)	gnorm 13462964.000 (13462964.000)	prob 3.891 (3.8915)	GS 32.266 (32.266)	mem 61.134
+Train: [0][120/750]	BT 0.033 (1.400)	DT 0.001 (1.334)	loss 9.434 (9.434)	gnorm 14814284.000 (14814284.000)	prob 3.335 (3.3351)	GS 38.844 (38.844)	mem 61.252
+Train: [0][125/750]	BT 0.037 (1.439)	DT 0.001 (1.375)	loss 9.350 (9.350)	gnorm 12225060.000 (12225060.000)	prob 4.341 (4.3410)	GS 33.875 (33.875)	mem 63.988
+Train: [0][130/750]	BT 0.060 (1.427)	DT 0.001 (1.363)	loss 9.614 (9.614)	gnorm 14283289.000 (14283289.000)	prob 3.389 (3.3887)	GS 31.953 (31.953)	mem 64.911
+Train: [0][135/750]	BT 0.052 (1.441)	DT 0.005 (1.377)	loss 9.113 (9.113)	gnorm 12056464.000 (12056464.000)	prob 4.606 (4.6063)	GS 27.375 (27.375)	mem 64.936
+Train: [0][140/750]	BT 0.073 (1.427)	DT 0.004 (1.364)	loss 8.946 (8.946)	gnorm 11942066.000 (11942066.000)	prob 4.454 (4.4542)	GS 32.656 (32.656)	mem 65.014
+Train: [0][145/750]	BT 0.075 (1.380)	DT 0.002 (1.317)	loss 9.348 (9.348)	gnorm 10633328.000 (10633328.000)	prob 4.271 (4.2712)	GS 25.750 (25.750)	mem 64.937
+Train: [0][150/750]	BT 6.607 (1.427)	DT 6.541 (1.363)	loss 9.343 (9.343)	gnorm 11166451.000 (11166451.000)	prob 4.062 (4.0618)	GS 31.094 (31.094)	mem 65.175
+Train: [0][155/750]	BT 0.061 (1.384)	DT 0.002 (1.319)	loss 8.771 (8.771)	gnorm 10024070.000 (10024070.000)	prob 4.457 (4.4573)	GS 32.016 (32.016)	mem 64.975
+Train: [0][160/750]	BT 0.064 (1.399)	DT 0.004 (1.334)	loss 10.063 (10.063)	gnorm 12842862.000 (12842862.000)	prob 3.284 (3.2835)	GS 31.750 (31.750)	mem 64.999
+Train: [0][165/750]	BT 0.035 (1.410)	DT 0.004 (1.346)	loss 9.644 (9.644)	gnorm 9548784.000 (9548784.000)	prob 3.653 (3.6528)	GS 30.969 (30.969)	mem 58.702
+Train: [0][170/750]	BT 5.507 (1.402)	DT 5.464 (1.338)	loss 9.794 (9.794)	gnorm 10587654.000 (10587654.000)	prob 3.374 (3.3737)	GS 33.453 (33.453)	mem 59.440
+Train: [0][175/750]	BT 0.033 (1.396)	DT 0.001 (1.332)	loss 10.014 (10.014)	gnorm 8566881.000 (8566881.000)	prob 3.239 (3.2392)	GS 34.719 (34.719)	mem 60.641
+Train: [0][180/750]	BT 0.071 (1.358)	DT 0.001 (1.295)	loss 9.917 (9.917)	gnorm 9337584.000 (9337584.000)	prob 3.258 (3.2576)	GS 34.172 (34.172)	mem 60.828
+Train: [0][185/750]	BT 0.053 (1.364)	DT 0.003 (1.302)	loss 9.957 (9.957)	gnorm 9567505.000 (9567505.000)	prob 3.988 (3.9879)	GS 33.281 (33.281)	mem 62.101
+Train: [0][190/750]	BT 0.041 (1.359)	DT 0.002 (1.297)	loss 10.284 (10.284)	gnorm 10456457.000 (10456457.000)	prob 3.268 (3.2678)	GS 37.062 (37.062)	mem 63.274
+Train: [0][195/750]	BT 0.152 (1.382)	DT 0.025 (1.320)	loss 9.924 (9.924)	gnorm 8419647.000 (8419647.000)	prob 3.805 (3.8053)	GS 31.672 (31.672)	mem 59.888
+Train: [0][200/750]	BT 0.034 (1.370)	DT 0.001 (1.308)	loss 9.487 (9.487)	gnorm 7947022.500 (7947022.500)	prob 3.703 (3.7032)	GS 30.016 (30.016)	mem 59.295
+Train: [0][205/750]	BT 0.153 (1.339)	DT 0.008 (1.277)	loss 9.928 (9.928)	gnorm 7077742.000 (7077742.000)	prob 3.147 (3.1474)	GS 31.422 (31.422)	mem 59.386
+Train: [0][210/750]	BT 0.461 (1.376)	DT 0.413 (1.314)	loss 9.466 (9.466)	gnorm 8196387.500 (8196387.500)	prob 3.849 (3.8489)	GS 33.656 (33.656)	mem 62.362
+Train: [0][215/750]	BT 0.044 (1.345)	DT 0.003 (1.284)	loss 10.265 (10.265)	gnorm 7589813.000 (7589813.000)	prob 3.745 (3.7454)	GS 28.906 (28.906)	mem 62.340
+Train: [0][220/750]	BT 0.080 (1.389)	DT 0.016 (1.328)	loss 9.274 (9.274)	gnorm 5763161.500 (5763161.500)	prob 4.008 (4.0085)	GS 31.125 (31.125)	mem 64.968
+Train: [0][225/750]	BT 0.049 (1.360)	DT 0.002 (1.298)	loss 10.122 (10.122)	gnorm 7018902.000 (7018902.000)	prob 3.634 (3.6340)	GS 29.781 (29.781)	mem 64.962
+Train: [0][230/750]	BT 12.622 (1.386)	DT 12.577 (1.325)	loss 10.021 (10.021)	gnorm 7245770.500 (7245770.500)	prob 2.954 (2.9545)	GS 32.578 (32.578)	mem 64.976
+Train: [0][235/750]	BT 0.056 (1.357)	DT 0.011 (1.297)	loss 9.817 (9.817)	gnorm 6908100.500 (6908100.500)	prob 3.921 (3.9209)	GS 33.094 (33.094)	mem 64.975
+Train: [0][240/750]	BT 0.125 (1.330)	DT 0.002 (1.270)	loss 9.883 (9.883)	gnorm 6307452.500 (6307452.500)	prob 3.539 (3.5393)	GS 35.266 (35.266)	mem 64.978
+Train: [0][245/750]	BT 0.042 (1.352)	DT 0.002 (1.292)	loss 9.763 (9.763)	gnorm 5965301.000 (5965301.000)	prob 3.992 (3.9921)	GS 28.672 (28.672)	mem 65.076
+Train: [0][250/750]	BT 0.096 (1.326)	DT 0.007 (1.266)	loss 10.328 (10.328)	gnorm 7429295.500 (7429295.500)	prob 2.821 (2.8211)	GS 33.438 (33.438)	mem 65.132
+Train: [0][255/750]	BT 0.034 (1.353)	DT 0.002 (1.293)	loss 9.691 (9.691)	gnorm 6684177.500 (6684177.500)	prob 4.087 (4.0872)	GS 27.781 (27.781)	mem 58.606
+Train: [0][260/750]	BT 0.051 (1.336)	DT 0.008 (1.276)	loss 10.402 (10.402)	gnorm 6361059.000 (6361059.000)	prob 2.515 (2.5154)	GS 38.234 (38.234)	mem 59.191
+Train: [0][265/750]	BT 0.101 (1.312)	DT 0.003 (1.252)	loss 9.674 (9.674)	gnorm 5423550.000 (5423550.000)	prob 4.064 (4.0638)	GS 31.266 (31.266)	mem 59.190
+Train: [0][270/750]	BT 5.941 (1.358)	DT 5.907 (1.299)	loss 10.307 (10.307)	gnorm 5692471.000 (5692471.000)	prob 2.885 (2.8846)	GS 33.453 (33.453)	mem 62.602
+Train: [0][275/750]	BT 0.038 (1.334)	DT 0.004 (1.276)	loss 9.963 (9.963)	gnorm 6162237.500 (6162237.500)	prob 3.725 (3.7246)	GS 35.609 (35.609)	mem 62.759
+Train: [0][280/750]	BT 0.073 (1.343)	DT 0.022 (1.284)	loss 10.385 (10.385)	gnorm 7237984.500 (7237984.500)	prob 2.786 (2.7861)	GS 40.125 (40.125)	mem 64.333
+Train: [0][285/750]	BT 0.052 (1.330)	DT 0.004 (1.272)	loss 10.737 (10.737)	gnorm 6042270.000 (6042270.000)	prob 3.295 (3.2946)	GS 34.656 (34.656)	mem 64.799
+Train: [0][290/750]	BT 13.835 (1.356)	DT 13.781 (1.297)	loss 9.888 (9.888)	gnorm 5392859.500 (5392859.500)	prob 3.260 (3.2597)	GS 36.578 (36.578)	mem 60.457
+Train: [0][295/750]	BT 0.058 (1.339)	DT 0.001 (1.280)	loss 9.833 (9.833)	gnorm 4790951.000 (4790951.000)	prob 3.586 (3.5855)	GS 30.516 (30.516)	mem 61.075
+Train: [0][300/750]	BT 0.054 (1.317)	DT 0.004 (1.259)	loss 9.384 (9.384)	gnorm 5544773.000 (5544773.000)	prob 4.092 (4.0916)	GS 35.672 (35.672)	mem 61.005
+Train: [0][305/750]	BT 0.032 (1.336)	DT 0.001 (1.278)	loss 10.265 (10.265)	gnorm 5818913.000 (5818913.000)	prob 3.051 (3.0512)	GS 30.844 (30.844)	mem 63.225
+Train: [0][310/750]	BT 0.042 (1.315)	DT 0.002 (1.258)	loss 9.860 (9.860)	gnorm 4342940.500 (4342940.500)	prob 3.379 (3.3793)	GS 33.734 (33.734)	mem 63.411
+Train: [0][315/750]	BT 0.043 (1.334)	DT 0.003 (1.277)	loss 10.083 (10.083)	gnorm 5916198.000 (5916198.000)	prob 3.099 (3.0989)	GS 29.469 (29.469)	mem 65.515
+Train: [0][320/750]	BT 0.176 (1.320)	DT 0.009 (1.262)	loss 10.538 (10.538)	gnorm 6608135.500 (6608135.500)	prob 2.204 (2.2036)	GS 33.156 (33.156)	mem 65.408
+Train: [0][325/750]	BT 0.090 (1.301)	DT 0.005 (1.242)	loss 10.277 (10.277)	gnorm 4954271.000 (4954271.000)	prob 3.281 (3.2809)	GS 30.781 (30.781)	mem 65.407
+Train: [0][330/750]	BT 5.981 (1.343)	DT 5.913 (1.284)	loss 9.982 (9.982)	gnorm 5299373.000 (5299373.000)	prob 3.672 (3.6716)	GS 36.641 (36.641)	mem 65.547
+Train: [0][335/750]	BT 0.061 (1.324)	DT 0.001 (1.265)	loss 9.801 (9.801)	gnorm 4653797.000 (4653797.000)	prob 3.908 (3.9078)	GS 31.328 (31.328)	mem 65.452
+Train: [0][340/750]	BT 0.170 (1.322)	DT 0.009 (1.263)	loss 10.172 (10.172)	gnorm 5481769.000 (5481769.000)	prob 2.627 (2.6274)	GS 35.078 (35.078)	mem 65.657
+Train: [0][345/750]	BT 0.038 (1.329)	DT 0.002 (1.270)	loss 9.519 (9.519)	gnorm 4336727.000 (4336727.000)	prob 3.557 (3.5569)	GS 36.766 (36.766)	mem 65.472
+Train: [0][350/750]	BT 0.158 (1.311)	DT 0.075 (1.252)	loss 10.453 (10.453)	gnorm 4757783.500 (4757783.500)	prob 2.894 (2.8937)	GS 32.297 (32.297)	mem 65.472
+Train: [0][355/750]	BT 0.140 (1.328)	DT 0.003 (1.268)	loss 10.300 (10.300)	gnorm 4274230.500 (4274230.500)	prob 3.106 (3.1057)	GS 35.250 (35.250)	mem 60.149
+Train: [0][360/750]	BT 0.039 (1.310)	DT 0.002 (1.250)	loss 10.244 (10.244)	gnorm 4512666.000 (4512666.000)	prob 2.651 (2.6505)	GS 34.531 (34.531)	mem 60.262
+Train: [0][365/750]	BT 0.097 (1.302)	DT 0.001 (1.243)	loss 10.476 (10.476)	gnorm 4676002.500 (4676002.500)	prob 2.849 (2.8485)	GS 33.984 (33.984)	mem 60.978
+Train: [0][370/750]	BT 0.033 (1.324)	DT 0.001 (1.265)	loss 10.395 (10.395)	gnorm 4542386.500 (4542386.500)	prob 2.995 (2.9953)	GS 32.391 (32.391)	mem 63.977
+Train: [0][375/750]	BT 0.058 (1.307)	DT 0.006 (1.248)	loss 10.172 (10.172)	gnorm 4275763.000 (4275763.000)	prob 3.077 (3.0771)	GS 33.188 (33.188)	mem 64.027
+Train: [0][380/750]	BT 0.031 (1.322)	DT 0.002 (1.264)	loss 10.646 (10.646)	gnorm 4007911.000 (4007911.000)	prob 2.356 (2.3558)	GS 32.531 (32.531)	mem 59.268
+Train: [0][385/750]	BT 0.087 (1.306)	DT 0.006 (1.247)	loss 10.132 (10.132)	gnorm 4231690.500 (4231690.500)	prob 2.906 (2.9062)	GS 32.219 (32.219)	mem 59.303
+Train: [0][390/750]	BT 14.461 (1.327)	DT 14.435 (1.268)	loss 10.219 (10.219)	gnorm 3724534.000 (3724534.000)	prob 2.917 (2.9170)	GS 35.422 (35.422)	mem 62.045
+Train: [0][395/750]	BT 0.035 (1.311)	DT 0.002 (1.252)	loss 10.254 (10.254)	gnorm 3961183.750 (3961183.750)	prob 3.556 (3.5562)	GS 32.234 (32.234)	mem 62.077
+Train: [0][400/750]	BT 0.047 (1.295)	DT 0.005 (1.237)	loss 10.731 (10.731)	gnorm 4407453.500 (4407453.500)	prob 2.529 (2.5287)	GS 33.594 (33.594)	mem 62.151
+Train: [0][405/750]	BT 0.038 (1.317)	DT 0.002 (1.259)	loss 10.616 (10.616)	gnorm 3945097.000 (3945097.000)	prob 2.870 (2.8702)	GS 31.578 (31.578)	mem 65.435
+Train: [0][410/750]	BT 0.068 (1.302)	DT 0.002 (1.243)	loss 10.656 (10.656)	gnorm 3796638.750 (3796638.750)	prob 2.653 (2.6533)	GS 33.875 (33.875)	mem 65.242
+Train: [0][415/750]	BT 0.089 (1.312)	DT 0.032 (1.254)	loss 10.752 (10.752)	gnorm 3592486.750 (3592486.750)	prob 2.733 (2.7332)	GS 31.516 (31.516)	mem 65.406
+Train: [0][420/750]	BT 0.078 (1.298)	DT 0.003 (1.239)	loss 10.937 (10.937)	gnorm 3636486.750 (3636486.750)	prob 2.697 (2.6967)	GS 30.219 (30.219)	mem 65.412
+Train: [0][425/750]	BT 0.150 (1.291)	DT 0.002 (1.232)	loss 10.288 (10.288)	gnorm 3595045.000 (3595045.000)	prob 3.287 (3.2869)	GS 27.812 (27.812)	mem 65.573
+Train: [0][430/750]	BT 0.151 (1.293)	DT 0.013 (1.234)	loss 10.633 (10.633)	gnorm 3999605.000 (3999605.000)	prob 2.156 (2.1556)	GS 37.484 (37.484)	mem 65.318
+Train: [0][435/750]	BT 0.059 (1.306)	DT 0.001 (1.247)	loss 10.320 (10.320)	gnorm 3645003.000 (3645003.000)	prob 3.018 (3.0182)	GS 31.594 (31.594)	mem 65.237
+Train: [0][440/750]	BT 0.034 (1.292)	DT 0.001 (1.233)	loss 10.235 (10.235)	gnorm 3561290.500 (3561290.500)	prob 2.615 (2.6153)	GS 33.594 (33.594)	mem 65.239
+Train: [0][445/750]	BT 0.085 (1.279)	DT 0.017 (1.219)	loss 11.070 (11.070)	gnorm 4031849.500 (4031849.500)	prob 2.434 (2.4340)	GS 35.359 (35.359)	mem 65.253
+Train: [0][450/750]	BT 1.641 (1.299)	DT 1.608 (1.240)	loss 10.469 (10.469)	gnorm 3717466.750 (3717466.750)	prob 2.711 (2.7114)	GS 32.656 (32.656)	mem 59.232
+Train: [0][455/750]	BT 0.062 (1.286)	DT 0.015 (1.227)	loss 10.716 (10.716)	gnorm 3790799.750 (3790799.750)	prob 2.326 (2.3261)	GS 36.500 (36.500)	mem 59.275
+Train: [0][460/750]	BT 0.034 (1.302)	DT 0.001 (1.243)	loss 9.853 (9.853)	gnorm 3149389.000 (3149389.000)	prob 3.239 (3.2394)	GS 34.453 (34.453)	mem 61.826
+Train: [0][465/750]	BT 0.050 (1.290)	DT 0.001 (1.231)	loss 10.467 (10.467)	gnorm 3317170.000 (3317170.000)	prob 2.667 (2.6671)	GS 31.422 (31.422)	mem 62.022
+Train: [0][470/750]	BT 7.748 (1.303)	DT 7.715 (1.244)	loss 10.737 (10.737)	gnorm 3536984.500 (3536984.500)	prob 1.888 (1.8876)	GS 31.391 (31.391)	mem 63.982
+Train: [0][475/750]	BT 0.149 (1.292)	DT 0.030 (1.234)	loss 10.276 (10.276)	gnorm 2983237.250 (2983237.250)	prob 2.752 (2.7519)	GS 29.172 (29.172)	mem 64.432
+Train: [0][480/750]	BT 4.321 (1.288)	DT 4.281 (1.230)	loss 10.765 (10.765)	gnorm 3215160.000 (3215160.000)	prob 1.309 (1.3090)	GS 34.500 (34.500)	mem 64.633
+Train: [0][485/750]	BT 0.036 (1.297)	DT 0.003 (1.238)	loss 10.793 (10.793)	gnorm 3139528.250 (3139528.250)	prob 1.502 (1.5015)	GS 34.359 (34.359)	mem 60.189
+Train: [0][490/750]	BT 0.056 (1.284)	DT 0.003 (1.225)	loss 11.087 (11.087)	gnorm 3521570.750 (3521570.750)	prob 0.789 (0.7888)	GS 33.094 (33.094)	mem 60.266
+Train: [0][495/750]	BT 0.131 (1.300)	DT 0.017 (1.241)	loss 10.255 (10.255)	gnorm 2881439.500 (2881439.500)	prob 1.887 (1.8866)	GS 27.562 (27.562)	mem 63.219
+Train: [0][500/750]	BT 0.041 (1.287)	DT 0.004 (1.229)	loss 10.239 (10.239)	gnorm 3168284.750 (3168284.750)	prob 2.069 (2.0694)	GS 34.578 (34.578)	mem 63.273
+Train: [0][505/750]	BT 0.043 (1.287)	DT 0.002 (1.229)	loss 10.115 (10.115)	gnorm 3147759.750 (3147759.750)	prob 2.254 (2.2542)	GS 35.781 (35.781)	mem 64.636
+Train: [0][510/750]	BT 0.061 (1.288)	DT 0.001 (1.229)	loss 10.661 (10.661)	gnorm 3154159.250 (3154159.250)	prob 0.916 (0.9160)	GS 32.344 (32.344)	mem 65.423
+Train: [0][515/750]	BT 0.042 (1.278)	DT 0.003 (1.220)	loss 10.870 (10.870)	gnorm 2725642.750 (2725642.750)	prob 1.107 (1.1066)	GS 33.312 (33.312)	mem 65.417
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/anaconda3/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
+    self._run()
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
+    self._record_writer.write(data)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
+    self._writer.write(header + header_crc + data + footer_crc)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 773, in write
+    self.fs.append(self.filename, file_content, self.binary_mode)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
+    self._write(filename, file_content, "ab" if binary_mode else "a")
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
+    with io.open(filename, mode, encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: b'tensorboard/Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_1_momentum_0.999/events.out.tfevents.1689182612.u124511.2989211.0'
+arpack error, retry= 0
+Train: [0][520/750]	BT 0.028 (1.289)	DT 0.001 (1.231)	loss 10.563 (10.563)	gnorm 2956993.750 (2956993.750)	prob 1.510 (1.5100)	GS 34.359 (34.359)	mem 65.480
+Train: [0][525/750]	BT 0.093 (1.277)	DT 0.002 (1.219)	loss 10.141 (10.141)	gnorm 2860960.000 (2860960.000)	prob 1.654 (1.6543)	GS 28.797 (28.797)	mem 65.479
+Train: [0][530/750]	BT 11.928 (1.294)	DT 11.895 (1.236)	loss 10.169 (10.169)	gnorm 3061723.250 (3061723.250)	prob 1.124 (1.1241)	GS 35.688 (35.688)	mem 65.482
+Train: [0][535/750]	BT 0.098 (1.282)	DT 0.001 (1.224)	loss 11.461 (11.461)	gnorm 3093553.500 (3093553.500)	prob -0.035 (-0.0347)	GS 33.031 (33.031)	mem 65.545
+Train: [0][540/750]	BT 0.936 (1.273)	DT 0.907 (1.215)	loss 10.722 (10.722)	gnorm 3337455.250 (3337455.250)	prob 0.341 (0.3408)	GS 32.828 (32.828)	mem 65.453
+Train: [0][545/750]	BT 0.042 (1.279)	DT 0.001 (1.221)	loss 10.636 (10.636)	gnorm 2568820.750 (2568820.750)	prob 0.533 (0.5326)	GS 31.078 (31.078)	mem 58.890
+Train: [0][550/750]	BT 0.035 (1.268)	DT 0.002 (1.210)	loss 11.229 (11.229)	gnorm 2830034.250 (2830034.250)	prob -0.024 (-0.0243)	GS 28.375 (28.375)	mem 58.762
+Train: [0][555/750]	BT 0.059 (1.282)	DT 0.008 (1.224)	loss 10.546 (10.546)	gnorm 2839780.750 (2839780.750)	prob 0.860 (0.8601)	GS 31.078 (31.078)	mem 61.284
+Train: [0][560/750]	BT 0.047 (1.271)	DT 0.014 (1.213)	loss 10.375 (10.375)	gnorm 2940385.750 (2940385.750)	prob 1.278 (1.2784)	GS 32.719 (32.719)	mem 61.342
+Train: [0][565/750]	BT 0.059 (1.271)	DT 0.009 (1.213)	loss 10.804 (10.804)	gnorm 2463965.500 (2463965.500)	prob 0.257 (0.2567)	GS 30.156 (30.156)	mem 62.524
+Train: [0][570/750]	BT 0.029 (1.275)	DT 0.001 (1.217)	loss 10.651 (10.651)	gnorm 2549132.250 (2549132.250)	prob 0.324 (0.3238)	GS 30.328 (30.328)	mem 64.166
+Train: [0][575/750]	BT 0.036 (1.264)	DT 0.001 (1.206)	loss 10.336 (10.336)	gnorm 2483612.250 (2483612.250)	prob 0.640 (0.6401)	GS 33.656 (33.656)	mem 64.243
+Train: [0][580/750]	BT 0.034 (1.279)	DT 0.002 (1.221)	loss 10.449 (10.449)	gnorm 3004915.500 (3004915.500)	prob 1.016 (1.0155)	GS 33.812 (33.812)	mem 60.202
+Train: [0][585/750]	BT 0.073 (1.269)	DT 0.002 (1.211)	loss 11.040 (11.040)	gnorm 2801349.750 (2801349.750)	prob 0.952 (0.9522)	GS 32.188 (32.188)	mem 60.207
+Train: [0][590/750]	BT 7.238 (1.279)	DT 7.205 (1.221)	loss 9.927 (9.927)	gnorm 2873786.750 (2873786.750)	prob 1.618 (1.6179)	GS 33.750 (33.750)	mem 62.956
+Train: [0][595/750]	BT 0.050 (1.270)	DT 0.001 (1.212)	loss 10.750 (10.750)	gnorm 2575628.750 (2575628.750)	prob 1.151 (1.1513)	GS 32.906 (32.906)	mem 63.215
+Train: [0][600/750]	BT 2.850 (1.265)	DT 2.808 (1.207)	loss 10.694 (10.694)	gnorm 2660472.500 (2660472.500)	prob 1.415 (1.4155)	GS 31.281 (31.281)	mem 63.903
+Train: [0][605/750]	BT 0.088 (1.269)	DT 0.002 (1.211)	loss 10.623 (10.623)	gnorm 2953917.000 (2953917.000)	prob 1.377 (1.3771)	GS 30.984 (30.984)	mem 65.317
+Train: [0][610/750]	BT 0.034 (1.264)	DT 0.001 (1.206)	loss 11.036 (11.036)	gnorm 2752322.750 (2752322.750)	prob 0.754 (0.7540)	GS 38.812 (38.812)	mem 65.226
+Train: [0][615/750]	BT 0.115 (1.271)	DT 0.012 (1.213)	loss 10.402 (10.402)	gnorm 2436737.500 (2436737.500)	prob 1.600 (1.6004)	GS 29.453 (29.453)	mem 65.247
+Train: [0][620/750]	BT 0.033 (1.267)	DT 0.001 (1.209)	loss 10.408 (10.408)	gnorm 2879645.750 (2879645.750)	prob 1.293 (1.2926)	GS 33.031 (33.031)	mem 65.191
+Train: [0][625/750]	BT 0.072 (1.261)	DT 0.022 (1.203)	loss 10.260 (10.260)	gnorm 2090808.250 (2090808.250)	prob 2.083 (2.0825)	GS 28.250 (28.250)	mem 65.191
+Train: [0][630/750]	BT 0.468 (1.266)	DT 0.389 (1.207)	loss 10.269 (10.269)	gnorm 2580755.250 (2580755.250)	prob 1.451 (1.4507)	GS 29.094 (29.094)	mem 65.335
+Train: [0][635/750]	BT 0.096 (1.257)	DT 0.002 (1.198)	loss 10.038 (10.038)	gnorm 2371857.500 (2371857.500)	prob 1.653 (1.6533)	GS 28.438 (28.438)	mem 65.342
+Train: [0][640/750]	BT 0.039 (1.271)	DT 0.001 (1.212)	loss 10.857 (10.857)	gnorm 2747229.250 (2747229.250)	prob 0.612 (0.6124)	GS 33.125 (33.125)	mem 59.232
+Train: [0][645/750]	BT 0.049 (1.265)	DT 0.005 (1.206)	loss 10.211 (10.211)	gnorm 2517567.750 (2517567.750)	prob 1.339 (1.3394)	GS 31.875 (31.875)	mem 59.725
+Train: [0][650/750]	BT 10.313 (1.272)	DT 10.218 (1.213)	loss 10.035 (10.035)	gnorm 2517780.250 (2517780.250)	prob 1.116 (1.1160)	GS 32.000 (32.000)	mem 61.546
+Traceback (most recent call last):
+  File "/home/shakir/simplical_complices_gcc/train.py", line 953, in <module>
+    main(args)
+  File "/home/shakir/simplical_complices_gcc/train.py", line 837, in main
+    loss = train_moco(
+  File "/home/shakir/simplical_complices_gcc/train.py", line 557, in train_moco
+    sw.add_scalar("gnorm", gnorm_meter.avg, global_step)
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/tensorboard/writer.py", line 391, in add_scalar
+    self._get_file_writer().add_summary(summary, global_step, walltime)
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/tensorboard/writer.py", line 113, in add_summary
+    self.add_event(event, global_step, walltime)
+  File "/home/shakir/.local/lib/python3.9/site-packages/torch/utils/tensorboard/writer.py", line 98, in add_event
+    self.event_writer.add_event(event)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 117, in add_event
+    self._async_writer.write(event.SerializeToString())
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 171, in write
+    self._check_worker_status()
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 212, in _check_worker_status
+    raise exception
+  File "/usr/local/anaconda3/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
+    self._run()
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
+    self._record_writer.write(data)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
+    self._writer.write(header + header_crc + data + footer_crc)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 773, in write
+    self.fs.append(self.filename, file_content, self.binary_mode)
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
+    self._write(filename, file_content, "ab" if binary_mode else "a")
+  File "/home/shakir/.local/lib/python3.9/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
+    with io.open(filename, mode, encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: b'tensorboard/Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_16384_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_multi_1_momentum_0.999/events.out.tfevents.1689182612.u124511.2989211.0'

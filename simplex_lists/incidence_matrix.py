@@ -14,6 +14,7 @@ def get_faces(G):
     Returns a list of the faces in an undirected graph
     """
     edges = list(G.edges)
+    # print('edges',edges,len(edges))
     # edges = torch.stack(G.edges(), dim = 1).tolist()
 
     faces = []
@@ -56,6 +57,7 @@ def incidence_matrices(G, V, E, faces, edge_to_idx):
     """
     B1 = np.array(nx.incidence_matrix(G, nodelist=V, edgelist=E, oriented=True).todense())
     B2 = np.zeros([len(E),len(faces)])
+    # B2 = np.zeros([len(E),len(faces)],  dtype=np.uint8)
 
     for f_idx, face in enumerate(faces): # face is sorted
         edges = [face[:-1], face[1:], [face[0], face[2]]]

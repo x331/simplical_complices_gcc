@@ -10,6 +10,8 @@ import os
 import dgl
 
 import scipy.sparse as sparse
+from sklearn import preprocessing
+
 
 
 
@@ -17,17 +19,44 @@ def compute_hodge_matrix_2(num_nodes, edges):
     g = nx.Graph()
     g.add_nodes_from([i for i in range(num_nodes)])
     edge_index_ = torch.transpose(torch.stack(edges,dim=1),0,1)
+    # print('edge_index_', edge_index_.shape)
     edge_index = [(edge_index_[0, i].item(), edge_index_[1, i].item()) for i in
                         range(np.shape(edge_index_)[1])]
+    # print('edge_index', len(edge_index))
     g.add_edges_from(edge_index)
 
     edge_to_idx = {edge: i for i, edge in enumerate(g.edges)}
-    
+    # import time
+    # start_time = time.time()
     faces = get_faces(g)
+    # print('face', time.time() - start_time)
+
 
     B1, B2 = incidence_matrices(g, sorted(g.nodes), sorted(g.edges), faces, edge_to_idx)
 
     return B1, B2, faces
+
+
+def compute_unnomralized_bunch_matrices(B1, B2):
+    """
+    Computes unnormalized A0 and A1 matrices (up and down)(i thing this is wrong),
+        and returns all matrices needed for Bunch model shift operators
+    """
+    
+    if B1.shape[1] !=0:
+        B1 = preprocessing.normalize(B1, norm="l2")
+    if B2.shape[0] !=0 and  B2.shape[1] !=0 :
+        B2 = preprocessing.normalize(B2, norm="l2")
+    B1 = torch.tensor(B1)
+    B2 = torch.tensor(B2)
+    L0u = B1.T @ B1 
+    L1u = B1.T @ B1
+    L1d = B2 @ B2.T
+    L1f = L1u + L1d
+    L0u = np.array(L0u)
+    L1f = np.array(L1f)
+
+    return L0u, L1f
 
 def compute_hodge_matrix_3(num_nodes, edges):
     g = nx.Graph()

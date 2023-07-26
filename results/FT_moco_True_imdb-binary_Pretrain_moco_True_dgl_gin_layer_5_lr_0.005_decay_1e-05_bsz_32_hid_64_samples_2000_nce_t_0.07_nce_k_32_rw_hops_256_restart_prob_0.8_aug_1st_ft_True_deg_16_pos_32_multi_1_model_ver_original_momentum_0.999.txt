@@ -1,0 +1,15 @@
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+0.71 0.71 0.71 0.73 0.69 0.74 0.72 0.76 0.69 0.76
+Mean = 0.7219999999999999; Std = 0.02400000000000002
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.55 0.59 0.44 0.54 0.59 0.58 0.47 0.51 0.49 0.56
+Mean = 0.532; Std = 0.04975942121849891
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.52 0.59 0.49 0.55 0.59 0.63 0.47 0.54 0.52 0.6
+Mean = 0.55; Std = 0.04898979485566356
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.73 0.71 0.67 0.74 0.69 0.74 0.69 0.76 0.68 0.78
+Mean = 0.7190000000000001; Std = 0.034770677301427425
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.73 0.72 0.66 0.73 0.71 0.75 0.7 0.74 0.68 0.78
+Mean = 0.72; Std = 0.03286335345030996
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.72 0.72 0.66 0.71 0.7 0.74 0.7 0.73 0.68 0.78
+Mean = 0.714; Std = 0.03136877428271624
+FT_moco_True_imdb-binary_Pretrain_moco_True_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.52 0.59 0.49 0.55 0.59 0.63 0.47 0.54 0.52 0.6
+Mean = 0.55; Std = 0.04898979485566356

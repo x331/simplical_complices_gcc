@@ -36,6 +36,11 @@ from gcc.datasets.data_util import batcher, labeled_batcher
 from gcc.models import GraphEncoder
 from gcc.utils.misc import AverageMeter, adjust_learning_rate, warmup_linear
 
+import sys
+import re
+import math
+
+from gcc.models.graph_encoder_multi import GraphEncoderMultiSum, GraphEncoderMultiLinear
 
 def parse_option():
 
@@ -119,6 +124,13 @@ def parse_option():
     parser.add_argument("--fold-idx", type=int, default=0, help="random seed.")
     parser.add_argument("--cv", action="store_true")
     # fmt: on
+    
+    
+    #my additions
+    parser.add_argument("--cvrun", type=int, default=-1)
+    parser.add_argument("--positional-embedding-multi", type=int, default=1)
+    parser.add_argument("--model-ver", type=str, default='original', choices=['original',"linear", "sum"])
+
 
     opt = parser.parse_args()
 
@@ -131,27 +143,67 @@ def parse_option():
 
 
 def option_update(opt):
-    opt.model_name = "{}_moco_{}_{}_{}_layer_{}_lr_{}_decay_{}_bsz_{}_hid_{}_samples_{}_nce_t_{}_nce_k_{}_rw_hops_{}_restart_prob_{}_aug_{}_ft_{}_deg_{}_pos_{}_momentum_{}".format(
-        opt.exp,
-        opt.moco,
-        opt.dataset,
-        opt.model,
-        opt.num_layer,
-        opt.learning_rate,
-        opt.weight_decay,
-        opt.batch_size,
-        opt.hidden_size,
-        opt.num_samples,
-        opt.nce_t,
-        opt.nce_k,
-        opt.rw_hops,
-        opt.restart_prob,
-        opt.aug,
-        opt.finetune,
-        opt.degree_embedding_size,
-        opt.positional_embedding_size,
-        opt.alpha,
-    )
+    if opt.resume == "" or opt.exp !="FT" or  not opt.finetune:
+        opt.model_name = "{}_moco_{}_{}_{}_layer_{}_lr_{}_decay_{}_bsz_{}_hid_{}_samples_{}_nce_t_{}_nce_k_{}_rw_hops_{}_restart_prob_{}_aug_{}_ft_{}_deg_{}_pos_{}_multi_{}_model_ver_{}_momentum_{}".format(
+            opt.exp,
+            opt.moco,
+            opt.dataset,
+            opt.model,
+            opt.num_layer,
+            opt.learning_rate,
+            opt.weight_decay,
+            opt.batch_size,
+            opt.hidden_size,
+            opt.num_samples,
+            opt.nce_t,
+            opt.nce_k,
+            opt.rw_hops,
+            opt.restart_prob,
+            opt.aug,
+            opt.finetune,
+            opt.degree_embedding_size,
+            opt.positional_embedding_size,
+            opt.positional_embedding_multi,
+            opt.model_ver,
+            opt.alpha,
+        )
+    else:
+        from_model = ''
+        reg =  re.search(r'Pretrain_moco_(True|False)_(.+?(?=_(gin|gat|mpnn)))', opt.resume)
+        if reg:
+            from_model = reg.group(0)
+        else:
+            from_model = 'couldnt_read'
+        reg =  re.search(r'_bsz_(.+?(?=_))', opt.resume)
+        if reg:
+            from_model += reg.group(0)
+        else:
+            from_model = 'couldnt_read'
+        opt.model_name = "{}_moco_{}_{}_from({})_{}_layer_{}_lr_{}_decay_{}_bsz_{}_hid_{}_samples_{}_nce_t_{}_nce_k_{}_rw_hops_{}_restart_prob_{}_aug_{}_ft_{}_deg_{}_pos_{}_multi_{}_model_ver_{}_momentum_{}".format(
+            opt.exp,
+            opt.moco,
+            opt.dataset,
+            from_model,
+            opt.model,
+            opt.num_layer,
+            opt.learning_rate,
+            opt.weight_decay,
+            opt.batch_size,
+            opt.hidden_size,
+            opt.num_samples,
+            opt.nce_t,
+            opt.nce_k,
+            opt.rw_hops,
+            opt.restart_prob,
+            opt.aug,
+            opt.finetune,
+            opt.degree_embedding_size,
+            opt.positional_embedding_size,
+            opt.positional_embedding_multi,
+            opt.model_ver,
+            opt.alpha,
+        )
+    
 
     if opt.load_path is None:
         opt.model_folder = os.path.join(opt.model_path, opt.model_name)
@@ -165,12 +217,13 @@ def option_update(opt):
         os.makedirs(opt.tb_folder)
     return opt
 
-
+@torch.no_grad()
 def moment_update(model, model_ema, m):
     """ model_ema = m * model_ema + (1 - m) model """
     for p1, p2 in zip(model.parameters(), model_ema.parameters()):
         # p2.data.mul_(m).add_(1 - m, p1.detach().data)
-        p2.data.mul_(m).add_(p1.detach().data.mul_(1-m))
+        # p2.data.mul_(m).add_(p1.detach().data.mul_(1-m))
+        p2.data = p2.data * m + (p1.data * (1 - m))
 
 
 
@@ -387,40 +440,11 @@ def train_moco(
 
 
     end = time.time()
-    print(train_loader)
-    # k = iter(train_loader)
-    # print(f'k{k}')
-    # i, j = next(k)
-    # print(f'i,j{i,j}')
-    print(train_loader)
-    
-    # graph_q, graph_k = next(iter(train_loader))
-    # print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
-    # print(f'gpu:{opt.gpu}')
-    # print(f'graph_q on device{graph_q.device}')
-    # print(torch.device('cuda',opt.gpu))
-    # graph_q = graph_q.to(torch.device('cuda',opt.gpu))
-    # print(f'graph_q on device{graph_q.device}')
-    # graph_k = graph_k.to(torch.device('cuda',opt.gpu))
     
     for idx, batch in enumerate(train_loader):
-    # for idx in range(len(train_loader)):
-        # i, j = next(k)
-
-        print('moco5', idx)
         data_time.update(time.time() - end)
         graph_q, graph_k = batch
-        # graph_q, graph_k = i,k
-
-
-        # print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
-        # graph_q = dgl.to_homogeneous(graph_q)
-        # print(f'graph_q:{graph_q}', f'graph_q.is_homogeneous:{graph_q.is_homogeneous}')
-        # print(f'gpu:{opt.gpu}')
-        # print(f'graph_q on device{graph_q.device}')
-        # print(torch.device('cuda',opt.gpu))
         graph_q = graph_q.to(torch.device('cuda',opt.gpu))
-        # print(f'graph_q on device{graph_q.device}')
         graph_k = graph_k.to(torch.device('cuda',opt.gpu))
 
         bsz = graph_q.batch_size
@@ -429,8 +453,8 @@ def train_moco(
             # ===================Moco forward=====================
             feat_q = model(graph_q)
             with torch.no_grad():
-                feat_k = model_ema(graph_k)
-
+                feat_k = model_ema(graph_k) 
+                 
             out = contrast(feat_q, feat_k)
             prob = out[:, 0].mean()
         else:
@@ -444,8 +468,9 @@ def train_moco(
         assert feat_q.shape == (graph_q.batch_size, opt.hidden_size)
 
         # ===================backward=====================
-        optimizer.zero_grad()
         loss = criterion(out)
+        optimizer.zero_grad()
+        # loss = criterion(out)
         loss.backward()
         grad_norm = clip_grad_norm(model.parameters(), opt.clip_norm)
 
@@ -476,7 +501,7 @@ def train_moco(
         end = time.time()
 
         # print info
-        if (idx + 1) % opt.print_freq == 0:
+        if (idx + 1) % opt.print_freq == 0 or idx == 0:
             mem = psutil.virtual_memory()
             #  print(f'{idx:8} - {mem.percent:5} - {mem.free/1024**3:10.2f} - {mem.available/1024**3:10.2f} - {mem.used/1024**3:10.2f}')
             #  mem_used.append(mem.used/1024**3)
@@ -485,7 +510,8 @@ def train_moco(
                 "BT {batch_time.val:.3f} ({batch_time.avg:.3f})\t"
                 "DT {data_time.val:.3f} ({data_time.avg:.3f})\t"
                 "loss {loss.val:.3f} ({loss.avg:.3f})\t"
-                "prob {prob.val:.3f} ({prob.avg:.3f})\t"
+                "gnorm {gnorm.val:.3f} ({gnorm.avg:.3f})\t"
+                "prob {prob.val:.3f} ({prob.avg:.4f})\t"
                 "GS {graph_size.val:.3f} ({graph_size.avg:.3f})\t"
                 "mem {mem:.3f}".format(
                     epoch,
@@ -494,6 +520,7 @@ def train_moco(
                     batch_time=batch_time,
                     data_time=data_time,
                     loss=loss_meter,
+                    gnorm=gnorm_meter,
                     prob=prob_meter,
                     graph_size=graph_size,
                     mem=mem.used / 1024 ** 3,
@@ -502,7 +529,7 @@ def train_moco(
             #  print(out[0].abs().max())
 
         # tensorboard logger
-        if (idx + 1) % opt.tb_freq == 0:
+        if (idx + 1) % opt.tb_freq == 0 or idx ==0:
             global_step = epoch * n_batch + idx
             sw.add_scalar("moco_loss", loss_meter.avg, global_step)
             sw.add_scalar("moco_prob", prob_meter.avg, global_step)
@@ -542,11 +569,17 @@ def main(args):
                 # HACK for speeding up finetuning on graph classification tasks
                 pretrain_args.num_workers = 0
             pretrain_args.batch_size = args.batch_size
+            pretrain_args.exp =  args.exp
+            pretrain_args.cvrun = args.cvrun
+            pretrain_args.tb_freq = args.tb_freq
+            pretrain_args.positional_embedding_multi = args.positional_embedding_multi
+            pretrain_args.model_ver = args.model_ver
             args = pretrain_args
         else:
             print("=> no checkpoint found at '{}'".format(args.resume))
     args = option_update(args)
     print(args)
+    print(args.model_name)
     assert args.gpu is not None and torch.cuda.is_available(), "not using a gpu when you have one"
     print("Use GPU: {} for training".format(args.gpu))
     assert args.positional_embedding_size % 2 == 0, "positional_embedding_size is not divisable by 2"
@@ -564,7 +597,8 @@ def main(args):
                 restart_prob=args.restart_prob,
                 positional_embedding_size=args.positional_embedding_size,
             )
-            labels = dataset.dataset.data.y.tolist()
+            # labels = dataset.dataset.data.y.tolist()
+            labels = dataset.dataset.graph_labels.tolist()
         else:
             dataset = NodeClassificationDatasetLabeled(
                 dataset=args.dataset,
@@ -642,26 +676,71 @@ def main(args):
     # n_data = train_dataset.total
     n_data = None
 
-    model, model_ema = [
-        GraphEncoder(
-            positional_embedding_size=args.positional_embedding_size,
-            max_node_freq=args.max_node_freq,
-            max_edge_freq=args.max_edge_freq,
-            max_degree=args.max_degree,
-            freq_embedding_size=args.freq_embedding_size,
-            degree_embedding_size=args.degree_embedding_size,
-            output_dim=args.hidden_size,
-            node_hidden_dim=args.hidden_size,
-            edge_hidden_dim=args.hidden_size,
-            num_layers=args.num_layer,
-            num_step_set2set=args.set2set_iter,
-            num_layer_set2set=args.set2set_lstm_layer,
-            norm=args.norm,
-            gnn_model=args.model,
-            degree_input=True,
-        )
-        for _ in range(2)
-    ]
+    if args.model_ver == 'original':
+        model, model_ema = [
+            GraphEncoder(
+                positional_embedding_size=args.positional_embedding_size,
+                max_node_freq=args.max_node_freq,
+                max_edge_freq=args.max_edge_freq,
+                max_degree=args.max_degree,
+                freq_embedding_size=args.freq_embedding_size,
+                degree_embedding_size=args.degree_embedding_size,
+                output_dim=args.hidden_size,
+                node_hidden_dim=args.hidden_size,
+                edge_hidden_dim=args.hidden_size,
+                num_layers=args.num_layer,
+                num_step_set2set=args.set2set_iter,
+                num_layer_set2set=args.set2set_lstm_layer,
+                norm=args.norm,
+                gnn_model=args.model,
+                degree_input=True,
+            )
+            for _ in range(2)
+        ]
+    elif args.model_ver == 'linear':
+        model, model_ema = [
+            GraphEncoderMultiLinear(
+                positional_embedding_size=args.positional_embedding_size,
+                max_node_freq=args.max_node_freq,
+                max_edge_freq=args.max_edge_freq,
+                max_degree=args.max_degree,
+                freq_embedding_size=args.freq_embedding_size,
+                degree_embedding_size=args.degree_embedding_size,
+                output_dim=args.hidden_size,
+                node_hidden_dim=args.hidden_size,
+                edge_hidden_dim=args.hidden_size,
+                num_layers=args.num_layer,
+                num_step_set2set=args.set2set_iter,
+                num_layer_set2set=args.set2set_lstm_layer,
+                norm=args.norm,
+                gnn_model=args.model,
+                degree_input=True,
+                multi = args.positional_embedding_multi,
+            )
+            for _ in range(2)
+        ]
+    elif args.model_ver == 'sum':
+        model, model_ema = [
+            GraphEncoderMultiSum(
+                positional_embedding_size=args.positional_embedding_size,
+                max_node_freq=args.max_node_freq,
+                max_edge_freq=args.max_edge_freq,
+                max_degree=args.max_degree,
+                freq_embedding_size=args.freq_embedding_size,
+                degree_embedding_size=args.degree_embedding_size,
+                output_dim=args.hidden_size,
+                node_hidden_dim=args.hidden_size,
+                edge_hidden_dim=args.hidden_size,
+                num_layers=args.num_layer,
+                num_step_set2set=args.set2set_iter,
+                num_layer_set2set=args.set2set_lstm_layer,
+                norm=args.norm,
+                gnn_model=args.model,
+                degree_input=True,
+                multi = args.positional_embedding_multi,
+            )
+            for _ in range(2)
+        ]
     # print(f'model:{model}')
 
     # copy weights from `model' to `model_ema'
@@ -726,14 +805,18 @@ def main(args):
         raise NotImplementedError
 
     # optionally resume from a checkpoint
-    args.start_epoch = 1
+    # args.start_epoch = 1
+    args.start_epoch = 0
     if args.resume:
         # print("=> loading checkpoint '{}'".format(args.resume))
         # checkpoint = torch.load(args.resume, map_location="cpu")
         # checkpoint = torch.load(args.resume)
-        # args.start_epoch = checkpoint["epoch"] + 1
+        # checkpoint = torch.load(args.resume, map_location="cpu")
+        if args.exp == "Pretrain" and not args.finetune:
+            args.start_epoch = checkpoint["epoch"] + 1
+            optimizer.load_state_dict(checkpoint["optimizer"])
+
         model.load_state_dict(checkpoint["model"])
-        # optimizer.load_state_dict(checkpoint["optimizer"])
         contrast.load_state_dict(checkpoint["contrast"])
         if args.moco:
             model_ema.load_state_dict(checkpoint["model_ema"])
@@ -748,7 +831,13 @@ def main(args):
 
     # tensorboard
     #  logger = tb_logger.Logger(logdir=args.tb_folder, flush_secs=2)
-    sw = SummaryWriter(args.tb_folder)
+    if args.cvrun >= 0:
+        if not os.path.isdir(args.tb_folder+f"/cv_{args.cvrun}"):
+            os.makedirs(args.tb_folder+f"/cv_{args.cvrun}")
+        sw = SummaryWriter(args.tb_folder+f"/cv_{args.cvrun}")
+    else:
+        sw = SummaryWriter(args.tb_folder)
+    # sw = SummaryWriter(args.tb_folder)
     #  plots_q, plots_k = zip(*[train_dataset.getplot(i) for i in range(5)])
     #  plots_q = torch.cat(plots_q)
     #  plots_k = torch.cat(plots_k)
@@ -756,8 +845,8 @@ def main(args):
     #  sw.add_images('images/graph_k', plots_k, 0, dataformats="NHWC")
 
     # routine
-    for epoch in range(args.start_epoch, args.epochs + 1):
-
+    # for epoch in range(args.start_epoch, args.epochs + 1):
+    for epoch in range(args.start_epoch, args.epochs):
         adjust_learning_rate(epoch, args, optimizer)
         print("==> training...")
 
@@ -829,7 +918,11 @@ def main(args):
         # help release GPU memory
         del state
         torch.cuda.empty_cache()
-
+               
+    if not os.path.isdir(args.tb_folder+f"/cv_{args.cvrun}_valid"):
+        os.makedirs(args.tb_folder+f"/cv_{args.cvrun}_valid")
+    sw = SummaryWriter(args.tb_folder+f"/cv_{args.cvrun}_valid")
+        
     if args.finetune:
         valid_loss, valid_f1 = test_finetune(
             epoch, valid_loader, model, output_layer, criterion, sw, args
@@ -839,32 +932,71 @@ def main(args):
 
 if __name__ == "__main__":
     
+    # from gcc.datasets import data_util #why does this code block allow for generate.py to not have gpu cuda problems when moving graphs to gpu?
+    # dataset = data_util.create_graph_classification_dataset('imdb-binary') 
+    # graphs = dataset.graph_lists
+    # print(graphs[0])
+    # g4 = graphs[4].to('cuda:1')
+    # # g4 = graphs[4].to(torch.device(args.gpu[0]))
+    # print(g4.device)
+    # # del g4
+    # # del dataset
+    # # del graphs
+
+    warnings.simplefilter("once", UserWarning)
+    args = parse_option()
+    print(args.gpu)
+
+    
     from gcc.datasets import data_util #why does this code block allow for generate.py to not have gpu cuda problems when moving graphs to gpu?
     dataset = data_util.create_graph_classification_dataset('imdb-binary') 
     graphs = dataset.graph_lists
     print(graphs[0])
-    g4 = graphs[4].to('cuda:1')
+    g4 = graphs[4].to(torch.device(args.gpu[0]))
     print(g4.device)
-
-    warnings.simplefilter("once", UserWarning)
-    args = parse_option()
+    del g4
+    del dataset
+    del graphs
+    
+    args1 = option_update(args)
+    # file = open("error_logs"+f"/{args.exp}_{args1.dataset}_cv{args.cv}_{args1.model_name}.txt", "a+")
+    # file.write('new run /n')
+    # sys.stderr.write = file.write
+    
 
     if args.cv:
         gpus = args.gpu
+        print(gpus)
 
         def variant_args_generator():
             for fold_idx in range(10):
                 args.fold_idx = fold_idx
                 args.num_workers = 0
                 args.gpu = gpus[fold_idx % len(gpus)]
+                args.cvrun = fold_idx
                 yield copy.deepcopy(args)
-
-        # f1 = Parallel(n_jobs=5)(
-        #     delayed(main)(args) for args in variant_args_generator()
-        # )
-        f1 = [main(args) for args in variant_args_generator()]
+    
+        # # f1 = Parallel(math.ceil(2.5*len(args.gpu)))(
+        f1 = Parallel(4)(
+            delayed(main)(args) for args in variant_args_generator()
+        )
+        # f1 = [main(args) for args in variant_args_generator()]
+        
+        print('find me')
+        print(args1.model_name)
         print(f1)
-        print(f"Mean = {np.mean(f1)}; Std = {np.std(f1)}")
+        print(f"Mean = {np.mean(f1)}; Std = {np.std(f1)}",flush=True)
+        
+        try:
+            with  open(f"results/{args1.model_name}.txt", "x") as text_file:
+                text_file.write(str(args1.model_name)+'\n')
+                text_file.write(' '.join(str(v) for v in f1)+'\n')
+                text_file.write(f"Mean = {np.mean(f1)}; Std = {np.std(f1)}\n")
+        except FileExistsError:
+            with open(f"results/{args1.model_name}.txt", "a") as text_file:
+                text_file.write(str(args1.model_name))
+                text_file.write(' '.join(str(v) for v in f1)+'\n')
+                text_file.write(f"Mean = {np.mean(f1)}; Std = {np.std(f1)}\n")
     else:
         args.gpu = args.gpu[0]
         main(args)

@@ -418,7 +418,7 @@ class NodeClassificationDataset(GraphDataset):
 
         self.data = data_util.create_node_classification_dataset(dataset).data
         self.graphs = [self._create_dgl_graph(self.data)]
-        print(f'graphs:{self.graphs}')
+        # print(f'graphs:{self.graphs}')
         self.length = sum([g.number_of_nodes() for g in self.graphs])
         self.total = self.length
 

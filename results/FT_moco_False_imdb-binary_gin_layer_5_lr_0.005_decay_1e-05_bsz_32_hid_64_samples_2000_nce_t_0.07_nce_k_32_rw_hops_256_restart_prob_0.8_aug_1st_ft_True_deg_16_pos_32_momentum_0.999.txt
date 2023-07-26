@@ -1,0 +1,5 @@
+0.75 0.71 0.67 0.76 0.71 0.72 0.69 0.72 0.69 0.69
+FT_moco_False_imdb-binary_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_momentum_0.9990.72 0.75 0.7 0.75 0.74 0.71 0.68 0.74 0.74 0.7
+Mean = 0.7230000000000001; Std = 0.023259406699226014
+FT_moco_False_imdb-binary_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_momentum_0.9990.71 0.75 0.71 0.7 0.7 0.68 0.62 0.73 0.78 0.75
+Mean = 0.713; Std = 0.04196427051671458

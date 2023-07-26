@@ -1,0 +1,5 @@
+FT_moco_False_collab_from(Pretrain_moco_True_dgl)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+0.556 0.56 0.56 0.568 0.564 0.562 0.542 0.548 0.558 0.576
+Mean = 0.5594; Std = 0.009079647570252905
+FT_moco_False_collab_from(Pretrain_moco_True_dgl)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.9990.74 0.72 0.76 0.766 0.778 0.746 0.76 0.73 0.748 0.778
+Mean = 0.7525999999999999; Std = 0.018374982993189425

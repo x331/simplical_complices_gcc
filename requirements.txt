@@ -1,0 +1,110 @@
+absl-py==1.4.0
+alabaster==0.7.13
+autopep8==2.0.2
+Babel==2.12.1
+brotlipy==0.7.0
+cachetools==5.3.1
+certifi @ file:///opt/conda/conda-bld/certifi_1655968806487/work/certifi
+cffi @ file:///opt/conda/conda-bld/cffi_1642701102775/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click==8.1.3
+cmake==3.26.4
+conda==4.13.0
+conda-content-trust @ file:///tmp/build/80754af9/conda-content-trust_1617045594566/work
+conda-package-handling @ file:///tmp/build/80754af9/conda-package-handling_1618262147379/work
+contourpy==1.1.0
+cryptography @ file:///tmp/build/80754af9/cryptography_1639414572950/work
+cycler==0.11.0
+dgl==1.1.1+cu116
+dglgo==0.0.2
+docutils==0.20.1
+fbpca==1.0
+filelock==3.12.2
+fonttools==4.40.0
+google-auth==2.21.0
+google-auth-oauthlib==1.0.0
+grpcio==1.56.0
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
+imagesize==1.4.1
+importlib-metadata==6.7.0
+importlib-resources==5.12.0
+isort==5.12.0
+Jinja2==3.1.2
+joblib==1.2.0
+kiwisolver==1.4.4
+lit==16.0.6
+littleutils==0.2.2
+Markdown==3.4.3
+MarkupSafe==2.1.3
+matplotlib==3.7.1
+mpmath==1.3.0
+networkx==3.1
+numpy==1.25.0
+numpydoc==1.5.0
+nvidia-cublas-cu11==11.10.3.66
+nvidia-cuda-cupti-cu11==11.7.101
+nvidia-cuda-nvrtc-cu11==11.7.99
+nvidia-cuda-runtime-cu11==11.7.99
+nvidia-cudnn-cu11==8.5.0.96
+nvidia-cufft-cu11==10.9.0.58
+nvidia-curand-cu11==10.2.10.91
+nvidia-cusolver-cu11==11.4.0.1
+nvidia-cusparse-cu11==11.7.4.91
+nvidia-nccl-cu11==2.14.3
+nvidia-nvtx-cu11==11.7.91
+oauthlib==3.2.2
+ogb==1.3.6
+outdated==0.2.2
+packaging==23.1
+pandas==2.0.2
+Pillow==9.5.0
+protobuf==4.23.3
+psutil==5.9.5
+pyasn1==0.5.0
+pyasn1-modules==0.3.0
+pycodestyle==2.10.0
+pycosat==0.6.3
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pydantic==1.10.9
+Pygments==2.15.1
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1635333100036/work
+pyparsing==3.1.0
+PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+python-dateutil==2.8.2
+pytz==2023.3
+PyYAML==6.0
+rdkit-pypi==2022.9.5
+requests @ file:///opt/conda/conda-bld/requests_1641824580448/work
+requests-oauthlib==1.3.1
+rsa==4.9
+ruamel-yaml-conda @ file:///tmp/build/80754af9/ruamel_yaml_1616016711199/work
+ruamel.yaml==0.17.32
+ruamel.yaml.clib==0.2.7
+scikit-learn==1.2.2
+scipy==1.10.1
+six @ file:///tmp/build/80754af9/six_1623709665295/work
+snowballstemmer==2.2.0
+Sphinx==7.0.1
+sphinxcontrib-applehelp==1.0.4
+sphinxcontrib-devhelp==1.0.2
+sphinxcontrib-htmlhelp==2.0.1
+sphinxcontrib-jsmath==1.0.1
+sphinxcontrib-qthelp==1.0.3
+sphinxcontrib-serializinghtml==1.1.5
+sympy==1.12
+tensorboard==2.13.0
+tensorboard-data-server==0.7.1
+threadpoolctl==3.1.0
+tomli==2.0.1
+torch==1.13.1+cu116
+torch-geometric==2.3.1
+torchaudio==0.13.1+cu116
+torchvision==0.14.1+cu116
+tqdm @ file:///tmp/build/80754af9/tqdm_1635330843403/work
+triton==2.0.0
+typer==0.9.0
+typing_extensions==4.6.3
+tzdata==2023.3
+urllib3==1.26.7
+Werkzeug==2.3.6
+zipp==3.15.0

@@ -1,0 +1,3 @@
+FT_moco_False_rdt-b_Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+0.845 0.88 0.87 0.92 0.845 0.86 0.88 0.885 0.91 0.85
+Mean = 0.8745; Std = 0.024642443060703238

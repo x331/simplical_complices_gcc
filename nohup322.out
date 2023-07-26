@@ -1,0 +1,538 @@
+[0, 1]
+Graph(num_nodes=20, num_edges=292,
+      ndata_schemes={'_ID': Scheme(shape=(), dtype=torch.int64)}
+      edata_schemes={'_ID': Scheme(shape=(), dtype=torch.int64)})
+cuda:0
+[0, 1]
+=> loading checkpoint '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth'
+Namespace(print_freq=10, tb_freq=1, save_freq=1, batch_size=32, num_workers=0, num_copies=6, num_samples=2000, epochs=30, optimizer='adam', learning_rate=0.005, lr_decay_epochs=[120, 160, 200], lr_decay_rate=0.0, beta1=0.9, beta2=0.999, weight_decay=1e-05, momentum=0.9, clip_norm=1.0, resume='/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth', aug='1st', exp='FT', dataset='h-index', model='gin', num_layer=5, readout='avg', set2set_lstm_layer=3, set2set_iter=6, norm=True, degree_input=True, nce_k=32, nce_t=0.07, rw_hops=256, subgraph_size=128, restart_prob=0.8, hidden_size=64, positional_embedding_size=32, max_node_freq=16, max_edge_freq=16, max_degree=512, freq_embedding_size=16, degree_embedding_size=16, model_path='saved', tb_path='tensorboard', load_path=None, moco=False, finetune=True, alpha=0.999, gpu=0, seed=0, fold_idx=0, cv=True, model_name='FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', model_folder='saved/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', tb_folder='tensorboard/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', start_epoch=1, cvrun=0, positional_embedding_multi=1, model_ver='original')
+FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+Use GPU: 0 for training
+setting random seeds
+before construct dataset 46.24446487426758
+begining finetuning
+graph.num_edges()176080
+graph.num_nodes()5000
+graph.nodes()tensor([   0,    1,    2,  ..., 4997, 4998, 4999])
+graph.ndata{}
+before construct dataloader 46.424232482910156
+before training 46.424381256103516
+using queue shape: (32,64)
+=> loaded successfully '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth' (epoch 100)
+==> training...
+Train: [0][10/141]	BT 1.678 (1.733)	DT 1.657 (1.663)	loss 3.677 (3.677)	f1 0.062 (0.062)	GS 16.531 (16.531)	mem 55.898
+Train: [0][20/141]	BT 1.645 (1.690)	DT 1.618 (1.644)	loss 3.651 (3.651)	f1 0.125 (0.125)	GS 18.562 (18.562)	mem 55.686
+Train: [0][30/141]	BT 1.676 (1.680)	DT 1.652 (1.643)	loss 3.614 (3.614)	f1 0.156 (0.156)	GS 19.312 (19.312)	mem 55.709
+Train: [0][40/141]	BT 1.673 (1.681)	DT 1.655 (1.648)	loss 3.592 (3.592)	f1 0.188 (0.188)	GS 17.000 (17.000)	mem 55.966
+Train: [0][50/141]	BT 1.674 (1.681)	DT 1.656 (1.651)	loss 3.528 (3.528)	f1 0.594 (0.594)	GS 15.438 (15.438)	mem 55.975
+Train: [0][60/141]	BT 1.625 (1.678)	DT 1.603 (1.649)	loss 3.447 (3.447)	f1 0.562 (0.562)	GS 15.875 (15.875)	mem 55.893
+Train: [0][70/141]	BT 1.792 (1.678)	DT 1.769 (1.650)	loss 3.353 (3.353)	f1 0.594 (0.594)	GS 16.250 (16.250)	mem 55.911
+Train: [0][80/141]	BT 1.654 (1.677)	DT 1.625 (1.650)	loss 3.147 (3.147)	f1 0.562 (0.562)	GS 16.844 (16.844)	mem 55.723
+Train: [0][90/141]	BT 1.781 (1.676)	DT 1.765 (1.649)	loss 2.936 (2.936)	f1 0.688 (0.688)	GS 15.969 (15.969)	mem 55.716
+Train: [0][100/141]	BT 1.621 (1.674)	DT 1.605 (1.648)	loss 2.761 (2.761)	f1 0.500 (0.500)	GS 17.062 (17.062)	mem 55.696
+Train: [0][110/141]	BT 1.640 (1.671)	DT 1.617 (1.645)	loss 2.451 (2.451)	f1 0.625 (0.625)	GS 17.031 (17.031)	mem 56.000
+Train: [0][120/141]	BT 1.667 (1.671)	DT 1.647 (1.645)	loss 2.186 (2.186)	f1 0.594 (0.594)	GS 17.469 (17.469)	mem 56.014
+Train: [0][130/141]	BT 1.718 (1.672)	DT 1.697 (1.647)	loss 1.982 (1.982)	f1 0.531 (0.531)	GS 20.562 (20.562)	mem 56.032
+Train: [0][140/141]	BT 1.486 (1.667)	DT 1.464 (1.642)	loss 1.725 (1.725)	f1 0.688 (0.688)	GS 17.312 (17.312)	mem 37.434
+epoch 0, total time 234.32
+==> Saving...
+==> Saving...
+==> training...
+Train: [1][10/141]	BT 1.485 (1.474)	DT 1.468 (1.455)	loss 1.510 (1.510)	f1 0.625 (0.625)	GS 15.750 (15.750)	mem 37.460
+Train: [1][20/141]	BT 1.466 (1.476)	DT 1.447 (1.457)	loss 1.342 (1.342)	f1 0.562 (0.562)	GS 17.875 (17.875)	mem 37.478
+Train: [1][30/141]	BT 1.465 (1.472)	DT 1.444 (1.453)	loss 1.213 (1.213)	f1 0.594 (0.594)	GS 16.938 (16.938)	mem 37.483
+Train: [1][40/141]	BT 1.446 (1.469)	DT 1.426 (1.450)	loss 1.111 (1.111)	f1 0.625 (0.625)	GS 21.312 (21.312)	mem 37.489
+Train: [1][50/141]	BT 1.484 (1.471)	DT 1.464 (1.451)	loss 1.022 (1.022)	f1 0.719 (0.719)	GS 18.406 (18.406)	mem 37.528
+Train: [1][60/141]	BT 1.481 (1.474)	DT 1.465 (1.454)	loss 0.959 (0.959)	f1 0.719 (0.719)	GS 15.906 (15.906)	mem 37.541
+Train: [1][70/141]	BT 1.453 (1.474)	DT 1.438 (1.454)	loss 0.930 (0.930)	f1 0.469 (0.469)	GS 15.438 (15.438)	mem 37.460
+Train: [1][80/141]	BT 1.476 (1.475)	DT 1.455 (1.455)	loss 0.891 (0.891)	f1 0.594 (0.594)	GS 18.156 (18.156)	mem 37.607
+Train: [1][90/141]	BT 1.558 (1.475)	DT 1.541 (1.456)	loss 0.853 (0.853)	f1 0.562 (0.562)	GS 17.625 (17.625)	mem 37.577
+Train: [1][100/141]	BT 1.465 (1.477)	DT 1.444 (1.457)	loss 0.830 (0.830)	f1 0.594 (0.594)	GS 17.688 (17.688)	mem 37.670
+Train: [1][110/141]	BT 1.473 (1.477)	DT 1.452 (1.458)	loss 0.778 (0.778)	f1 0.812 (0.812)	GS 16.688 (16.688)	mem 37.692
+Train: [1][120/141]	BT 1.469 (1.478)	DT 1.447 (1.459)	loss 0.770 (0.770)	f1 0.688 (0.688)	GS 17.469 (17.469)	mem 37.758
+Train: [1][130/141]	BT 1.483 (1.480)	DT 1.463 (1.460)	loss 0.784 (0.784)	f1 0.594 (0.594)	GS 19.250 (19.250)	mem 37.771
+Train: [1][140/141]	BT 1.470 (1.480)	DT 1.442 (1.460)	loss 0.741 (0.741)	f1 0.688 (0.688)	GS 17.062 (17.062)	mem 37.543
+epoch 1, total time 208.10
+==> Saving...
+==> Saving...
+==> training...
+Train: [2][10/141]	BT 1.493 (1.477)	DT 1.472 (1.456)	loss 0.684 (0.684)	f1 0.906 (0.906)	GS 20.469 (20.469)	mem 37.580
+Train: [2][20/141]	BT 1.472 (1.484)	DT 1.451 (1.464)	loss 0.680 (0.680)	f1 0.812 (0.812)	GS 16.688 (16.688)	mem 37.593
+Train: [2][30/141]	BT 1.460 (1.477)	DT 1.435 (1.456)	loss 0.640 (0.640)	f1 0.781 (0.781)	GS 17.531 (17.531)	mem 37.603
+Train: [2][40/141]	BT 1.464 (1.477)	DT 1.445 (1.457)	loss 0.712 (0.712)	f1 0.656 (0.656)	GS 15.906 (15.906)	mem 37.618
+Train: [2][50/141]	BT 1.472 (1.477)	DT 1.458 (1.456)	loss 0.626 (0.626)	f1 0.719 (0.719)	GS 14.938 (14.938)	mem 37.653
+Train: [2][60/141]	BT 1.479 (1.476)	DT 1.459 (1.456)	loss 0.595 (0.595)	f1 0.812 (0.812)	GS 16.844 (16.844)	mem 37.651
+Train: [2][70/141]	BT 1.457 (1.474)	DT 1.437 (1.454)	loss 0.630 (0.630)	f1 0.750 (0.750)	GS 16.281 (16.281)	mem 37.574
+Train: [2][80/141]	BT 1.473 (1.472)	DT 1.452 (1.452)	loss 0.590 (0.590)	f1 0.781 (0.781)	GS 16.750 (16.750)	mem 37.611
+Train: [2][90/141]	BT 1.472 (1.473)	DT 1.452 (1.453)	loss 0.587 (0.587)	f1 0.781 (0.781)	GS 19.938 (19.938)	mem 37.615
+Train: [2][100/141]	BT 1.494 (1.476)	DT 1.474 (1.456)	loss 0.790 (0.790)	f1 0.531 (0.531)	GS 21.469 (21.469)	mem 37.765
+Train: [2][110/141]	BT 1.488 (1.477)	DT 1.468 (1.457)	loss 0.526 (0.526)	f1 0.750 (0.750)	GS 17.812 (17.812)	mem 37.780
+Train: [2][120/141]	BT 1.482 (1.479)	DT 1.461 (1.459)	loss 0.584 (0.584)	f1 0.750 (0.750)	GS 16.000 (16.000)	mem 37.818
+Train: [2][130/141]	BT 1.463 (1.478)	DT 1.443 (1.459)	loss 0.508 (0.508)	f1 0.812 (0.812)	GS 15.219 (15.219)	mem 37.748
+Train: [2][140/141]	BT 1.461 (1.478)	DT 1.440 (1.458)	loss 0.551 (0.551)	f1 0.750 (0.750)	GS 16.656 (16.656)	mem 37.650
+=> loading checkpoint '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth'
+Namespace(print_freq=10, tb_freq=1, save_freq=1, batch_size=32, num_workers=0, num_copies=6, num_samples=2000, epochs=30, optimizer='adam', learning_rate=0.005, lr_decay_epochs=[120, 160, 200], lr_decay_rate=0.0, beta1=0.9, beta2=0.999, weight_decay=1e-05, momentum=0.9, clip_norm=1.0, resume='/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth', aug='1st', exp='FT', dataset='h-index', model='gin', num_layer=5, readout='avg', set2set_lstm_layer=3, set2set_iter=6, norm=True, degree_input=True, nce_k=32, nce_t=0.07, rw_hops=256, subgraph_size=128, restart_prob=0.8, hidden_size=64, positional_embedding_size=32, max_node_freq=16, max_edge_freq=16, max_degree=512, freq_embedding_size=16, degree_embedding_size=16, model_path='saved', tb_path='tensorboard', load_path=None, moco=False, finetune=True, alpha=0.999, gpu=0, seed=0, fold_idx=2, cv=True, model_name='FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', model_folder='saved/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', tb_folder='tensorboard/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', start_epoch=1, cvrun=2, positional_embedding_multi=1, model_ver='original')
+FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+Use GPU: 0 for training
+setting random seeds
+before construct dataset 46.19911575317383
+begining finetuning
+graph.num_edges()176080
+graph.num_nodes()5000
+graph.nodes()tensor([   0,    1,    2,  ..., 4997, 4998, 4999])
+graph.ndata{}
+before construct dataloader 46.25474548339844
+before training 46.25474548339844
+using queue shape: (32,64)
+=> loaded successfully '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth' (epoch 100)
+==> training...
+Train: [0][10/141]	BT 1.678 (1.726)	DT 1.650 (1.654)	loss 3.690 (3.690)	f1 0.062 (0.062)	GS 14.688 (14.688)	mem 55.896
+Train: [0][20/141]	BT 1.636 (1.691)	DT 1.614 (1.644)	loss 3.644 (3.644)	f1 0.125 (0.125)	GS 18.219 (18.219)	mem 55.683
+Train: [0][30/141]	BT 1.640 (1.685)	DT 1.623 (1.646)	loss 3.638 (3.638)	f1 0.094 (0.094)	GS 17.438 (17.438)	mem 55.709
+Train: [0][40/141]	BT 1.660 (1.682)	DT 1.637 (1.648)	loss 3.590 (3.590)	f1 0.219 (0.219)	GS 19.188 (19.188)	mem 55.966
+Train: [0][50/141]	BT 1.681 (1.681)	DT 1.663 (1.649)	loss 3.536 (3.536)	f1 0.500 (0.500)	GS 19.250 (19.250)	mem 55.973
+Train: [0][60/141]	BT 1.662 (1.676)	DT 1.645 (1.646)	loss 3.448 (3.448)	f1 0.562 (0.562)	GS 15.500 (15.500)	mem 55.891
+Train: [0][70/141]	BT 1.726 (1.679)	DT 1.696 (1.650)	loss 3.400 (3.400)	f1 0.656 (0.656)	GS 22.125 (22.125)	mem 55.911
+Train: [0][80/141]	BT 1.662 (1.679)	DT 1.642 (1.651)	loss 3.159 (3.159)	f1 0.656 (0.656)	GS 15.062 (15.062)	mem 55.754
+Train: [0][90/141]	BT 1.648 (1.676)	DT 1.629 (1.649)	loss 2.974 (2.974)	f1 0.719 (0.719)	GS 14.062 (14.062)	mem 55.714
+Train: [0][100/141]	BT 1.645 (1.674)	DT 1.624 (1.648)	loss 2.766 (2.766)	f1 0.562 (0.562)	GS 17.969 (17.969)	mem 55.882
+Train: [0][110/141]	BT 1.682 (1.675)	DT 1.655 (1.649)	loss 2.487 (2.487)	f1 0.688 (0.688)	GS 18.938 (18.938)	mem 56.001
+Train: [0][120/141]	BT 1.749 (1.676)	DT 1.725 (1.651)	loss 2.222 (2.222)	f1 0.625 (0.625)	GS 18.438 (18.438)	mem 56.015
+Train: [0][130/141]	BT 1.647 (1.676)	DT 1.620 (1.650)	loss 1.969 (1.969)	f1 0.594 (0.594)	GS 17.312 (17.312)	mem 56.032
+Train: [0][140/141]	BT 1.488 (1.670)	DT 1.468 (1.645)	loss 1.721 (1.721)	f1 0.781 (0.781)	GS 22.875 (22.875)	mem 37.434
+epoch 0, total time 234.80
+==> Saving...
+==> Saving...
+==> training...
+Train: [1][10/141]	BT 1.493 (1.493)	DT 1.472 (1.473)	loss 1.516 (1.516)	f1 0.719 (0.719)	GS 18.250 (18.250)	mem 37.462
+Train: [1][20/141]	BT 1.488 (1.492)	DT 1.466 (1.472)	loss 1.341 (1.341)	f1 0.625 (0.625)	GS 20.312 (20.312)	mem 37.478
+Train: [1][30/141]	BT 1.481 (1.486)	DT 1.466 (1.466)	loss 1.216 (1.216)	f1 0.500 (0.500)	GS 18.656 (18.656)	mem 37.484
+Train: [1][40/141]	BT 1.469 (1.484)	DT 1.449 (1.464)	loss 1.110 (1.110)	f1 0.656 (0.656)	GS 17.469 (17.469)	mem 37.490
+Train: [1][50/141]	BT 1.479 (1.485)	DT 1.459 (1.464)	loss 1.029 (1.029)	f1 0.531 (0.531)	GS 17.188 (17.188)	mem 37.531
+Train: [1][60/141]	BT 1.484 (1.484)	DT 1.465 (1.464)	loss 0.977 (0.977)	f1 0.594 (0.594)	GS 17.969 (17.969)	mem 37.548
+Train: [1][70/141]	BT 1.462 (1.483)	DT 1.444 (1.462)	loss 0.916 (0.916)	f1 0.719 (0.719)	GS 15.750 (15.750)	mem 37.461
+Train: [1][80/141]	BT 1.492 (1.485)	DT 1.472 (1.464)	loss 0.891 (0.891)	f1 0.688 (0.688)	GS 16.250 (16.250)	mem 37.608
+Train: [1][90/141]	BT 1.518 (1.486)	DT 1.498 (1.466)	loss 0.837 (0.837)	f1 0.719 (0.719)	GS 15.625 (15.625)	mem 37.576
+Train: [1][100/141]	BT 1.467 (1.486)	DT 1.449 (1.466)	loss 0.816 (0.816)	f1 0.656 (0.656)	GS 18.344 (18.344)	mem 37.672
+Train: [1][110/141]	BT 1.461 (1.486)	DT 1.442 (1.466)	loss 0.777 (0.777)	f1 0.781 (0.781)	GS 14.812 (14.812)	mem 37.692
+Train: [1][120/141]	BT 1.480 (1.487)	DT 1.458 (1.467)	loss 0.784 (0.784)	f1 0.656 (0.656)	GS 16.500 (16.500)	mem 37.759
+Train: [1][130/141]	BT 1.490 (1.487)	DT 1.470 (1.467)	loss 0.747 (0.747)	f1 0.719 (0.719)	GS 20.156 (20.156)	mem 37.769
+Train: [1][140/141]	BT 1.494 (1.487)	DT 1.473 (1.467)	loss 0.747 (0.747)	f1 0.688 (0.688)	GS 18.188 (18.188)	mem 37.544
+epoch 1, total time 209.12
+==> Saving...
+==> Saving...
+==> training...
+Train: [2][10/141]	BT 1.493 (1.479)	DT 1.469 (1.459)	loss 0.714 (0.714)	f1 0.750 (0.750)	GS 17.250 (17.250)	mem 37.582
+Train: [2][20/141]	BT 1.475 (1.485)	DT 1.456 (1.464)	loss 0.712 (0.712)	f1 0.688 (0.688)	GS 15.938 (15.938)	mem 37.596
+Train: [2][30/141]	BT 1.481 (1.483)	DT 1.459 (1.463)	loss 0.703 (0.703)	f1 0.750 (0.750)	GS 19.344 (19.344)	mem 37.607
+Train: [2][40/141]	BT 1.495 (1.484)	DT 1.475 (1.464)	loss 0.682 (0.682)	f1 0.688 (0.688)	GS 15.156 (15.156)	mem 37.617
+Train: [2][50/141]	BT 1.475 (1.485)	DT 1.460 (1.465)	loss 0.657 (0.657)	f1 0.750 (0.750)	GS 17.281 (17.281)	mem 37.652
+Train: [2][60/141]	BT 1.479 (1.488)	DT 1.459 (1.468)	loss 0.683 (0.683)	f1 0.656 (0.656)	GS 17.125 (17.125)	mem 37.633
+Train: [2][70/141]	BT 1.468 (1.485)	DT 1.449 (1.465)	loss 0.614 (0.614)	f1 0.750 (0.750)	GS 15.938 (15.938)	mem 37.574
+Train: [2][80/141]	BT 1.468 (1.484)	DT 1.447 (1.464)	loss 0.502 (0.502)	f1 0.875 (0.875)	GS 16.000 (16.000)	mem 37.611
+Train: [2][90/141]	BT 1.484 (1.483)	DT 1.462 (1.463)	loss 0.565 (0.565)	f1 0.844 (0.844)	GS 19.906 (19.906)	mem 37.616
+Train: [2][100/141]	BT 1.477 (1.487)	DT 1.458 (1.467)	loss 0.564 (0.564)	f1 0.812 (0.812)	GS 19.906 (19.906)	mem 37.770
+Train: [2][110/141]	BT 1.499 (1.488)	DT 1.480 (1.468)	loss 0.603 (0.603)	f1 0.719 (0.719)	GS 15.844 (15.844)	mem 37.778
+Train: [2][120/141]	BT 1.524 (1.490)	DT 1.505 (1.470)	loss 0.551 (0.551)	f1 0.812 (0.812)	GS 18.812 (18.812)	mem 37.756
+Train: [2][130/141]	BT 1.466 (1.491)	DT 1.447 (1.471)	loss 0.465 (0.465)	f1 0.812 (0.812)	GS 18.500 (18.500)	mem 37.748
+Train: [2][140/141]	BT 1.469 (1.489)	DT 1.448 (1.469)	loss 0.465 (0.465)	f1 0.875 (0.875)	GS 17.656 (17.656)	mem 37.647
+=> loading checkpoint '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth'
+Namespace(print_freq=10, tb_freq=1, save_freq=1, batch_size=32, num_workers=0, num_copies=6, num_samples=2000, epochs=30, optimizer='adam', learning_rate=0.005, lr_decay_epochs=[120, 160, 200], lr_decay_rate=0.0, beta1=0.9, beta2=0.999, weight_decay=1e-05, momentum=0.9, clip_norm=1.0, resume='/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth', aug='1st', exp='FT', dataset='h-index', model='gin', num_layer=5, readout='avg', set2set_lstm_layer=3, set2set_iter=6, norm=True, degree_input=True, nce_k=32, nce_t=0.07, rw_hops=256, subgraph_size=128, restart_prob=0.8, hidden_size=64, positional_embedding_size=32, max_node_freq=16, max_edge_freq=16, max_degree=512, freq_embedding_size=16, degree_embedding_size=16, model_path='saved', tb_path='tensorboard', load_path=None, moco=False, finetune=True, alpha=0.999, gpu=1, seed=0, fold_idx=3, cv=True, model_name='FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', model_folder='saved/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', tb_folder='tensorboard/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', start_epoch=1, cvrun=3, positional_embedding_multi=1, model_ver='original')
+FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+Use GPU: 1 for training
+setting random seeds
+before construct dataset 46.19646453857422
+begining finetuning
+graph.num_edges()176080
+graph.num_nodes()5000
+graph.nodes()tensor([   0,    1,    2,  ..., 4997, 4998, 4999])
+graph.ndata{}
+before construct dataloader 46.25474548339844
+before training 46.25474548339844
+using queue shape: (32,64)
+=> loaded successfully '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth' (epoch 100)
+==> training...
+Train: [0][10/141]	BT 1.667 (1.722)	DT 1.649 (1.653)	loss 3.669 (3.669)	f1 0.125 (0.125)	GS 16.094 (16.094)	mem 55.896
+Train: [0][20/141]	BT 1.626 (1.691)	DT 1.603 (1.644)	loss 3.651 (3.651)	f1 0.094 (0.094)	GS 18.156 (18.156)	mem 55.683
+Train: [0][30/141]	BT 1.625 (1.680)	DT 1.604 (1.642)	loss 3.639 (3.639)	f1 0.094 (0.094)	GS 17.938 (17.938)	mem 55.710
+Train: [0][40/141]	BT 1.700 (1.677)	DT 1.675 (1.643)	loss 3.592 (3.592)	f1 0.406 (0.406)	GS 18.281 (18.281)	mem 55.967
+Train: [0][50/141]	BT 1.685 (1.680)	DT 1.667 (1.649)	loss 3.541 (3.541)	f1 0.469 (0.469)	GS 19.719 (19.719)	mem 55.973
+Train: [0][60/141]	BT 1.668 (1.680)	DT 1.646 (1.651)	loss 3.450 (3.450)	f1 0.500 (0.500)	GS 18.375 (18.375)	mem 55.891
+Train: [0][70/141]	BT 1.704 (1.681)	DT 1.682 (1.652)	loss 3.340 (3.340)	f1 0.656 (0.656)	GS 19.344 (19.344)	mem 55.914
+Train: [0][80/141]	BT 1.626 (1.679)	DT 1.606 (1.652)	loss 3.175 (3.175)	f1 0.688 (0.688)	GS 17.656 (17.656)	mem 55.794
+Train: [0][90/141]	BT 1.679 (1.676)	DT 1.662 (1.649)	loss 2.973 (2.973)	f1 0.594 (0.594)	GS 14.625 (14.625)	mem 55.713
+Train: [0][100/141]	BT 1.704 (1.677)	DT 1.679 (1.651)	loss 2.758 (2.758)	f1 0.469 (0.469)	GS 16.250 (16.250)	mem 55.737
+Train: [0][110/141]	BT 1.663 (1.676)	DT 1.637 (1.650)	loss 2.426 (2.426)	f1 0.688 (0.688)	GS 19.062 (19.062)	mem 56.003
+Train: [0][120/141]	BT 1.641 (1.675)	DT 1.618 (1.650)	loss 2.183 (2.183)	f1 0.812 (0.812)	GS 20.688 (20.688)	mem 56.015
+Train: [0][130/141]	BT 1.732 (1.675)	DT 1.709 (1.650)	loss 1.945 (1.945)	f1 0.656 (0.656)	GS 16.812 (16.812)	mem 56.032
+Train: [0][140/141]	BT 1.481 (1.671)	DT 1.460 (1.646)	loss 1.752 (1.752)	f1 0.656 (0.656)	GS 19.688 (19.688)	mem 37.434
+epoch 0, total time 234.83
+==> Saving...
+==> Saving...
+==> training...
+Train: [1][10/141]	BT 1.498 (1.497)	DT 1.479 (1.475)	loss 1.502 (1.502)	f1 0.688 (0.688)	GS 14.969 (14.969)	mem 37.462
+Train: [1][20/141]	BT 1.504 (1.497)	DT 1.485 (1.475)	loss 1.344 (1.344)	f1 0.656 (0.656)	GS 19.000 (19.000)	mem 37.478
+Train: [1][30/141]	BT 1.472 (1.489)	DT 1.451 (1.469)	loss 1.207 (1.207)	f1 0.688 (0.688)	GS 15.594 (15.594)	mem 37.484
+Train: [1][40/141]	BT 1.465 (1.485)	DT 1.445 (1.465)	loss 1.119 (1.119)	f1 0.656 (0.656)	GS 16.312 (16.312)	mem 37.490
+Train: [1][50/141]	BT 1.478 (1.485)	DT 1.458 (1.465)	loss 1.025 (1.025)	f1 0.719 (0.719)	GS 18.125 (18.125)	mem 37.531
+Train: [1][60/141]	BT 1.489 (1.485)	DT 1.468 (1.465)	loss 0.957 (0.957)	f1 0.750 (0.750)	GS 17.875 (17.875)	mem 37.549
+Train: [1][70/141]	BT 1.482 (1.487)	DT 1.462 (1.466)	loss 0.920 (0.920)	f1 0.656 (0.656)	GS 17.719 (17.719)	mem 37.459
+Train: [1][80/141]	BT 1.480 (1.488)	DT 1.465 (1.468)	loss 0.896 (0.896)	f1 0.531 (0.531)	GS 17.656 (17.656)	mem 37.609
+Train: [1][90/141]	BT 1.539 (1.488)	DT 1.518 (1.468)	loss 0.863 (0.863)	f1 0.438 (0.438)	GS 18.469 (18.469)	mem 37.576
+Train: [1][100/141]	BT 1.513 (1.491)	DT 1.491 (1.471)	loss 0.830 (0.830)	f1 0.625 (0.625)	GS 16.281 (16.281)	mem 37.653
+Train: [1][110/141]	BT 1.499 (1.492)	DT 1.480 (1.472)	loss 0.809 (0.809)	f1 0.656 (0.656)	GS 15.406 (15.406)	mem 37.697
+Train: [1][120/141]	BT 1.475 (1.493)	DT 1.454 (1.473)	loss 0.764 (0.764)	f1 0.688 (0.688)	GS 16.469 (16.469)	mem 37.761
+Train: [1][130/141]	BT 1.490 (1.493)	DT 1.475 (1.473)	loss 0.725 (0.725)	f1 0.812 (0.812)	GS 18.062 (18.062)	mem 37.772
+Train: [1][140/141]	BT 1.521 (1.492)	DT 1.495 (1.472)	loss 0.719 (0.719)	f1 0.812 (0.812)	GS 18.938 (18.938)	mem 37.546
+epoch 1, total time 209.90
+==> Saving...
+==> Saving...
+==> training...
+Train: [2][10/141]	BT 1.478 (1.478)	DT 1.458 (1.457)	loss 0.671 (0.671)	f1 0.844 (0.844)	GS 18.031 (18.031)	mem 37.582
+Train: [2][20/141]	BT 1.467 (1.481)	DT 1.447 (1.461)	loss 0.703 (0.703)	f1 0.719 (0.719)	GS 16.031 (16.031)	mem 37.595
+Train: [2][30/141]	BT 1.470 (1.478)	DT 1.450 (1.458)	loss 0.705 (0.705)	f1 0.688 (0.688)	GS 18.062 (18.062)	mem 37.609
+Train: [2][40/141]	BT 1.490 (1.481)	DT 1.470 (1.460)	loss 0.596 (0.596)	f1 0.812 (0.812)	GS 15.781 (15.781)	mem 37.618
+Train: [2][50/141]	BT 1.483 (1.480)	DT 1.461 (1.460)	loss 0.614 (0.614)	f1 0.812 (0.812)	GS 19.281 (19.281)	mem 37.652
+Train: [2][60/141]	BT 1.498 (1.484)	DT 1.478 (1.464)	loss 0.611 (0.611)	f1 0.719 (0.719)	GS 17.719 (17.719)	mem 37.636
+Train: [2][70/141]	BT 1.480 (1.484)	DT 1.455 (1.464)	loss 0.475 (0.475)	f1 0.875 (0.875)	GS 17.062 (17.062)	mem 37.574
+Train: [2][80/141]	BT 1.474 (1.483)	DT 1.457 (1.463)	loss 0.548 (0.548)	f1 0.812 (0.812)	GS 19.281 (19.281)	mem 37.611
+Train: [2][90/141]	BT 1.471 (1.484)	DT 1.456 (1.464)	loss 0.584 (0.584)	f1 0.750 (0.750)	GS 18.750 (18.750)	mem 37.617
+Train: [2][100/141]	BT 1.471 (1.487)	DT 1.451 (1.467)	loss 0.536 (0.536)	f1 0.812 (0.812)	GS 21.406 (21.406)	mem 37.768
+Train: [2][110/141]	BT 1.462 (1.486)	DT 1.443 (1.466)	loss 0.575 (0.575)	f1 0.781 (0.781)	GS 13.812 (13.812)	mem 37.779
+Train: [2][120/141]	BT 1.510 (1.486)	DT 1.488 (1.466)	loss 0.476 (0.476)	f1 0.781 (0.781)	GS 16.781 (16.781)	mem 37.748
+Train: [2][130/141]	BT 1.479 (1.486)	DT 1.459 (1.466)	loss 0.635 (0.635)	f1 0.656 (0.656)	GS 15.406 (15.406)	mem 37.748
+Train: [2][140/141]	BT 1.485 (1.486)	DT 1.466 (1.466)	loss 0.436 (0.436)	f1 0.875 (0.875)	GS 14.656 (14.656)	mem 37.648
+=> loading checkpoint '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth'
+Namespace(print_freq=10, tb_freq=1, save_freq=1, batch_size=32, num_workers=0, num_copies=6, num_samples=2000, epochs=30, optimizer='adam', learning_rate=0.005, lr_decay_epochs=[120, 160, 200], lr_decay_rate=0.0, beta1=0.9, beta2=0.999, weight_decay=1e-05, momentum=0.9, clip_norm=1.0, resume='/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth', aug='1st', exp='FT', dataset='h-index', model='gin', num_layer=5, readout='avg', set2set_lstm_layer=3, set2set_iter=6, norm=True, degree_input=True, nce_k=32, nce_t=0.07, rw_hops=256, subgraph_size=128, restart_prob=0.8, hidden_size=64, positional_embedding_size=32, max_node_freq=16, max_edge_freq=16, max_degree=512, freq_embedding_size=16, degree_embedding_size=16, model_path='saved', tb_path='tensorboard', load_path=None, moco=False, finetune=True, alpha=0.999, gpu=1, seed=0, fold_idx=1, cv=True, model_name='FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', model_folder='saved/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', tb_folder='tensorboard/FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999', start_epoch=1, cvrun=1, positional_embedding_multi=1, model_ver='original')
+FT_moco_False_h-index_from(Pretrain_moco_False_dgl_bsz_256)_gin_layer_5_lr_0.005_decay_1e-05_bsz_32_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_True_deg_16_pos_32_multi_1_model_ver_original_momentum_0.999
+Use GPU: 1 for training
+setting random seeds
+before construct dataset 46.22796630859375
+begining finetuning
+graph.num_edges()176080
+graph.num_nodes()5000
+graph.nodes()tensor([   0,    1,    2,  ..., 4997, 4998, 4999])
+graph.ndata{}
+before construct dataloader 46.39647674560547
+before training 46.39602279663086
+using queue shape: (32,64)
+=> loaded successfully '/home/shakir/simplical_complices_gcc/saved/Pretrain_moco_False_dgl_gin_layer_5_lr_0.005_decay_1e-05_bsz_256_hid_64_samples_2000_nce_t_0.07_nce_k_32_rw_hops_256_restart_prob_0.8_aug_1st_ft_False_deg_16_pos_32_momentum_0.999/current.pth' (epoch 100)
+==> training...
+Train: [0][10/141]	BT 1.644 (1.724)	DT 1.622 (1.653)	loss 3.651 (3.651)	f1 0.062 (0.062)	GS 16.844 (16.844)	mem 55.897
+Train: [0][20/141]	BT 1.635 (1.687)	DT 1.618 (1.641)	loss 3.653 (3.653)	f1 0.062 (0.062)	GS 15.781 (15.781)	mem 55.683
+Train: [0][30/141]	BT 1.704 (1.680)	DT 1.685 (1.643)	loss 3.634 (3.634)	f1 0.188 (0.188)	GS 19.375 (19.375)	mem 55.710
+Train: [0][40/141]	BT 1.676 (1.683)	DT 1.657 (1.650)	loss 3.596 (3.596)	f1 0.250 (0.250)	GS 18.500 (18.500)	mem 55.965
+Train: [0][50/141]	BT 1.701 (1.683)	DT 1.681 (1.653)	loss 3.529 (3.529)	f1 0.438 (0.438)	GS 15.969 (15.969)	mem 55.976
+Train: [0][60/141]	BT 1.677 (1.682)	DT 1.653 (1.653)	loss 3.454 (3.454)	f1 0.562 (0.562)	GS 17.312 (17.312)	mem 55.890
+Train: [0][70/141]	BT 1.711 (1.682)	DT 1.691 (1.654)	loss 3.338 (3.338)	f1 0.656 (0.656)	GS 19.906 (19.906)	mem 55.915
+Train: [0][80/141]	BT 1.674 (1.682)	DT 1.656 (1.654)	loss 3.161 (3.161)	f1 0.562 (0.562)	GS 15.750 (15.750)	mem 55.919
+Train: [0][90/141]	BT 1.709 (1.682)	DT 1.692 (1.656)	loss 2.941 (2.941)	f1 0.781 (0.781)	GS 17.906 (17.906)	mem 55.720
+Train: [0][100/141]	BT 1.689 (1.684)	DT 1.664 (1.658)	loss 2.728 (2.728)	f1 0.469 (0.469)	GS 16.594 (16.594)	mem 55.738
+Train: [0][110/141]	BT 1.672 (1.683)	DT 1.651 (1.657)	loss 2.458 (2.458)	f1 0.750 (0.750)	GS 17.531 (17.531)	mem 56.002
+Train: [0][120/141]	BT 1.648 (1.683)	DT 1.632 (1.658)	loss 2.212 (2.212)	f1 0.469 (0.469)	GS 18.781 (18.781)	mem 56.017
+Train: [0][130/141]	BT 1.668 (1.682)	DT 1.650 (1.658)	loss 1.960 (1.960)	f1 0.781 (0.781)	GS 18.875 (18.875)	mem 56.026
+Train: [0][140/141]	BT 1.477 (1.676)	DT 1.456 (1.652)	loss 1.715 (1.715)	f1 0.781 (0.781)	GS 17.812 (17.812)	mem 37.434
+epoch 0, total time 235.64
+==> Saving...
+==> Saving...
+==> training...
+Train: [1][10/141]	BT 1.529 (1.495)	DT 1.512 (1.476)	loss 1.506 (1.506)	f1 0.688 (0.688)	GS 16.844 (16.844)	mem 37.447
+Train: [1][20/141]	BT 1.497 (1.509)	DT 1.475 (1.488)	loss 1.357 (1.357)	f1 0.656 (0.656)	GS 17.875 (17.875)	mem 37.477
+Train: [1][30/141]	BT 1.506 (1.505)	DT 1.489 (1.484)	loss 1.195 (1.195)	f1 0.719 (0.719)	GS 16.406 (16.406)	mem 37.484
+Train: [1][40/141]	BT 1.509 (1.505)	DT 1.487 (1.485)	loss 1.112 (1.112)	f1 0.594 (0.594)	GS 19.719 (19.719)	mem 37.491
+Train: [1][50/141]	BT 1.489 (1.507)	DT 1.468 (1.487)	loss 1.007 (1.007)	f1 0.719 (0.719)	GS 16.469 (16.469)	mem 37.531
+Train: [1][60/141]	BT 1.508 (1.507)	DT 1.493 (1.487)	loss 0.988 (0.988)	f1 0.500 (0.500)	GS 16.719 (16.719)	mem 37.560
+Train: [1][70/141]	BT 1.540 (1.508)	DT 1.524 (1.488)	loss 0.934 (0.934)	f1 0.500 (0.500)	GS 16.250 (16.250)	mem 37.504
+Train: [1][80/141]	BT 1.526 (1.511)	DT 1.503 (1.491)	loss 0.875 (0.875)	f1 0.719 (0.719)	GS 16.656 (16.656)	mem 37.608
+Train: [1][90/141]	BT 1.547 (1.512)	DT 1.526 (1.492)	loss 0.850 (0.850)	f1 0.562 (0.562)	GS 16.656 (16.656)	mem 37.613
+Train: [1][100/141]	BT 1.475 (1.512)	DT 1.455 (1.492)	loss 0.824 (0.824)	f1 0.594 (0.594)	GS 17.344 (17.344)	mem 37.641
+Train: [1][110/141]	BT 1.559 (1.512)	DT 1.542 (1.492)	loss 0.751 (0.751)	f1 0.938 (0.938)	GS 16.875 (16.875)	mem 37.715
+Train: [1][120/141]	BT 1.505 (1.512)	DT 1.485 (1.493)	loss 0.798 (0.798)	f1 0.594 (0.594)	GS 15.625 (15.625)	mem 37.763
+Train: [1][130/141]	BT 1.488 (1.512)	DT 1.469 (1.492)	loss 0.750 (0.750)	f1 0.719 (0.719)	GS 16.812 (16.812)	mem 37.721
+Train: [1][140/141]	BT 1.516 (1.511)	DT 1.495 (1.492)	loss 0.722 (0.722)	f1 0.781 (0.781)	GS 17.844 (17.844)	mem 37.547
+epoch 1, total time 212.56
+==> Saving...
+==> Saving...
+==> training...
+Train: [2][10/141]	BT 1.512 (1.508)	DT 1.492 (1.488)	loss 0.698 (0.698)	f1 0.781 (0.781)	GS 19.438 (19.438)	mem 37.590
+Train: [2][20/141]	BT 1.475 (1.500)	DT 1.455 (1.481)	loss 0.696 (0.696)	f1 0.688 (0.688)	GS 16.438 (16.438)	mem 37.597
+Train: [2][30/141]	BT 1.470 (1.492)	DT 1.455 (1.473)	loss 0.692 (0.692)	f1 0.781 (0.781)	GS 16.938 (16.938)	mem 37.611
+Train: [2][40/141]	BT 1.522 (1.496)	DT 1.501 (1.476)	loss 0.647 (0.647)	f1 0.812 (0.812)	GS 16.344 (16.344)	mem 37.619
+Train: [2][50/141]	BT 1.489 (1.499)	DT 1.469 (1.479)	loss 0.602 (0.602)	f1 0.750 (0.750)	GS 16.469 (16.469)	mem 37.652
+Train: [2][60/141]	BT 1.493 (1.498)	DT 1.473 (1.478)	loss 0.559 (0.559)	f1 0.844 (0.844)	GS 20.969 (20.969)	mem 37.665
+Train: [2][70/141]	BT 1.488 (1.497)	DT 1.465 (1.477)	loss 0.707 (0.707)	f1 0.719 (0.719)	GS 18.812 (18.812)	mem 37.575
+Train: [2][80/141]	BT 1.503 (1.498)	DT 1.482 (1.478)	loss 0.638 (0.638)	f1 0.688 (0.688)	GS 20.312 (20.312)	mem 37.611
+Train: [2][90/141]	BT 1.545 (1.501)	DT 1.529 (1.481)	loss 0.554 (0.554)	f1 0.719 (0.719)	GS 19.938 (19.938)	mem 37.728
+Train: [2][100/141]	BT 1.504 (1.503)	DT 1.484 (1.482)	loss 0.533 (0.533)	f1 0.812 (0.812)	GS 18.906 (18.906)	mem 37.776
+Train: [2][110/141]	BT 1.469 (1.501)	DT 1.448 (1.480)	loss 0.570 (0.570)	f1 0.781 (0.781)	GS 18.125 (18.125)	mem 37.782
+Train: [2][120/141]	BT 1.523 (1.500)	DT 1.502 (1.480)	loss 0.553 (0.553)	f1 0.750 (0.750)	GS 18.094 (18.094)	mem 37.747
+Train: [2][130/141]	BT 1.467 (1.500)	DT 1.446 (1.480)	loss 0.507 (0.507)	f1 0.750 (0.750)	GS 16.531 (16.531)	mem 37.782
+Train: [2][140/141]	BT 1.478 (1.498)	DT 1.458 (1.478)	loss 0.574 (0.574)	f1 0.781 (0.781)	GS 17.469 (17.469)	mem 37.647
+epoch 2, total time 207.79
+==> Saving...
+==> Saving...
+==> training...
+Train: [3][10/141]	BT 1.554 (1.477)	DT 1.535 (1.457)	loss 0.611 (0.611)	f1 0.719 (0.719)	GS 15.469 (15.469)	mem 37.670
+Train: [3][20/141]	BT 1.471 (1.480)	DT 1.452 (1.460)	loss 0.513 (0.513)	f1 0.719 (0.719)	GS 16.344 (16.344)	mem 37.680
+Train: [3][30/141]	BT 1.458 (1.474)	DT 1.439 (1.454)	loss 0.487 (0.487)	f1 0.781 (0.781)	GS 15.344 (15.344)	mem 37.693
+Train: [3][40/141]	BT 1.470 (1.472)	DT 1.450 (1.452)	loss 0.355 (0.355)	f1 0.875 (0.875)	GS 16.750 (16.750)	mem 37.701
+Train: [3][50/141]	BT 1.509 (1.475)	DT 1.489 (1.454)	loss 0.425 (0.425)	f1 0.875 (0.875)	GS 17.438 (17.438)	mem 37.753
+Train: [3][60/141]	BT 1.487 (1.478)	DT 1.465 (1.457)	loss 0.548 (0.548)	f1 0.781 (0.781)	GS 19.188 (19.188)	mem 37.740
+Train: [3][70/141]	BT 1.468 (1.478)	DT 1.448 (1.458)	loss 0.566 (0.566)	f1 0.750 (0.750)	GS 17.031 (17.031)	mem 37.657
+Train: [3][80/141]	BT 1.473 (1.476)	DT 1.446 (1.456)	loss 0.457 (0.457)	f1 0.750 (0.750)	GS 16.031 (16.031)	mem 37.716
+Train: [3][90/141]	BT 1.502 (1.477)	DT 1.482 (1.456)	loss 0.343 (0.343)	f1 0.938 (0.938)	GS 16.344 (16.344)	mem 37.708
+Train: [3][100/141]	BT 1.498 (1.477)	DT 1.482 (1.457)	loss 0.524 (0.524)	f1 0.750 (0.750)	GS 18.250 (18.250)	mem 37.782
+Train: [3][110/141]	BT 1.467 (1.476)	DT 1.448 (1.455)	loss 0.613 (0.613)	f1 0.688 (0.688)	GS 19.000 (19.000)	mem 37.787
+Train: [3][120/141]	BT 1.498 (1.475)	DT 1.477 (1.455)	loss 0.626 (0.626)	f1 0.750 (0.750)	GS 19.594 (19.594)	mem 37.782
+Train: [3][130/141]	BT 1.493 (1.477)	DT 1.472 (1.456)	loss 0.595 (0.595)	f1 0.688 (0.688)	GS 19.594 (19.594)	mem 37.792
+Train: [3][140/141]	BT 1.504 (1.477)	DT 1.479 (1.457)	loss 0.496 (0.496)	f1 0.781 (0.781)	GS 15.750 (15.750)	mem 37.719
+epoch 3, total time 207.71
+==> Saving...
+==> Saving...
+==> training...
+Train: [4][10/141]	BT 1.528 (1.485)	DT 1.507 (1.464)	loss 0.487 (0.487)	f1 0.750 (0.750)	GS 17.594 (17.594)	mem 37.725
+Train: [4][20/141]	BT 1.485 (1.487)	DT 1.465 (1.467)	loss 0.531 (0.531)	f1 0.719 (0.719)	GS 18.344 (18.344)	mem 37.739
+Train: [4][30/141]	BT 1.472 (1.485)	DT 1.452 (1.465)	loss 0.458 (0.458)	f1 0.812 (0.812)	GS 18.875 (18.875)	mem 37.763
+Train: [4][40/141]	BT 1.487 (1.483)	DT 1.465 (1.462)	loss 0.462 (0.462)	f1 0.781 (0.781)	GS 16.906 (16.906)	mem 37.775
+Train: [4][50/141]	BT 1.456 (1.483)	DT 1.441 (1.462)	loss 0.480 (0.480)	f1 0.781 (0.781)	GS 17.062 (17.062)	mem 37.825
+Train: [4][60/141]	BT 1.513 (1.488)	DT 1.498 (1.467)	loss 0.503 (0.503)	f1 0.750 (0.750)	GS 17.188 (17.188)	mem 37.831
+Train: [4][70/141]	BT 1.492 (1.489)	DT 1.471 (1.469)	loss 0.589 (0.589)	f1 0.750 (0.750)	GS 18.906 (18.906)	mem 37.754
+Train: [4][80/141]	BT 1.468 (1.489)	DT 1.447 (1.468)	loss 0.386 (0.386)	f1 0.875 (0.875)	GS 18.281 (18.281)	mem 37.763
+Train: [4][90/141]	BT 1.505 (1.490)	DT 1.483 (1.470)	loss 0.364 (0.364)	f1 0.906 (0.906)	GS 19.031 (19.031)	mem 37.792
+Train: [4][100/141]	BT 1.477 (1.488)	DT 1.452 (1.468)	loss 0.498 (0.498)	f1 0.812 (0.812)	GS 17.219 (17.219)	mem 37.804
+Train: [4][110/141]	BT 1.473 (1.488)	DT 1.453 (1.467)	loss 0.429 (0.429)	f1 0.844 (0.844)	GS 17.781 (17.781)	mem 37.819
+Train: [4][120/141]	BT 1.506 (1.488)	DT 1.491 (1.468)	loss 0.429 (0.429)	f1 0.844 (0.844)	GS 18.375 (18.375)	mem 37.845
+Train: [4][130/141]	BT 1.465 (1.488)	DT 1.445 (1.467)	loss 0.518 (0.518)	f1 0.688 (0.688)	GS 17.344 (17.344)	mem 37.837
+Train: [4][140/141]	BT 1.517 (1.487)	DT 1.496 (1.467)	loss 0.719 (0.719)	f1 0.656 (0.656)	GS 16.562 (16.562)	mem 37.892
+epoch 4, total time 209.10
+==> Saving...
+==> Saving...
+==> training...
+Train: [5][10/141]	BT 1.486 (1.478)	DT 1.466 (1.457)	loss 0.423 (0.423)	f1 0.750 (0.750)	GS 18.125 (18.125)	mem 37.789
+Train: [5][20/141]	BT 1.484 (1.480)	DT 1.462 (1.459)	loss 0.619 (0.619)	f1 0.688 (0.688)	GS 16.562 (16.562)	mem 37.819
+Train: [5][30/141]	BT 1.451 (1.479)	DT 1.432 (1.459)	loss 0.601 (0.601)	f1 0.750 (0.750)	GS 18.250 (18.250)	mem 37.828
+Train: [5][40/141]	BT 1.474 (1.479)	DT 1.453 (1.458)	loss 0.656 (0.656)	f1 0.719 (0.719)	GS 16.375 (16.375)	mem 37.850
+Train: [5][50/141]	BT 1.471 (1.477)	DT 1.451 (1.456)	loss 0.498 (0.498)	f1 0.781 (0.781)	GS 20.375 (20.375)	mem 37.869
+Train: [5][60/141]	BT 1.797 (1.487)	DT 1.778 (1.466)	loss 0.463 (0.463)	f1 0.812 (0.812)	GS 18.688 (18.688)	mem 36.869
+Train: [5][70/141]	BT 1.756 (1.526)	DT 1.736 (1.505)	loss 0.391 (0.391)	f1 0.844 (0.844)	GS 15.625 (15.625)	mem 54.631
+Train: [5][80/141]	BT 1.602 (1.540)	DT 1.584 (1.520)	loss 0.538 (0.538)	f1 0.750 (0.750)	GS 19.250 (19.250)	mem 54.731
+Train: [5][90/141]	BT 1.635 (1.550)	DT 1.617 (1.529)	loss 0.504 (0.504)	f1 0.750 (0.750)	GS 16.562 (16.562)	mem 54.760
+Train: [5][100/141]	BT 1.658 (1.560)	DT 1.632 (1.539)	loss 0.401 (0.401)	f1 0.844 (0.844)	GS 18.812 (18.812)	mem 54.774
+Train: [5][110/141]	BT 1.694 (1.568)	DT 1.664 (1.547)	loss 0.361 (0.361)	f1 0.844 (0.844)	GS 20.344 (20.344)	mem 54.773
+Train: [5][120/141]	BT 1.731 (1.575)	DT 1.715 (1.553)	loss 0.609 (0.609)	f1 0.750 (0.750)	GS 15.719 (15.719)	mem 54.256
+Train: [5][130/141]	BT 1.694 (1.581)	DT 1.677 (1.559)	loss 0.588 (0.588)	f1 0.781 (0.781)	GS 16.000 (16.000)	mem 54.292
+Train: [5][140/141]	BT 1.659 (1.587)	DT 1.638 (1.565)	loss 0.424 (0.424)	f1 0.812 (0.812)	GS 17.344 (17.344)	mem 54.857
+epoch 5, total time 223.18
+==> Saving...
+==> Saving...
+==> training...
+Train: [6][10/141]	BT 1.582 (1.628)	DT 1.562 (1.606)	loss 0.519 (0.519)	f1 0.688 (0.688)	GS 18.312 (18.312)	mem 54.771
+Train: [6][20/141]	BT 1.599 (1.623)	DT 1.582 (1.602)	loss 0.566 (0.566)	f1 0.688 (0.688)	GS 17.781 (17.781)	mem 54.794
+Train: [6][30/141]	BT 1.672 (1.632)	DT 1.652 (1.610)	loss 0.694 (0.694)	f1 0.625 (0.625)	GS 13.938 (13.938)	mem 54.795
+Train: [6][40/141]	BT 1.664 (1.634)	DT 1.641 (1.613)	loss 0.518 (0.518)	f1 0.719 (0.719)	GS 20.312 (20.312)	mem 54.815
+Train: [6][50/141]	BT 1.654 (1.639)	DT 1.633 (1.618)	loss 0.472 (0.472)	f1 0.781 (0.781)	GS 17.312 (17.312)	mem 54.832
+Train: [6][60/141]	BT 1.620 (1.642)	DT 1.593 (1.621)	loss 0.424 (0.424)	f1 0.812 (0.812)	GS 17.125 (17.125)	mem 54.866
+Train: [6][70/141]	BT 1.637 (1.643)	DT 1.613 (1.622)	loss 0.341 (0.341)	f1 0.875 (0.875)	GS 18.469 (18.469)	mem 54.872
+Train: [6][80/141]	BT 1.724 (1.643)	DT 1.704 (1.621)	loss 0.369 (0.369)	f1 0.844 (0.844)	GS 19.938 (19.938)	mem 54.547
+Train: [6][90/141]	BT 1.667 (1.641)	DT 1.644 (1.620)	loss 0.415 (0.415)	f1 0.844 (0.844)	GS 16.562 (16.562)	mem 54.277
+Train: [6][100/141]	BT 1.646 (1.641)	DT 1.620 (1.619)	loss 0.337 (0.337)	f1 0.844 (0.844)	GS 16.750 (16.750)	mem 54.696
+Train: [6][110/141]	BT 1.638 (1.643)	DT 1.619 (1.621)	loss 0.375 (0.375)	f1 0.812 (0.812)	GS 17.750 (17.750)	mem 54.696
+Train: [6][120/141]	BT 1.682 (1.644)	DT 1.660 (1.622)	loss 0.447 (0.447)	f1 0.781 (0.781)	GS 18.188 (18.188)	mem 54.711
+Train: [6][130/141]	BT 1.624 (1.646)	DT 1.606 (1.624)	loss 0.477 (0.477)	f1 0.750 (0.750)	GS 15.156 (15.156)	mem 54.719
+Train: [6][140/141]	BT 1.671 (1.646)	DT 1.645 (1.624)	loss 0.364 (0.364)	f1 0.906 (0.906)	GS 19.625 (19.625)	mem 54.756
+epoch 6, total time 231.48
+==> Saving...
+==> Saving...
+==> training...
+Train: [7][10/141]	BT 1.638 (1.656)	DT 1.615 (1.631)	loss 0.610 (0.610)	f1 0.750 (0.750)	GS 14.969 (14.969)	mem 54.768
+Train: [7][20/141]	BT 1.625 (1.664)	DT 1.604 (1.641)	loss 0.442 (0.442)	f1 0.844 (0.844)	GS 15.469 (15.469)	mem 54.670
+Train: [7][30/141]	BT 1.683 (1.649)	DT 1.664 (1.627)	loss 0.469 (0.469)	f1 0.844 (0.844)	GS 19.125 (19.125)	mem 54.692
+Train: [7][40/141]	BT 1.675 (1.645)	DT 1.656 (1.623)	loss 0.392 (0.392)	f1 0.812 (0.812)	GS 15.969 (15.969)	mem 54.699
+Train: [7][50/141]	BT 1.655 (1.649)	DT 1.628 (1.627)	loss 0.484 (0.484)	f1 0.781 (0.781)	GS 16.875 (16.875)	mem 54.195
+Train: [7][60/141]	BT 1.638 (1.649)	DT 1.617 (1.627)	loss 0.277 (0.277)	f1 0.906 (0.906)	GS 19.688 (19.688)	mem 54.517
+Train: [7][70/141]	BT 1.697 (1.653)	DT 1.675 (1.630)	loss 0.485 (0.485)	f1 0.781 (0.781)	GS 17.656 (17.656)	mem 54.751
+Train: [7][80/141]	BT 1.656 (1.655)	DT 1.637 (1.632)	loss 0.612 (0.612)	f1 0.688 (0.688)	GS 13.938 (13.938)	mem 54.787
+Train: [7][90/141]	BT 1.650 (1.655)	DT 1.622 (1.632)	loss 0.676 (0.676)	f1 0.688 (0.688)	GS 16.469 (16.469)	mem 54.782
+epoch 2, total time 210.63
+==> Saving...
+==> Saving...
+==> training...
+Train: [3][10/141]	BT 1.592 (1.515)	DT 1.574 (1.493)	loss 0.423 (0.423)	f1 0.906 (0.906)	GS 14.969 (14.969)	mem 37.674
+Train: [3][20/141]	BT 1.487 (1.501)	DT 1.466 (1.482)	loss 0.450 (0.450)	f1 0.844 (0.844)	GS 18.406 (18.406)	mem 37.690
+Train: [3][30/141]	BT 1.468 (1.493)	DT 1.448 (1.473)	loss 0.585 (0.585)	f1 0.750 (0.750)	GS 17.000 (17.000)	mem 37.700
+Train: [3][40/141]	BT 1.498 (1.495)	DT 1.477 (1.475)	loss 0.436 (0.436)	f1 0.812 (0.812)	GS 17.875 (17.875)	mem 37.746
+Train: [3][50/141]	BT 1.526 (1.498)	DT 1.505 (1.478)	loss 0.537 (0.537)	f1 0.812 (0.812)	GS 18.125 (18.125)	mem 37.731
+Train: [3][60/141]	BT 1.508 (1.501)	DT 1.488 (1.481)	loss 0.384 (0.384)	f1 0.906 (0.906)	GS 19.594 (19.594)	mem 37.636
+Train: [3][70/141]	BT 1.521 (1.503)	DT 1.501 (1.483)	loss 0.408 (0.408)	f1 0.844 (0.844)	GS 16.969 (16.969)	mem 37.690
+Train: [3][80/141]	BT 1.501 (1.503)	DT 1.480 (1.483)	loss 0.416 (0.416)	f1 0.875 (0.875)	GS 17.062 (17.062)	mem 37.720
+Train: [3][90/141]	BT 1.484 (1.502)	DT 1.465 (1.482)	loss 0.635 (0.635)	f1 0.688 (0.688)	GS 14.531 (14.531)	mem 37.780
+Train: [3][100/141]	BT 1.498 (1.500)	DT 1.477 (1.480)	loss 0.525 (0.525)	f1 0.781 (0.781)	GS 17.125 (17.125)	mem 37.787
+Train: [3][110/141]	BT 1.487 (1.499)	DT 1.471 (1.479)	loss 0.463 (0.463)	f1 0.844 (0.844)	GS 18.062 (18.062)	mem 37.794
+Train: [3][120/141]	BT 1.506 (1.499)	DT 1.485 (1.479)	loss 0.479 (0.479)	f1 0.812 (0.812)	GS 16.562 (16.562)	mem 37.792
+Train: [3][130/141]	BT 1.499 (1.500)	DT 1.479 (1.479)	loss 0.463 (0.463)	f1 0.844 (0.844)	GS 18.000 (18.000)	mem 37.817
+Train: [3][140/141]	BT 1.493 (1.499)	DT 1.474 (1.478)	loss 0.521 (0.521)	f1 0.781 (0.781)	GS 15.844 (15.844)	mem 37.723
+epoch 3, total time 210.78
+==> Saving...
+==> Saving...
+==> training...
+Train: [4][10/141]	BT 1.516 (1.499)	DT 1.490 (1.477)	loss 0.401 (0.401)	f1 0.875 (0.875)	GS 16.625 (16.625)	mem 37.752
+Train: [4][20/141]	BT 1.512 (1.501)	DT 1.496 (1.480)	loss 0.630 (0.630)	f1 0.656 (0.656)	GS 18.531 (18.531)	mem 37.761
+Train: [4][30/141]	BT 1.500 (1.498)	DT 1.480 (1.478)	loss 0.682 (0.682)	f1 0.750 (0.750)	GS 16.406 (16.406)	mem 37.774
+Train: [4][40/141]	BT 1.488 (1.496)	DT 1.469 (1.476)	loss 0.471 (0.471)	f1 0.844 (0.844)	GS 16.656 (16.656)	mem 37.798
+Train: [4][50/141]	BT 1.490 (1.496)	DT 1.470 (1.476)	loss 0.394 (0.394)	f1 0.875 (0.875)	GS 17.719 (17.719)	mem 37.829
+Train: [4][60/141]	BT 1.488 (1.495)	DT 1.468 (1.474)	loss 0.530 (0.530)	f1 0.812 (0.812)	GS 18.094 (18.094)	mem 37.857
+Train: [4][70/141]	BT 1.460 (1.492)	DT 1.440 (1.471)	loss 0.484 (0.484)	f1 0.781 (0.781)	GS 16.875 (16.875)	mem 37.762
+Train: [4][80/141]	BT 1.481 (1.492)	DT 1.461 (1.471)	loss 0.453 (0.453)	f1 0.875 (0.875)	GS 18.438 (18.438)	mem 37.793
+Train: [4][90/141]	BT 1.508 (1.492)	DT 1.492 (1.472)	loss 0.414 (0.414)	f1 0.812 (0.812)	GS 18.750 (18.750)	mem 37.802
+Train: [4][100/141]	BT 1.499 (1.493)	DT 1.478 (1.473)	loss 0.417 (0.417)	f1 0.812 (0.812)	GS 17.469 (17.469)	mem 37.819
+Train: [4][110/141]	BT 1.494 (1.493)	DT 1.473 (1.473)	loss 0.435 (0.435)	f1 0.875 (0.875)	GS 18.156 (18.156)	mem 37.837
+Train: [4][120/141]	BT 1.546 (1.496)	DT 1.527 (1.476)	loss 0.414 (0.414)	f1 0.844 (0.844)	GS 15.531 (15.531)	mem 37.839
+Train: [4][130/141]	BT 1.537 (1.498)	DT 1.515 (1.478)	loss 0.242 (0.242)	f1 0.938 (0.938)	GS 17.906 (17.906)	mem 37.891
+Train: [4][140/141]	BT 1.473 (1.498)	DT 1.453 (1.478)	loss 0.521 (0.521)	f1 0.750 (0.750)	GS 17.500 (17.500)	mem 37.803
+epoch 4, total time 210.68
+==> Saving...
+==> Saving...
+==> training...
+Train: [5][10/141]	BT 1.503 (1.498)	DT 1.482 (1.478)	loss 0.520 (0.520)	f1 0.781 (0.781)	GS 17.562 (17.562)	mem 37.819
+Train: [5][20/141]	BT 1.478 (1.495)	DT 1.461 (1.474)	loss 0.402 (0.402)	f1 0.812 (0.812)	GS 17.188 (17.188)	mem 37.828
+Train: [5][30/141]	BT 1.516 (1.494)	DT 1.486 (1.474)	loss 0.251 (0.251)	f1 0.906 (0.906)	GS 16.562 (16.562)	mem 37.849
+Train: [5][40/141]	BT 1.532 (1.500)	DT 1.511 (1.480)	loss 0.597 (0.597)	f1 0.719 (0.719)	GS 16.500 (16.500)	mem 37.869
+Train: [5][50/141]	BT 1.721 (1.510)	DT 1.705 (1.489)	loss 0.600 (0.600)	f1 0.688 (0.688)	GS 18.656 (18.656)	mem 36.667
+Train: [5][60/141]	BT 1.671 (1.544)	DT 1.644 (1.524)	loss 0.494 (0.494)	f1 0.781 (0.781)	GS 16.812 (16.812)	mem 54.625
+Train: [5][70/141]	BT 1.729 (1.568)	DT 1.694 (1.547)	loss 0.479 (0.479)	f1 0.781 (0.781)	GS 16.688 (16.688)	mem 54.729
+Train: [5][80/141]	BT 1.696 (1.579)	DT 1.667 (1.558)	loss 0.500 (0.500)	f1 0.781 (0.781)	GS 18.938 (18.938)	mem 54.760
+Train: [5][90/141]	BT 1.637 (1.590)	DT 1.608 (1.568)	loss 0.543 (0.543)	f1 0.750 (0.750)	GS 15.844 (15.844)	mem 54.780
+Train: [5][100/141]	BT 1.688 (1.598)	DT 1.668 (1.576)	loss 0.360 (0.360)	f1 0.875 (0.875)	GS 19.062 (19.062)	mem 54.778
+Train: [5][110/141]	BT 1.659 (1.604)	DT 1.630 (1.583)	loss 0.489 (0.489)	f1 0.781 (0.781)	GS 18.125 (18.125)	mem 54.258
+Train: [5][120/141]	BT 1.784 (1.611)	DT 1.760 (1.590)	loss 0.486 (0.486)	f1 0.844 (0.844)	GS 15.406 (15.406)	mem 54.300
+Train: [5][130/141]	BT 1.719 (1.616)	DT 1.688 (1.595)	loss 0.353 (0.353)	f1 0.875 (0.875)	GS 16.219 (16.219)	mem 54.856
+Train: [5][140/141]	BT 1.653 (1.621)	DT 1.633 (1.599)	loss 0.502 (0.502)	f1 0.750 (0.750)	GS 17.094 (17.094)	mem 54.772
+epoch 5, total time 227.95
+==> Saving...
+==> Saving...
+==> training...
+Train: [6][10/141]	BT 1.664 (1.650)	DT 1.636 (1.627)	loss 0.491 (0.491)	f1 0.781 (0.781)	GS 19.406 (19.406)	mem 54.794
+Train: [6][20/141]	BT 1.673 (1.667)	DT 1.650 (1.643)	loss 0.464 (0.464)	f1 0.844 (0.844)	GS 15.656 (15.656)	mem 54.794
+Train: [6][30/141]	BT 1.649 (1.666)	DT 1.629 (1.643)	loss 0.743 (0.743)	f1 0.562 (0.562)	GS 13.938 (13.938)	mem 54.819
+Train: [6][40/141]	BT 1.622 (1.668)	DT 1.603 (1.645)	loss 0.454 (0.454)	f1 0.750 (0.750)	GS 21.156 (21.156)	mem 54.835
+Train: [6][50/141]	BT 1.667 (1.666)	DT 1.642 (1.642)	loss 0.485 (0.485)	f1 0.781 (0.781)	GS 18.219 (18.219)	mem 54.873
+Train: [6][60/141]	BT 1.647 (1.667)	DT 1.625 (1.644)	loss 0.624 (0.624)	f1 0.781 (0.781)	GS 17.812 (17.812)	mem 54.876
+Train: [6][70/141]	BT 1.650 (1.667)	DT 1.632 (1.644)	loss 0.442 (0.442)	f1 0.812 (0.812)	GS 17.031 (17.031)	mem 54.890
+Train: [6][80/141]	BT 1.655 (1.665)	DT 1.632 (1.642)	loss 0.498 (0.498)	f1 0.750 (0.750)	GS 17.625 (17.625)	mem 54.817
+Train: [6][90/141]	BT 1.725 (1.666)	DT 1.703 (1.643)	loss 0.772 (0.772)	f1 0.656 (0.656)	GS 18.406 (18.406)	mem 54.416
+Train: [6][100/141]	BT 1.695 (1.665)	DT 1.678 (1.642)	loss 0.555 (0.555)	f1 0.719 (0.719)	GS 18.625 (18.625)	mem 54.160
+Train: [6][110/141]	BT 1.683 (1.664)	DT 1.664 (1.641)	loss 0.400 (0.400)	f1 0.750 (0.750)	GS 17.812 (17.812)	mem 54.711
+Train: [6][120/141]	BT 1.647 (1.664)	DT 1.617 (1.641)	loss 0.484 (0.484)	f1 0.781 (0.781)	GS 18.406 (18.406)	mem 54.724
+Train: [6][130/141]	BT 1.682 (1.664)	DT 1.664 (1.641)	loss 0.524 (0.524)	f1 0.750 (0.750)	GS 16.500 (16.500)	mem 54.756
+Train: [6][140/141]	BT 1.661 (1.665)	DT 1.636 (1.643)	loss 0.415 (0.415)	f1 0.844 (0.844)	GS 18.438 (18.438)	mem 54.770
+epoch 6, total time 234.21
+==> Saving...
+==> Saving...
+==> training...
+Train: [7][10/141]	BT 1.624 (1.664)	DT 1.606 (1.640)	loss 0.440 (0.440)	f1 0.750 (0.750)	GS 17.031 (17.031)	mem 54.702
+Train: [7][20/141]	BT 1.651 (1.659)	DT 1.625 (1.635)	loss 0.411 (0.411)	f1 0.812 (0.812)	GS 16.656 (16.656)	mem 54.724
+Train: [7][30/141]	BT 1.687 (1.666)	DT 1.663 (1.643)	loss 0.386 (0.386)	f1 0.844 (0.844)	GS 17.375 (17.375)	mem 54.708
+Train: [7][40/141]	BT 1.638 (1.666)	DT 1.617 (1.643)	loss 0.423 (0.423)	f1 0.844 (0.844)	GS 15.906 (15.906)	mem 54.737
+Train: [7][50/141]	BT 1.660 (1.662)	DT 1.633 (1.639)	loss 0.466 (0.466)	f1 0.781 (0.781)	GS 16.969 (16.969)	mem 54.742
+Train: [7][60/141]	BT 1.705 (1.666)	DT 1.679 (1.643)	loss 0.377 (0.377)	f1 0.844 (0.844)	GS 20.344 (20.344)	mem 54.775
+Train: [7][70/141]	BT 1.755 (1.665)	DT 1.737 (1.642)	loss 0.431 (0.431)	f1 0.812 (0.812)	GS 17.500 (17.500)	mem 54.155
+Train: [7][80/141]	BT 1.643 (1.665)	DT 1.621 (1.642)	loss 0.429 (0.429)	f1 0.750 (0.750)	GS 17.906 (17.906)	mem 54.798
+epoch 2, total time 209.44
+==> Saving...
+==> Saving...
+==> training...
+Train: [3][10/141]	BT 1.598 (1.505)	DT 1.577 (1.483)	loss 0.502 (0.502)	f1 0.781 (0.781)	GS 17.938 (17.938)	mem 37.671
+Train: [3][20/141]	BT 1.473 (1.494)	DT 1.452 (1.474)	loss 0.611 (0.611)	f1 0.656 (0.656)	GS 17.625 (17.625)	mem 37.687
+Train: [3][30/141]	BT 1.461 (1.488)	DT 1.441 (1.468)	loss 0.420 (0.420)	f1 0.875 (0.875)	GS 16.375 (16.375)	mem 37.694
+Train: [3][40/141]	BT 1.486 (1.487)	DT 1.465 (1.466)	loss 0.611 (0.611)	f1 0.750 (0.750)	GS 18.094 (18.094)	mem 37.705
+Train: [3][50/141]	BT 1.492 (1.487)	DT 1.471 (1.467)	loss 0.515 (0.515)	f1 0.719 (0.719)	GS 18.312 (18.312)	mem 37.757
+Train: [3][60/141]	BT 1.472 (1.488)	DT 1.451 (1.468)	loss 0.496 (0.496)	f1 0.812 (0.812)	GS 19.750 (19.750)	mem 37.737
+Train: [3][70/141]	BT 1.511 (1.489)	DT 1.491 (1.468)	loss 0.419 (0.419)	f1 0.844 (0.844)	GS 18.531 (18.531)	mem 37.659
+Train: [3][80/141]	BT 1.488 (1.490)	DT 1.473 (1.470)	loss 0.447 (0.447)	f1 0.906 (0.906)	GS 17.188 (17.188)	mem 37.718
+Train: [3][90/141]	BT 1.501 (1.491)	DT 1.480 (1.470)	loss 0.535 (0.535)	f1 0.781 (0.781)	GS 15.312 (15.312)	mem 37.741
+Train: [3][100/141]	BT 1.503 (1.490)	DT 1.474 (1.470)	loss 0.488 (0.488)	f1 0.812 (0.812)	GS 15.625 (15.625)	mem 37.786
+Train: [3][110/141]	BT 1.483 (1.489)	DT 1.463 (1.469)	loss 0.694 (0.694)	f1 0.594 (0.594)	GS 18.844 (18.844)	mem 37.790
+Train: [3][120/141]	BT 1.513 (1.489)	DT 1.493 (1.469)	loss 0.767 (0.767)	f1 0.594 (0.594)	GS 17.750 (17.750)	mem 37.787
+Train: [3][130/141]	BT 1.518 (1.491)	DT 1.497 (1.471)	loss 0.613 (0.613)	f1 0.719 (0.719)	GS 18.719 (18.719)	mem 37.795
+Train: [3][140/141]	BT 1.508 (1.492)	DT 1.480 (1.472)	loss 0.607 (0.607)	f1 0.750 (0.750)	GS 13.500 (13.500)	mem 37.718
+epoch 3, total time 209.89
+==> Saving...
+==> Saving...
+==> training...
+Train: [4][10/141]	BT 1.506 (1.492)	DT 1.489 (1.472)	loss 0.557 (0.557)	f1 0.750 (0.750)	GS 18.938 (18.938)	mem 37.750
+Train: [4][20/141]	BT 1.505 (1.502)	DT 1.484 (1.482)	loss 0.418 (0.418)	f1 0.906 (0.906)	GS 17.062 (17.062)	mem 37.753
+Train: [4][30/141]	BT 1.497 (1.503)	DT 1.471 (1.483)	loss 0.393 (0.393)	f1 0.812 (0.812)	GS 15.656 (15.656)	mem 37.768
+Train: [4][40/141]	BT 1.495 (1.499)	DT 1.473 (1.479)	loss 0.553 (0.553)	f1 0.781 (0.781)	GS 17.906 (17.906)	mem 37.790
+Train: [4][50/141]	BT 1.497 (1.499)	DT 1.476 (1.479)	loss 0.283 (0.283)	f1 0.938 (0.938)	GS 15.375 (15.375)	mem 37.829
+Train: [4][60/141]	BT 1.511 (1.500)	DT 1.489 (1.480)	loss 0.259 (0.259)	f1 0.969 (0.969)	GS 17.938 (17.938)	mem 37.832
+Train: [4][70/141]	BT 1.453 (1.497)	DT 1.432 (1.477)	loss 0.506 (0.506)	f1 0.781 (0.781)	GS 19.000 (19.000)	mem 37.761
+Train: [4][80/141]	BT 1.498 (1.496)	DT 1.477 (1.476)	loss 0.397 (0.397)	f1 0.812 (0.812)	GS 17.844 (17.844)	mem 37.792
+Train: [4][90/141]	BT 1.485 (1.497)	DT 1.465 (1.477)	loss 0.575 (0.575)	f1 0.688 (0.688)	GS 17.000 (17.000)	mem 37.793
+Train: [4][100/141]	BT 1.486 (1.497)	DT 1.466 (1.476)	loss 0.430 (0.430)	f1 0.812 (0.812)	GS 16.969 (16.969)	mem 37.810
+Train: [4][110/141]	BT 1.469 (1.495)	DT 1.449 (1.475)	loss 0.484 (0.484)	f1 0.750 (0.750)	GS 17.094 (17.094)	mem 37.830
+Train: [4][120/141]	BT 1.519 (1.496)	DT 1.499 (1.476)	loss 0.512 (0.512)	f1 0.719 (0.719)	GS 15.281 (15.281)	mem 37.873
+Train: [4][130/141]	BT 1.499 (1.496)	DT 1.481 (1.476)	loss 0.435 (0.435)	f1 0.781 (0.781)	GS 20.031 (20.031)	mem 37.843
+Train: [4][140/141]	BT 1.469 (1.496)	DT 1.449 (1.475)	loss 0.657 (0.657)	f1 0.719 (0.719)	GS 16.000 (16.000)	mem 37.797
+epoch 4, total time 210.33
+==> Saving...
+==> Saving...
+==> training...
+Train: [5][10/141]	BT 1.501 (1.498)	DT 1.481 (1.476)	loss 0.618 (0.618)	f1 0.781 (0.781)	GS 17.906 (17.906)	mem 37.814
+Train: [5][20/141]	BT 1.490 (1.496)	DT 1.469 (1.475)	loss 0.471 (0.471)	f1 0.781 (0.781)	GS 18.219 (18.219)	mem 37.820
+Train: [5][30/141]	BT 1.523 (1.494)	DT 1.503 (1.473)	loss 0.432 (0.432)	f1 0.812 (0.812)	GS 16.906 (16.906)	mem 37.840
+Train: [5][40/141]	BT 1.516 (1.493)	DT 1.495 (1.473)	loss 0.589 (0.589)	f1 0.719 (0.719)	GS 16.094 (16.094)	mem 37.857
+Train: [5][50/141]	BT 1.501 (1.494)	DT 1.480 (1.474)	loss 0.470 (0.470)	f1 0.812 (0.812)	GS 16.438 (16.438)	mem 36.024
+Train: [5][60/141]	BT 1.669 (1.517)	DT 1.646 (1.496)	loss 0.501 (0.501)	f1 0.719 (0.719)	GS 16.625 (16.625)	mem 50.267
+Train: [5][70/141]	BT 1.682 (1.545)	DT 1.661 (1.523)	loss 0.520 (0.520)	f1 0.750 (0.750)	GS 13.906 (13.906)	mem 54.211
+Train: [5][80/141]	BT 1.609 (1.554)	DT 1.590 (1.532)	loss 0.693 (0.693)	f1 0.656 (0.656)	GS 16.062 (16.062)	mem 54.734
+Train: [5][90/141]	BT 1.728 (1.566)	DT 1.706 (1.545)	loss 0.469 (0.469)	f1 0.781 (0.781)	GS 13.188 (13.188)	mem 54.752
+Train: [5][100/141]	BT 1.669 (1.577)	DT 1.646 (1.555)	loss 0.420 (0.420)	f1 0.844 (0.844)	GS 17.281 (17.281)	mem 54.786
+Train: [5][110/141]	BT 1.643 (1.585)	DT 1.616 (1.564)	loss 0.467 (0.467)	f1 0.750 (0.750)	GS 19.906 (19.906)	mem 54.790
+Train: [5][120/141]	BT 1.732 (1.593)	DT 1.714 (1.571)	loss 0.520 (0.520)	f1 0.812 (0.812)	GS 15.094 (15.094)	mem 54.834
+Train: [5][130/141]	BT 1.734 (1.599)	DT 1.711 (1.578)	loss 0.497 (0.497)	f1 0.750 (0.750)	GS 17.688 (17.688)	mem 54.841
+Train: [5][140/141]	BT 1.616 (1.604)	DT 1.592 (1.582)	loss 0.515 (0.515)	f1 0.750 (0.750)	GS 14.188 (14.188)	mem 54.854
+epoch 5, total time 225.65
+==> Saving...
+==> Saving...
+==> training...
+Train: [6][10/141]	BT 1.601 (1.634)	DT 1.572 (1.611)	loss 0.402 (0.402)	f1 0.812 (0.812)	GS 18.500 (18.500)	mem 54.773
+Train: [6][20/141]	BT 1.658 (1.654)	DT 1.634 (1.632)	loss 0.568 (0.568)	f1 0.688 (0.688)	GS 13.594 (13.594)	mem 54.796
+Train: [6][30/141]	BT 1.645 (1.654)	DT 1.628 (1.632)	loss 0.464 (0.464)	f1 0.781 (0.781)	GS 16.938 (16.938)	mem 54.367
+Train: [6][40/141]	BT 1.688 (1.657)	DT 1.670 (1.636)	loss 0.557 (0.557)	f1 0.688 (0.688)	GS 21.969 (21.969)	mem 54.278
+Train: [6][50/141]	BT 1.619 (1.655)	DT 1.590 (1.633)	loss 0.689 (0.689)	f1 0.562 (0.562)	GS 16.906 (16.906)	mem 54.340
+Train: [6][60/141]	BT 1.628 (1.656)	DT 1.607 (1.634)	loss 0.446 (0.446)	f1 0.812 (0.812)	GS 17.938 (17.938)	mem 54.875
+Train: [6][70/141]	BT 1.724 (1.659)	DT 1.703 (1.638)	loss 0.411 (0.411)	f1 0.812 (0.812)	GS 16.094 (16.094)	mem 54.879
+Train: [6][80/141]	BT 1.651 (1.657)	DT 1.630 (1.635)	loss 0.436 (0.436)	f1 0.812 (0.812)	GS 20.594 (20.594)	mem 54.803
+Train: [6][90/141]	BT 1.715 (1.656)	DT 1.696 (1.634)	loss 0.387 (0.387)	f1 0.844 (0.844)	GS 17.375 (17.375)	mem 54.714
+Train: [6][100/141]	BT 1.664 (1.656)	DT 1.638 (1.634)	loss 0.632 (0.632)	f1 0.781 (0.781)	GS 15.531 (15.531)	mem 54.683
+Train: [6][110/141]	BT 1.640 (1.659)	DT 1.618 (1.637)	loss 0.388 (0.388)	f1 0.812 (0.812)	GS 16.469 (16.469)	mem 54.709
+Train: [6][120/141]	BT 1.667 (1.659)	DT 1.639 (1.637)	loss 0.442 (0.442)	f1 0.781 (0.781)	GS 16.938 (16.938)	mem 54.714
+Train: [6][130/141]	BT 1.667 (1.659)	DT 1.642 (1.636)	loss 0.485 (0.485)	f1 0.812 (0.812)	GS 16.031 (16.031)	mem 54.717
+Train: [6][140/141]	BT 1.676 (1.660)	DT 1.649 (1.638)	loss 0.468 (0.468)	f1 0.781 (0.781)	GS 18.531 (18.531)	mem 54.482
+epoch 6, total time 233.47
+==> Saving...
+==> Saving...
+==> training...
+Train: [7][10/141]	BT 1.682 (1.685)	DT 1.665 (1.664)	loss 0.427 (0.427)	f1 0.844 (0.844)	GS 17.000 (17.000)	mem 54.125
+Train: [7][20/141]	BT 1.653 (1.655)	DT 1.630 (1.632)	loss 0.458 (0.458)	f1 0.750 (0.750)	GS 18.375 (18.375)	mem 54.158
+Train: [7][30/141]	BT 1.630 (1.650)	DT 1.608 (1.627)	loss 0.414 (0.414)	f1 0.781 (0.781)	GS 17.594 (17.594)	mem 54.717
+Train: [7][40/141]	BT 1.615 (1.647)	DT 1.596 (1.624)	loss 0.526 (0.526)	f1 0.719 (0.719)	GS 16.625 (16.625)	mem 54.819
+Train: [7][50/141]	BT 1.641 (1.644)	DT 1.620 (1.622)	loss 0.493 (0.493)	f1 0.750 (0.750)	GS 16.156 (16.156)	mem 54.829
+Train: [7][60/141]	BT 1.611 (1.645)	DT 1.592 (1.623)	loss 0.279 (0.279)	f1 0.938 (0.938)	GS 19.969 (19.969)	mem 54.745
+Train: [7][70/141]	BT 1.616 (1.645)	DT 1.594 (1.623)	loss 0.393 (0.393)	f1 0.812 (0.812)	GS 17.312 (17.312)	mem 54.792
+Train: [7][80/141]	BT 1.687 (1.647)	DT 1.663 (1.625)	loss 0.557 (0.557)	f1 0.719 (0.719)	GS 16.250 (16.250)	mem 54.784
+Train: [7][90/141]	BT 1.635 (1.647)	DT 1.609 (1.625)	loss 0.449 (0.449)	f1 0.812 (0.812)	GS 20.031 (20.031)	mem 54.700
+Traceback (most recent call last):
+  File "/home/shakir/simplical_complices_gcc/train.py", line 980, in <module>
+    f1 = Parallel(4)(
+  File "/home/shakir/.local/lib/python3.9/site-packages/joblib/parallel.py", line 1098, in __call__
+    self.retrieve()
+  File "/home/shakir/.local/lib/python3.9/site-packages/joblib/parallel.py", line 975, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+  File "/home/shakir/.local/lib/python3.9/site-packages/joblib/_parallel_backends.py", line 567, in wrap_future_result
+    return future.result(timeout=timeout)
+  File "/usr/local/anaconda3/lib/python3.9/concurrent/futures/_base.py", line 440, in result
+    self._condition.wait(timeout)
+  File "/usr/local/anaconda3/lib/python3.9/threading.py", line 312, in wait
+    waiter.acquire()
+KeyboardInterrupt
