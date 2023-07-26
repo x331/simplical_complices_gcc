@@ -743,34 +743,34 @@ def _add_undirected_graph_positional_embedding(g, hidden_size, retry=10):
     # # print(g.ndata["pos_undirected"].shape)
     # g.ndata["pos_undirected"] = torch.cat((x.float(),b1_compr.float(),b2_to_compr.float()),dim=1)
 
+    ###!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    #test 8 use this one #comment out if too slow and not using multi features
+    b1 ,b2 , faces = slhelp.compute_hodge_matrix_2(g.num_nodes(),g.edges())
     
-    # #test 8 use this one
-    # b1 ,b2 , faces = slhelp.compute_hodge_matrix_2(g.num_nodes(),g.edges())
-    
-    # # b1 = torch.abs(torch.tensor(b1)).to_sparse().to(dtype=torch.float32)
-    # # b2 = torch.abs(torch.tensor(b2)).to_sparse().to(dtype=torch.float32)
-    # #b2_to = b1 @ b2
+    # b1 = torch.abs(torch.tensor(b1)).to_sparse().to(dtype=torch.float32)
+    # b2 = torch.abs(torch.tensor(b2)).to_sparse().to(dtype=torch.float32)
+    #b2_to = b1 @ b2
 
-    # b1, b2 = np.abs(b1), np.abs(b2)
-    # b2_to = b1 @ b2
-    # b1 = torch.tensor(b1)
-    # b2_to = torch.tensor(b2_to)
+    b1, b2 = np.abs(b1), np.abs(b2)
+    b2_to = b1 @ b2
+    b1 = torch.tensor(b1)
+    b2_to = torch.tensor(b2_to)
     
-    # kl = min(b1.shape[0], hidden_size)
-    # kr = min(b1.shape[1], hidden_size)
-    # # import time
-    # # start_time = time.time()
-    # b1_compr = pca_torch(kl, kr, b1, hidden_size, retry)
-    # # print(1, time.time() - start_time)
-    # # start_time = time.time()
-    # kl = min(b2_to.shape[0], hidden_size)
-    # kr = min(b2_to.shape[1], hidden_size)
-    # b2_to_compr = pca_torch(kl, kr, b2_to, hidden_size, retry)
-    # # print(2, time.time() - start_time)
-    # # start_time = time.time()
+    kl = min(b1.shape[0], hidden_size)
+    kr = min(b1.shape[1], hidden_size)
+    # import time
+    # start_time = time.time()
+    b1_compr = pca_torch(kl, kr, b1, hidden_size, retry)
+    # print(1, time.time() - start_time)
+    # start_time = time.time()
+    kl = min(b2_to.shape[0], hidden_size)
+    kr = min(b2_to.shape[1], hidden_size)
+    b2_to_compr = pca_torch(kl, kr, b2_to, hidden_size, retry)
+    # print(2, time.time() - start_time)
+    # start_time = time.time()
 
-    # g.ndata["pos_undirected_1"] = b1_compr.float()
-    # g.ndata["pos_undirected_2"] = b2_to_compr.float()
+    g.ndata["pos_undirected_1"] = b1_compr.float()
+    g.ndata["pos_undirected_2"] = b2_to_compr.float()
     
     # #test 9
     # b1 ,b2 , faces = slhelp.compute_hodge_matrix_2(g.num_nodes(),g.edges())
